@@ -12,7 +12,7 @@ logging:
 server:
   port: 9000
   servlet:
-    context-path: /utcc-api
+    context-path: /utcc-mini-project-mobile
 
 # DB
 spring:
@@ -35,11 +35,8 @@ spring:
     host: 192.168.1.142
     port: 6379
 
-
 # JWT
 jwt:
   secret: am-secret-key-jwt
   # 5 hour (5 * 60 * 60)
   time-expire: 18000
-
-

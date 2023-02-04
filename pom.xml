@@ -11,10 +11,10 @@
 	</parent>
 
 	<groupId>BAIWA</groupId>
-	<artifactId>utcc-api</artifactId>
+	<artifactId>utcc-mini-project-mobile</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
-	<name>utcc-api</name>
+	<name>utcc-mini-project-mobile</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -342,7 +342,7 @@
 			</plugin>
 
 		</plugins>
-		<finalName>utcc-api</finalName>
+		<finalName>utcc-mini-project-mobile</finalName>
 	</build>
 
 </project>

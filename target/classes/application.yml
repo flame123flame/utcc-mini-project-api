@@ -1,0 +1,45 @@
+#show sql statement
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: false
+        #show sql values
+        type:
+          descriptor:
+            sql: false
+# System
+server:
+  port: 9000
+  servlet:
+    context-path: /utcc-api
+
+# DB
+spring:
+  jmx:
+    enabled: false
+  jpa:
+    show-sql: false
+    # custom show
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    jdbc-url: jdbc:sqlserver://baiwa.ddns.net:7002;databaseName=UTCC-DATABASE;useUnicode=true;characterEncoding=UTF-8
+    username: developer
+    password: Baiwa123
+
+  redis:
+    #host: 192.168.1.142
+    host: 192.168.1.142
+    port: 6379
+
+
+# JWT
+jwt:
+  secret: am-secret-key-jwt
+  # 5 hour (5 * 60 * 60)
+  time-expire: 18000
+
+

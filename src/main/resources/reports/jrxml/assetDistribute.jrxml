@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="wattana" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e360b996-cc62-4792-9e83-fb6d140898ee">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Empty Dataset1" uuid="1b25dcda-d73d-4abc-bdc3-98769f838394"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="assetNo" class="java.lang.String"/>
+	<field name="serialNo" class="java.lang.String"/>
+	<field name="masterProductName" class="java.lang.String"/>
+	<field name="masterProductTypeName" class="java.lang.String"/>
+	<field name="departmentLocation" class="java.lang.String"/>
+	<field name="contractName" class="java.lang.String"/>
+	<field name="createDate" class="java.sql.Date"/>
+	<field name="projectName" class="java.lang.String"/>
+	<field name="departmentName" class="java.lang.String"/>
+	<field name="distributeCreateDate" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="0" width="390" height="41" uuid="edad8e60-aec1-47ee-bb1e-aa1d849aafc8"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="26" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["รายงานการเเจกจ่ายครุภัณฑ์"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="190" y="20" width="60" height="43" uuid="161515fb-30d0-4283-9663-63894991d93b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["หน่วยงาน"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="40" height="43" uuid="11d865f8-b423-4d79-858c-45e5316fe26c"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ลำดับ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="20" width="80" height="43" uuid="d25319d3-3bcf-4b0e-8ab7-9461d5a56f9c"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["เลขที่ใบเเจกจ่าย ครุภัณฑ์"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="20" width="70" height="43" uuid="8fa065ef-d229-4f6a-ac16-3a30caa2c3a4"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["วันที่เเจกจ่าย ครุภัณฑ์"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="20" width="80" height="43" uuid="b73b9c84-e6fa-4096-8309-5495d4625fb5"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["สถานที่จัดเก็บ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="20" width="60" height="43" uuid="13a4a90b-9387-4147-bc5e-469f8f58c9ee"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ผู้ถือครอง"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="20" width="80" height="43" uuid="b98e1dc7-69da-4898-aad9-815bc220255d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CFMIS No."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="20" width="80" height="43" uuid="6be7b2dc-af8a-4932-85df-a210a1694ecb"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["เลขที่สินทรัพย์"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="20" width="150" height="43" uuid="cc8ab3d5-859c-44be-8c78-4c3ca65dd555"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ชื่อครุภัณฑ์"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="20" width="60" height="43" uuid="09d634fc-335f-4d3a-bfea-328257bf820d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["คลัง"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="760" y="20" width="40" height="43" uuid="47ce7326-8114-4e77-acbc-676ff1d80d7a"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["จำนวน"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="40" height="50" uuid="8f711153-dc5c-4777-bc63-bc9332ec8818"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="0" width="80" height="50" uuid="72bfdb3d-a9ec-4859-bf86-3e228bf8adbb"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assetNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="70" height="50" uuid="232cc507-1baa-4fb3-b543-19d28cfa1472"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{distributeCreateDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="0" width="60" height="50" uuid="8afdcc35-d977-4085-89dc-728807b5d5bf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departmentName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="80" height="50" uuid="7c4e6310-23df-427e-bd17-11ab8941d11b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departmentLocation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="60" height="50" uuid="3593ec7b-82af-4e90-b5ce-70c4c519a63b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departmentName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="80" height="50" uuid="f3aad795-8d9e-4e00-ae7b-fd4b17bd5a6f"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serialNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="0" width="80" height="50" uuid="51bb3387-af98-45e5-bc82-38d38e3d40a6"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assetNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="0" width="150" height="50" uuid="adf2eb7f-e012-4c53-9e15-bd1faf463892"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{masterProductName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="60" height="50" uuid="b8119794-c07b-49f1-af52-0e11f22bac01"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["สสภ.1"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="760" y="0" width="40" height="50" uuid="4d1f019c-becb-40a8-99c6-bba432d974f7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["1"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="60" splitType="Stretch">
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="690" y="30" width="140" height="30" uuid="0d2a6962-823b-4339-b1ab-5c1e11fa67df"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="30" width="100" height="30" uuid="d878a77f-faf4-4f5a-a439-caaec542bf46"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ออกรายงานวันที่ : "]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

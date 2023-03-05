@@ -26,7 +26,7 @@ public class Ticket {
 	    private long ticketId;
 	    
 	    @Column(name = "ticket_no", length = 7)
-	    private String codeSp;
+	    private String ticketNo;
 	    
 	    @Column(name = "ticket_begin")
 	    private Boolean ticketBegin;

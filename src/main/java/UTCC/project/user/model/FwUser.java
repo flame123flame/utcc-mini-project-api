@@ -53,4 +53,7 @@ public class FwUser implements Serializable {
 	
 	@Column(name = "role_code",length = 255)
 	private String roleCode;
+	
+	@Column(name = "fw_role_id")
+    private long fw_role_Id;
 }

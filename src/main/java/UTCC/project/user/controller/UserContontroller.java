@@ -109,7 +109,7 @@ public class UserContontroller {
 	}
 	
 	
-	@DeleteMapping("delete-user/{username}")
+	@GetMapping("delete-user/{username}")
 	public ResponseData<?> deleteUsername(@PathVariable("username") String username) {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {

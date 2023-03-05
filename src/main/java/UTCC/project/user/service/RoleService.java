@@ -99,14 +99,15 @@ public class RoleService {
 		fwRole.setRoleDescription(req.getRoleDescription());
 		fwRole.setMunuList(req.getMunuList());	
 		fwRole.setCreateBy(UserLoginUtil.getUsername());
-		fwRoleRepo.save(fwRole);
-
+		
+	   String idHeader = fwRoleRepo.save(fwRole).getFwRoleId().toString();
 		
 		return req.getRoleCode();
 	}
 
 	@Transactional
 	public void deleteRole(String roleCode) {
+		
 		fwRoleRepo.deleteByRoleCode(roleCode);
 	}
 

@@ -58,7 +58,7 @@ public class RoleController {
 		return responseData;
 	}
 	
-	@DeleteMapping("delete-page-group/{roleCode}")
+	@GetMapping("delete-role/{roleCode}")
 	public ResponseData<?> deleteRole(@PathVariable("roleCode") String roleCode) {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {

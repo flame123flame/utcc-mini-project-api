@@ -39,16 +39,17 @@ public class BusService {
 	public List<BusRes> getAllList() {
 		List<BusRes> dataRes = new ArrayList<BusRes>();
 		BusRes dataSet;
-		List<BusModel> fwRole = (List<BusModel>) busRepository.findAll();
-		for (BusModel fwRoleSet : fwRole) {
+		List<BusModel> fwBus = (List<BusModel>) busRepository.findAll();
+		for (BusModel fwBusSet : fwBus) {
 			dataSet = new BusRes();
-			dataSet.setBusNo(fwRoleSet.getBusNo());
-			dataSet.setBusType(fwRoleSet.getBusType());
-			dataSet.setBusPlate(fwRoleSet.getBusPlate());
-			dataSet.setBusProvince(fwRoleSet.getBusProvince());
-			dataSet.setFare(fwRoleSet.getFare().setScale(2, BigDecimal.ROUND_HALF_UP));
-			dataSet.setDiscountFare(fwRoleSet.getDiscountFare().setScale(2, BigDecimal.ROUND_HALF_UP));
-			dataSet.setCreateDate(ConvertDateUtils.formatDateToString(fwRoleSet.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
+			dataSet.setBusNo(fwBusSet.getBusNo());
+			dataSet.setId(fwBusSet.getId());	
+			dataSet.setBusType(fwBusSet.getBusType());
+			dataSet.setBusPlate(fwBusSet.getBusPlate());
+			dataSet.setBusProvince(fwBusSet.getBusProvince());
+			dataSet.setFare(fwBusSet.getFare().setScale(2, BigDecimal.ROUND_HALF_UP));
+			dataSet.setDiscountFare(fwBusSet.getDiscountFare().setScale(2, BigDecimal.ROUND_HALF_UP));
+			dataSet.setCreateDate(ConvertDateUtils.formatDateToString(fwBusSet.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
 			dataRes.add(dataSet);
 	
 		}

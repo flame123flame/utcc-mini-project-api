@@ -15,10 +15,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
+
 @Entity
 @Table(name = "logup")
 public class Logup {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "logup_id")

@@ -39,4 +39,4 @@ spring:
 jwt:
   secret: am-secret-key-jwt
   # 5 hour (5 * 60 * 60)
-  time-expire: 18000
+  time-expire: 180000

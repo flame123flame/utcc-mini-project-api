@@ -1,5 +1,6 @@
 package UTCC.project.work.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -15,15 +16,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @Entity
 @Table(name = "worksheet")
-public class Worksheet {
+public class Worksheet implements Serializable {
 
-    @Id
+    private static final long serialVersionUID = 8236012833776542908L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "worksheet_id")
-    private long worksheetId;
+    private Long worksheetId;
    
     @Column(name = "worksheet_date", nullable = false)
     private LocalDateTime worksheetDate;
@@ -55,14 +57,13 @@ public class Worksheet {
     @Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 
-    @Column(name = "updated_by", length = 50,nullable = false)
-    private String updatedBy;
-
-    @Builder.Default
+    @Column(name = "update_by", length = 50,nullable = false)
+    private String updateBy;
+    
     @Column(name = "create_date", length = 6, nullable = false)
     private LocalDateTime createDate = LocalDateTime.now();
 
-    @Builder.Default
+
     @Column(name = "update_date", length = 6, nullable = false)
     private LocalDateTime updateDate = LocalDateTime.now();
 }

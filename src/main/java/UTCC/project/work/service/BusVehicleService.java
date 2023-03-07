@@ -19,6 +19,22 @@ public class BusVehicleService {
 	@Autowired
 	private BusVehicleDao busVehicleDao;
 	
+	
+	public void saveForm(BusVehicleVo.Request req) {
+		BusVehicle data = new BusVehicle();
+		data.setBusVehicleNumber(req.getBusVehicleNumber());
+		data.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
+		data.setBusVehiclePlateProv(req.getBusVehiclePlateProv());
+		data.setBusLinesId(1);
+		data.setTypeId(2);
+		data.setBusDivisionId(1);
+		busVehicleRepository.save(data);
+	}
+	
+	public void deleteBusVehicle(Long id) {
+		busVehicleRepository.deleteById(id);
+	}
+	
 	public List<BusVehicle> getDropdownListBusVehicle(){
 		return (List<BusVehicle>) busVehicleRepository.findAll();
 	}

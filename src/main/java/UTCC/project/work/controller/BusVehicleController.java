@@ -39,6 +39,21 @@ public class BusVehicleController {
 		return responseData;
 	}
 	
+	@GetMapping("get-list-dropdown2")
+	public ResponseData<List<BusVehicleVo.Response>> getDropdownList2( ) {
+		ResponseData<List<BusVehicleVo.Response>> responseData = new ResponseData<>();
+		try {
+			responseData.setData(busVehicleService.getDropdownList());
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			log.error("BusVehicleController: getDropdownListBusVehicle ", e);
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
 	@GetMapping("get-list-dropdown")
 	public ResponseData<List<BusVehicleVo.Response>> getDropdownList( ) {
 		ResponseData<List<BusVehicleVo.Response>> responseData = new ResponseData<>();

@@ -44,6 +44,7 @@ public class DriverDao {
 			vo.setBusVehiclePlateNo(rs.getString("bus_vehicle_plate_no"));
 			vo.setWorksheetDate(rs.getString("worksheet_date"));
 			vo.setWorksheetFarecollect(rs.getString("worksheet_farecollect"));
+			vo.setWorksheetId(rs.getLong("worksheet_id"));
 			return vo;
 		}
 	};

@@ -20,11 +20,13 @@ public class TicketVo {
     public static class Request {
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private String ticketNo;
+        private String ticketNoSum;
+        private String sumPrice;
         private Boolean ticketBegin;
         private Boolean ticketEnd;
         private long fareId;
         private long worksheetId;
-        
+        private long trip;
         
     }
     
@@ -33,5 +35,17 @@ public class TicketVo {
     public static class Response extends Request  {
      
     }
+    
+    
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class RequestDropdown {
+        private String busTerminalName;
+        private Long busTerminalId;
+    }
+    
 
 }

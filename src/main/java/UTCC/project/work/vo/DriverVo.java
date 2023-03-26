@@ -1,7 +1,5 @@
 package UTCC.project.work.vo;
 
-import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +19,7 @@ public class DriverVo {
 	    @NoArgsConstructor
 	    public static class Response {
 	        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	        private long worksheetId;
 	        private String worksheetDate;
 	        private String worksheetTimeBegin;
 	        private String worksheetTimeEnd;

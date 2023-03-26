@@ -1,5 +1,6 @@
 package UTCC.project.work.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -15,10 +16,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @Entity
 @Table(name = "ticket")
-public class Ticket {
+public class Ticket  implements Serializable  {
 	
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,14 +37,18 @@ public class Ticket {
 	    @Column(name = "fare_id")
 	    private long fareId;
 	    
+	    @Column(name = "trip")
+	    private long trip;
+	    
+	    
 	    @Column(name = "worksheet_id")
 	    private long worksheetId;
 	    
 	    @Column(name = "create_by", length = 50,nullable = false)
 	    private String createBy;
 
-	    @Column(name = "updated_by", length = 50,nullable = false)
-	    private String updatedBy;
+	    @Column(name = "update_by", length = 50,nullable = false)
+	    private String updateBy;
 
 	    @Builder.Default
 	    @Column(name = "create_date", length = 6, nullable = false)

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,11 +42,12 @@ public class WorksheetController {
         return response;
     }
     
-	@GetMapping("get-list")
-	public ResponseData<List<Worksheet>> getDropdownListBusVehicle( ) {
+	@PostMapping("/get-list-progress")
+    @ResponseBody
+	public ResponseData<List<Worksheet>> getDropdownListBusVehicleProgress(@RequestBody WorksheetVo.Request request ) {
 		ResponseData<List<Worksheet>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(worksheetService.getList());
+			responseData.setData(worksheetService.getList("IN_PROGRESS",request));
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
@@ -55,5 +57,33 @@ public class WorksheetController {
 		return responseData;
 	}
 
+	@PostMapping("/get-list-success")
+    @ResponseBody
+	public ResponseData<List<Worksheet>> getDropdownListBusVehicle(@RequestBody WorksheetVo.Request request  ) {
+		ResponseData<List<Worksheet>> responseData = new ResponseData<>();
+		try {
+			responseData.setData(worksheetService.getList("SUCCESS",request));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	@GetMapping("/update-status/{id}")
+	public ResponseData<?> updateStatus(@PathVariable("id") Long id) {
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			worksheetService.upDateStatus(id);
+			responseData.setMessage(RESPONSE_MESSAGE.DELETE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.DELETE.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
     
 }

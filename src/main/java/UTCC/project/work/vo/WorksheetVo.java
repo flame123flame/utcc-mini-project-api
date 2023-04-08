@@ -2,6 +2,8 @@ package UTCC.project.work.vo;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ public class WorksheetVo {
     public static class Request {
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime worksheetDate;
+        private Long worksheetId;
         private String worksheetTimeBegin;
         private String worksheetTimeEnd;
         private String busVehiclePlateNo;

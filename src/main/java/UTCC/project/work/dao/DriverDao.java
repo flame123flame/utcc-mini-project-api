@@ -20,16 +20,18 @@ public class DriverDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	
-	public List<DriverVo.Response> getData(String type) {
+	public List<DriverVo.Response> getData(String type,String status) {
 		StringBuilder sql = new StringBuilder();
 		List<Object> params = new ArrayList<Object>();
 		sql.append(" SELECT * FROM  worksheet join  bus_vehicle  on  worksheet.bus_vehicle_plate_no = bus_vehicle.bus_vehicle_plate_no   ");
 		if("farecollect".equals(type)) {
-			sql.append(" WHERE worksheet_farecollect = ? ");
+			sql.append(" WHERE worksheet_farecollect = ? AND worksheet.worksheet_status = ? ");
 			params.add(UserLoginUtil.getUsername());
+			params.add(status);
 		}else if("driver".equals(type)) {
-			sql.append(" WHERE worksheet_driver = ? ");
+			sql.append(" WHERE worksheet_driver = ?  AND worksheet.worksheet_status = ? ");
 			params.add(UserLoginUtil.getUsername());
+			params.add(status);
 		}
 
 		List<DriverVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(), dataApproveRowmapper);

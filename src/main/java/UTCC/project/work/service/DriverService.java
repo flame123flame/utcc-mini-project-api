@@ -16,13 +16,20 @@ public class DriverService {
 	private DriverDao driverDao;
 	
 
-	public List<DriverVo.Response> getDataFarecollect(){
-		return driverDao.getData("farecollect");
+	public List<DriverVo.Response> getDataFarecollectProgress(){
+		return driverDao.getData("farecollect","IN_PROGRESS");
 	}
 	
-	public List<DriverVo.Response> getDataDriver(){
-		return driverDao.getData("driver");
+	public List<DriverVo.Response> getDataFarecollectSuccess(){
+		return driverDao.getData("farecollect","SUCCESS");
+	}
+	
+	public List<DriverVo.Response> getDataDriverProgress(){
+		return driverDao.getData("driver","IN_PROGRESS");
 	}
 		
+	public List<DriverVo.Response> getDataDriverSuccess(){
+		return driverDao.getData("driver","SUCCESS");
+	}
 		
 }

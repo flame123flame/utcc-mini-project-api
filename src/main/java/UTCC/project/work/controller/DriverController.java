@@ -22,11 +22,11 @@ public class DriverController {
 	private DriverService driverService;
 	
 	
-	@GetMapping("/farecollect")
-	public ResponseData<List<DriverVo.Response>> getDataFarecollect() {
+	@GetMapping("/farecollect-progress")
+	public ResponseData<List<DriverVo.Response>> getDataFarecollectProgress() {
 		ResponseData<List<DriverVo.Response>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(driverService.getDataFarecollect());
+			responseData.setData(driverService.getDataFarecollectProgress());
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
@@ -36,11 +36,39 @@ public class DriverController {
 		return responseData;
 	}
 	
-	@GetMapping("/driver")
-	public ResponseData<List<DriverVo.Response>> getDataDriver() {
+	@GetMapping("/farecollect-success")
+	public ResponseData<List<DriverVo.Response>> getDataFarecollectSuccess() {
 		ResponseData<List<DriverVo.Response>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(driverService.getDataDriver());
+			responseData.setData(driverService.getDataFarecollectSuccess());
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	@GetMapping("/driver-progress")
+	public ResponseData<List<DriverVo.Response>> getDataDriverProgress() {
+		ResponseData<List<DriverVo.Response>> responseData = new ResponseData<>();
+		try {
+			responseData.setData(driverService.getDataDriverProgress());
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	@GetMapping("/driver-success")
+	public ResponseData<List<DriverVo.Response>> getDataDriverSuccess() {
+		ResponseData<List<DriverVo.Response>> responseData = new ResponseData<>();
+		try {
+			responseData.setData(driverService.getDataDriverSuccess());
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {

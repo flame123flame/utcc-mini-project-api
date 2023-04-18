@@ -2,6 +2,8 @@ package UTCC.project.work.service;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +40,8 @@ public class WorksheetService {
 			return (List<Worksheet>) worksheetRepository.findByStatus(status,data.getWorksheetId());
 		}
 		if(data.getWorksheetDate() != null) {
-			return (List<Worksheet>) worksheetRepository.findByStatus(status,data.getWorksheetDate());
+			
+			return (List<Worksheet>) worksheetRepository.findByStatus(status,data.getWorksheetDate(),data.getWorksheetDate().toLocalDate().atTime(LocalTime.MAX).truncatedTo(ChronoUnit.SECONDS));
 		}
 		return (List<Worksheet>) worksheetRepository.findByStatus(status);
 	}

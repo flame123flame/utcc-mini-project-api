@@ -18,8 +18,8 @@ public interface WorksheetRepository  extends CrudRepository<Worksheet, Long> {
 	public List<Worksheet> findByStatus(String status, Long id);
 	
 
-	@Query( value = "select * from worksheet where worksheet_status = ? AND worksheet_date = ?  "  , nativeQuery = true)
-	public List<Worksheet> findByStatus(String status, LocalDateTime date);
+	@Query( value = "select * from worksheet where worksheet_status = ? AND worksheet_date  BETWEEN ? and ? "  , nativeQuery = true)
+	public List<Worksheet> findByStatus(String status, LocalDateTime dateStart, LocalDateTime dateEnd);
 	
 	
 	@Query( value = "select * from worksheet where worksheet_status = ?  "  , nativeQuery = true)

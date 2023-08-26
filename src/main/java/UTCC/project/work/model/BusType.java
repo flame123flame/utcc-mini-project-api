@@ -19,22 +19,22 @@ import lombok.Setter;
 @Builder
 @Entity
 @Table(name = "bus_type")
-public class BusType implements Serializable{
-	
-	private static final long serialVersionUID = -9088551843644625266L;
+public class BusType implements Serializable {
 
-	@Id
+    private static final long serialVersionUID = -9088551843644625266L;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bus_type_id")
+    @Column(name = "bus_bus_type_id")
     private long busTypeId;
-	
-	@Column(name = "bus_type_name")
+
+    @Column(name = "bus_type_name")
     private String busTypeName;
-	
-	@Column(name = "create_by", length = 50,nullable = false)
+
+    @Column(name = "create_by", length = 50, nullable = false)
     private String createBy;
 
-    @Column(name = "updated_by", length = 50,nullable = false)
+    @Column(name = "updated_by", length = 50, nullable = false)
     private String updatedBy;
 
     @Builder.Default

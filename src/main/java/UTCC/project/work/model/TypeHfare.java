@@ -19,25 +19,25 @@ import lombok.Setter;
 @Builder
 @Entity
 @Table(name = "type_h_fare")
-public class TypeHfare implements Serializable{
-	
-	private static final long serialVersionUID = 376529227784843628L;
+public class TypeHfare implements Serializable {
 
-	@Id
+    private static final long serialVersionUID = 376529227784843628L;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type_h_fare_id")
     private long typeHfareId;
-	
-	@Column(name = "type_id")
+
+    @Column(name = "bus_type_id")
     private long typeId;
-	
-	@Column(name = "fare_id")
+
+    @Column(name = "fare_id")
     private long fareId;
-	
-	@Column(name = "create_by", length = 50,nullable = false)
+
+    @Column(name = "create_by", length = 50, nullable = false)
     private String createBy;
 
-    @Column(name = "updated_by", length = 50,nullable = false)
+    @Column(name = "updated_by", length = 50, nullable = false)
     private String updatedBy;
 
     @Builder.Default

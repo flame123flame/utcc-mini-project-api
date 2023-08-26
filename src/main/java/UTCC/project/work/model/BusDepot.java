@@ -19,25 +19,25 @@ import lombok.Setter;
 @Builder
 @Entity
 @Table(name = "bus_depot")
-public class BusDepot implements Serializable{
-	
-	private static final long serialVersionUID = -839822370605016277L;
+public class BusDepot implements Serializable {
 
-	@Id
+    private static final long serialVersionUID = -839822370605016277L;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bus_depot_id")
     private long busDepotId;
-	
-	@Column(name = "depot_name")
+
+    @Column(name = "depot_name")
     private String depotName;
-	
-	@Column(name = "depot_location")
+
+    @Column(name = "depot_location")
     private String depotLocation;
-	
-	@Column(name = "create_by", length = 50,nullable = false)
+
+    @Column(name = "create_by", length = 50, nullable = false)
     private String createBy;
 
-    @Column(name = "updated_by", length = 50,nullable = false)
+    @Column(name = "updated_by", length = 50, nullable = false)
     private String updatedBy;
 
     @Builder.Default

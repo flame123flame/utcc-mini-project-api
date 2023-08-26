@@ -16,7 +16,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @Entity
 @Table(name = "worksh_h_busop")
 public class WorkshHbusop implements Serializable{

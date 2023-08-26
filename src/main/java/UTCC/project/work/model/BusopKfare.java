@@ -16,7 +16,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @Entity
 @Table(name = "busop_k_fare")
 public class BusopKfare implements Serializable{

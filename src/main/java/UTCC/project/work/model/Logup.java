@@ -16,7 +16,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 @Entity
 @Table(name = "logup")
 public class Logup implements Serializable{

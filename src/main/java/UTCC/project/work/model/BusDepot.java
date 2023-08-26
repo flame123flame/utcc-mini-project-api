@@ -16,7 +16,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @Entity
 @Table(name = "bus_depot")
 public class BusDepot implements Serializable {

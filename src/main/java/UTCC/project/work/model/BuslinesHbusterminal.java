@@ -16,7 +16,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @Entity
 @Table(name = "buslines_h_busterminal")
 public class BuslinesHbusterminal implements Serializable{

@@ -42,11 +42,9 @@ public class WorkshHbusop implements Serializable{
     @Column(name = "update_by", length = 50,nullable = false)
     private String updatedBy;
 
-    @Builder.Default
     @Column(name = "create_date", length = 6, nullable = false)
     private LocalDateTime createDate = LocalDateTime.now();
 
-    @Builder.Default
     @Column(name = "update_date", length = 6, nullable = false)
     private LocalDateTime updateDate = LocalDateTime.now();
 }

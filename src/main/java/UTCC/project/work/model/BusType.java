@@ -24,7 +24,7 @@ public class BusType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bus_bus_type_id")
+    @Column(name = "bus_type_id")
     private long busTypeId;
 
     @Column(name = "bus_type_name")
@@ -36,11 +36,9 @@ public class BusType implements Serializable {
     @Column(name = "update_by", length = 50, nullable = false)
     private String updatedBy;
 
-    @Builder.Default
     @Column(name = "create_date", length = 6, nullable = false)
     private LocalDateTime createDate = LocalDateTime.now();
 
-    @Builder.Default
     @Column(name = "update_date", length = 6, nullable = false)
     private LocalDateTime updateDate = LocalDateTime.now();
 }

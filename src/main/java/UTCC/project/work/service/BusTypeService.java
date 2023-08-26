@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import UTCC.project.work.model.BusType;
-import UTCC.project.work.repositories.BusTypeRespository;
+import UTCC.project.work.repositories.BusTypeRepository;
 
 
 
@@ -14,7 +14,7 @@ import UTCC.project.work.repositories.BusTypeRespository;
 public class BusTypeService {
 
 	@Autowired
-	private BusTypeRespository busTypeRepository;
+	private BusTypeRepository busTypeRepository;
 	
 	
 	public List<BusType> getBusType(){

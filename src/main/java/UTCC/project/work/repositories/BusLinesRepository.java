@@ -3,9 +3,9 @@ package UTCC.project.work.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import UTCC.project.work.model.Logup;
+import UTCC.project.work.model.BusLines;
 
 @Repository
-public interface LogupRespository extends CrudRepository<Logup, Long>{
+public interface BusLinesRepository extends CrudRepository<BusLines, Long>{
 
 }

@@ -3,9 +3,9 @@ package UTCC.project.work.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import UTCC.project.work.model.BusType;
+import UTCC.project.work.model.BusopKfare;
 
 @Repository
-public interface BusTypeRespository extends CrudRepository<BusType, Long>{
+public interface BusopKfareRepository extends CrudRepository<BusopKfare, Long>{
 
 }

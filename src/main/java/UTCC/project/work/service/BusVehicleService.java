@@ -28,7 +28,7 @@ public class BusVehicleService {
 		data.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
 		data.setBusVehiclePlateProv(req.getBusVehiclePlateProv());
 		data.setBusLinesId(1);
-		data.setTypeId(2);
+		data.setBusTypeId(2);
 		data.setBusDivisionId(1);
 		data.setCreateBy(UserLoginUtil.getUsername());
 		busVehicleRepository.save(data);

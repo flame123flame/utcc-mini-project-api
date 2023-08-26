@@ -34,7 +34,7 @@ public class Fare implements Serializable{
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 
-    @Column(name = "updated_by", length = 50,nullable = false)
+    @Column(name = "update_by", length = 50,nullable = false)
     private String updatedBy;
 
     @Builder.Default

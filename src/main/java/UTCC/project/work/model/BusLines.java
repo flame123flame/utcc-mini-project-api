@@ -46,8 +46,8 @@ public class BusLines implements Serializable{
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 
-    @Column(name = "updated_by", length = 50,nullable = false)
-    private String updatedBy;
+    @Column(name = "update_by", length = 50,nullable = false)
+    private String updateBy;
 
     @Builder.Default
     @Column(name = "create_date", length = 6, nullable = false)

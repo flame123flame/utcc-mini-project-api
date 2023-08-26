@@ -1,5 +1,6 @@
 package UTCC.project.work.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -18,7 +19,10 @@ import lombok.Setter;
 @Builder
 @Entity
 @Table(name = "buslines_h_busterminal")
-public class BuslinesHbusterminal {
+public class BuslinesHbusterminal implements Serializable{
+	
+	private static final long serialVersionUID = -8844034447641050716L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "buslines_h_busterminal_id")

@@ -1,5 +1,6 @@
 package UTCC.project.work.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -17,15 +18,18 @@ import lombok.Setter;
 @Setter
 @Builder
 @Entity
-@Table(name = "type")
-public class Type {
+@Table(name = "bus_type")
+public class BusType implements Serializable{
+	
+	private static final long serialVersionUID = -9088551843644625266L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "type_id")
-    private long typeId;
+    @Column(name = "bus_type_id")
+    private long busTypeId;
 	
-	@Column(name = "type_name")
-    private String typeName;
+	@Column(name = "bus_type_name")
+    private String busTypeName;
 	
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;

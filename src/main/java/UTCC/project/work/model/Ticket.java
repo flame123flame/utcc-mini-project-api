@@ -20,7 +20,9 @@ import lombok.Setter;
 @Table(name = "ticket")
 public class Ticket  implements Serializable  {
 	
-	    @Id
+	private static final long serialVersionUID = 5536708434132416743L;
+
+		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "ticket_id")
 	    private long ticketId;

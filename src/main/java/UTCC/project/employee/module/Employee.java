@@ -16,9 +16,7 @@ import lombok.Data;
 @Table(name = "employee")
 @Data
 public class Employee implements Serializable {
-	/**
-	* 
-	*/
+	
 	private static final long serialVersionUID = -7691528618295079572L;
 
 	@Id
@@ -41,11 +39,17 @@ public class Employee implements Serializable {
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "shift")
-	private String shift;
+	@Column(name = "employee_shift")
+	private String employeeShift;
 	
-	@Column(name = "active")
-	private Boolean active;
+	@Column(name = "employee_status")
+	private Boolean employeeStatus;
+	
+	@Column(name = "bus_lines_id")
+	private Boolean buslinesId;
+	
+	@Column(name = "bus_terminal_id")
+	private Boolean busTerminalId;
 
 	@Column(name = "username")
 	private String username;

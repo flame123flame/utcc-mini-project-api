@@ -45,6 +45,9 @@ public class BusVehicle implements Serializable {
     @Column(name = "bus_division_id")
     private long busDivisionId;
     
+    @Column(name = "bus_vehicle_status")
+    private long busVehicleStatus;
+    
     @Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 

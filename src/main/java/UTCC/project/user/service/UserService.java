@@ -71,6 +71,7 @@ public class UserService {
 		Employee employee;
 		List<FwUser> dataUserFind = fwUserRepo.findUser();
 		for(FwUser userGet:dataUserFind) {
+			
 			employee  = employeeRepo.findByUsername(userGet.getUsername());
 			userSet = new RegisterUserRes();
 			userSet.setEmployeeId(employee.getEmployeeId());
@@ -78,12 +79,13 @@ public class UserService {
 			userSet.setLastName(employee.getLastName());
 			userSet.setEmployeeCode(employee.getEmployeeCode());
 			userSet.setId(userGet.getId());
+			userSet.setFullName(employee.getFirstName() + ' ' + employee.getLastName() );	
 			userSet.setUsername(userGet.getUsername());
 			userSet.setRoleCode(userGet.getRoleCode());
 			userSet.setPosition(employee.getPosition());
 			userSet.setEmail(employee.getEmail());
 			userSet.setPhoneNumber(employee.getPhoneNumber());
-			userSet.setCreateDate(ConvertDateUtils.formatDateToString(userGet.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMMSS));
+			userSet.setCreateDate(ConvertDateUtils.formatDateToString(userGet.getCreateDate(), ConvertDateUtils.DD_MM_YYYY));
 			dataRes.add(userSet);
 			
 		}

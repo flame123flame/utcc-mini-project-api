@@ -12,7 +12,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class DriverVo {
 
-	  @Builder
+	    @Builder
 	    @Getter
 	    @Setter
 	    @AllArgsConstructor

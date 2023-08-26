@@ -33,6 +33,10 @@ public class DriverDao {
 			params.add(UserLoginUtil.getUsername());
 			params.add(status);
 		}
+		
+		System.out.println(UserLoginUtil.getUsername());
+		System.out.println(status);
+		System.out.println(sql.toString());
 
 		List<DriverVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(), dataApproveRowmapper);
 		return datas;

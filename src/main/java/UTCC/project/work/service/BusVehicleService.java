@@ -1,10 +1,12 @@
 package UTCC.project.work.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.BusVehicleDao;
 import UTCC.project.work.model.BusVehicle;
 import UTCC.project.work.repositories.BusVehicleRepository;
@@ -28,6 +30,7 @@ public class BusVehicleService {
 		data.setBusLinesId(1);
 		data.setTypeId(2);
 		data.setBusDivisionId(1);
+		data.setCreateBy(UserLoginUtil.getUsername());
 		busVehicleRepository.save(data);
 	}
 	
@@ -41,6 +44,10 @@ public class BusVehicleService {
 	
 	public List<BusVehicleVo.Response> getDropdownList(){
 		return busVehicleDao.getDropdownListBusVehicle();
+	}
+	
+	public List<BusVehicleVo.Response> getList(){
+		return busVehicleDao.getListBusVehicle();
 	}
 	
 }

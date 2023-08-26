@@ -29,6 +29,7 @@ public class BusLinesController {
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
+			e.printStackTrace();
 			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}

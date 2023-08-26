@@ -36,8 +36,8 @@ public class BusLines implements Serializable{
 	@Column(name = "bus_lines_destination")
     private String busLinesDestination;
 	
-	@Column(name = "bus_lines_express")
-    private String busLinesExpress;
+	@Column(name = "bus_lines_expressway")
+    private String busLinesExpressWay;
 	
 	@Column(name = "bus_lines_nightshift")
     private long busLinesNightshift;
@@ -48,11 +48,9 @@ public class BusLines implements Serializable{
     @Column(name = "update_by", length = 50,nullable = false)
     private String updateBy;
 
-    @Builder.Default
     @Column(name = "create_date", length = 6, nullable = false)
     private LocalDateTime createDate = LocalDateTime.now();
 
-    @Builder.Default
     @Column(name = "update_date", length = 6, nullable = false)
     private LocalDateTime updateDate = LocalDateTime.now();
 }

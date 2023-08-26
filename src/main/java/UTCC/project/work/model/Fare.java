@@ -1,6 +1,7 @@
 package UTCC.project.work.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -29,6 +30,9 @@ public class Fare implements Serializable{
 	
 	@Column(name = "fare_desc")
     private String fareDesc;
+	
+	@Column(name = "fare_value")
+    private BigDecimal fareValue;
 	
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;

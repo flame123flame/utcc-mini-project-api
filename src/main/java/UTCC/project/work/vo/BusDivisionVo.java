@@ -16,6 +16,8 @@ public class BusDivisionVo {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Response {
+		
+		   private long busDivisionId;
     	   private String busDivisionNo;
 	       private String busDivisionName;
 	       private String bmtaZone;

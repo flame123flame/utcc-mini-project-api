@@ -7,10 +7,11 @@ public class GetRoleRes {
 	private Long fwRoleId;
 	private String roleCode;
 	private String roleName;
-	private String[] munuList;
+	private String[] menuList;
 	private String roleDescription;
 	private String createBy;
 	private String createDate;
 	private String updateBy;
 	private String updateDate;
+	private String platform;
 }

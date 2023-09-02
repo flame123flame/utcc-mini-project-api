@@ -8,6 +8,6 @@ public class SaveRoleReq {
 	private String roleCode;
 	private String roleName;
 	private String roleDescription;
-	private String munuList;
-	
+	private String menuList;
+	private String platform;
 }

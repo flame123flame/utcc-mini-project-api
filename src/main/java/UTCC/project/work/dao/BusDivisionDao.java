@@ -44,9 +44,9 @@ public class BusDivisionDao {
 		public BusDivisionVo.Response mapRow(ResultSet rs, int arg1) throws SQLException {
 			BusDivisionVo.Response vo = new BusDivisionVo.Response();
 			vo.setBusDivisionId(rs.getLong("bus_division_id"));;
-			vo.setBusDivisionNo(rs.getString("bus_division_no"));
+			vo.setBusDivisionNo(rs.getLong("bus_division_no"));
 			vo.setBusDivisionName(rs.getString("bus_division_name"));
-			vo.setBmtaZone(rs.getString("bmta_zone"));
+			vo.setBmtaZone(rs.getLong("bmta_zone"));
 			vo.setCreateDate(rs.getString("create_date"));
 			vo.setDepotName(rs.getString("depot_name"));
 			return vo;

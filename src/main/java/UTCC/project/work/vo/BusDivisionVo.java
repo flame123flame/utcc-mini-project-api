@@ -16,14 +16,21 @@ public class BusDivisionVo {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Response {
-		
 		   private long busDivisionId;
-    	   private String busDivisionNo;
+    	   private long busDivisionNo;
 	       private String busDivisionName;
-	       private String bmtaZone;
+	       private long bmtaZone;
 	       private String createDate;
 	       private String updateDate;
 	       private String depotName;
     }
+	
+
+    @Getter
+    @Setter
+    public static class Request extends  Response {
+    	   private long depotId;
+    }
+
 
 }

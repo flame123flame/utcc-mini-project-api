@@ -23,14 +23,14 @@ public class BusTerminalController {
 	private BusTerminalService busTerminalService;
 	
 	@GetMapping("search")
-	public ResponseData<List<BusTerminal>> search( ) {
+	public ResponseData<List<BusTerminal>> search( )  {
 		ResponseData<List<BusTerminal>> responseData = new ResponseData<>();
 		try {
 			responseData.setData(busTerminalService.getBusTerminal());
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
-			e.printStackTrace();
+		    e.printStackTrace();
 			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}

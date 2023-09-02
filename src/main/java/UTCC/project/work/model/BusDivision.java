@@ -33,7 +33,7 @@ public class BusDivision implements Serializable{
     private String busDivisionName;
 
     @Column(name = "bmta_zone")
-    private long busZone;
+    private long bmtaZone;
     
     @Column(name = "bus_depot_id")
     private long busDepotId;

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +18,6 @@ import UTCC.project.work.vo.BusDivisionVo;
 @RestController
 @RequestMapping("api/bus-division/")
 public class BusDivisionController {
-
-	
 
 	@Autowired
 	private BusDivisionService busDivisionService;
@@ -32,6 +32,20 @@ public class BusDivisionController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	@PostMapping("/save")
+	public ResponseData<?> save(@RequestBody  BusDivisionVo.Request req) {
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			busDivisionService.save(req);
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}
 		return responseData;

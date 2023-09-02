@@ -33,8 +33,11 @@ public class FwRole implements Serializable {
 	@Column(name = "role_name", length = 255)
 	private String roleName;
 	
-	@Column(name = "munu_list", length = 255)
-	private String munuList;
+	@Column(name = "menu_list", length = 255)
+	private String menuList;
+	
+	@Column(name = "platform", length = 100)
+	private String platform;
 	
 	@Column(name = "role_description", length = 255)
 	private String roleDescription;

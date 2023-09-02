@@ -59,8 +59,9 @@ public class JwtUserDetailsService implements UserDetailsService {
 		try {
 			FwUser user = fwUserRepo.findByUsername(username);
 			GetRoleRes role = roleService.getRoleByRoleCode(user.getRoleCode());
-			String str = Arrays.toString(role.getMunuList());
+			String str = Arrays.toString(role.getMenuList());
 			res.setRoleCode(str.replace("[", "").replace("]", "").replace(" ", ""));
+			res.setPlatform(role.getPlatform());
 		} catch (Exception e) {
 			log.error("Login::JwtUserDetailsService::setResponse", e.getMessage());
 		}

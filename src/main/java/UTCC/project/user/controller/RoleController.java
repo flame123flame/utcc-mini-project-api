@@ -3,7 +3,6 @@ package UTCC.project.user.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,10 +42,29 @@ public class RoleController {
 		return responseData;
 	}
 	
+	@GetMapping("find-by-id/{fwRoleId}")
+	public ResponseData<GetRoleRes> findById(@PathVariable("fwRoleId") Long fwRoleId ) {
+		ResponseData<GetRoleRes> responseData = new ResponseData<>();
+		try {
+			responseData.setData(roleService.getRoleByID(fwRoleId));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			log.error("RoleController: getRoleList ", e);
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	
 	@PostMapping("save")
-	public ResponseData<String> saveRole(@RequestBody SaveRoleReq req) {
+	public ResponseData<String> saveRole(@RequestBody SaveRoleReq req)  throws Exception {
 		ResponseData<String> responseData = new ResponseData<>();
 		try {
+			if("DUPICATE_ROLECODE".equals(roleService.saveRole(req))) {
+				throw new Exception("DUPICATE_ROLECODE");
+			}
 			responseData.setData(roleService.saveRole(req));
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
@@ -54,6 +72,9 @@ public class RoleController {
 			log.error("RoleController: saveRole ", e);
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
+			if("DUPICATE_ROLECODE".equals(roleService.saveRole(req))) {
+				throw new Exception("DUPICATE_ROLECODE");
+			}
 		}
 		return responseData;
 	}

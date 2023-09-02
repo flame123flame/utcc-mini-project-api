@@ -34,20 +34,21 @@ public class RoleService {
 			dataSet = new GetRoleRes();
 			dataSet.setFwRoleId(fwRoleSet.getFwRoleId());
 			dataSet.setRoleCode(fwRoleSet.getRoleCode());
-			dataSet.setMunuList(fwRoleSet.getMunuList().split(","));
+			dataSet.setMenuList(fwRoleSet.getMenuList().split(","));
 			dataSet.setRoleName(fwRoleSet.getRoleName());
 			dataSet.setRoleDescription(fwRoleSet.getRoleDescription());
 			dataSet.setCreateBy(fwRoleSet.getCreateBy());
 			dataSet.setCreateDate(ConvertDateUtils.formatDateToString(fwRoleSet.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
 			dataSet.setUpdateBy(fwRoleSet.getUpdateBy());
 			dataSet.setUpdateDate(ConvertDateUtils.formatDateToString(fwRoleSet.getUpdateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
+			dataSet.setPlatform(fwRoleSet.getPlatform());
 			dataRes.add(dataSet);
 	
 		}
 		return dataRes;
 	}
 
-	public GetRoleRes getRoleByID(Long fwRoleId) {
+	public GetRoleRes getRoleByID(Long fwRoleId)  throws Exception  {
 		GetRoleRes dataRes = new GetRoleRes();
 		FwRole fwRole = fwRoleRepo.findById(fwRoleId).get();
 		dataRes.setFwRoleId(fwRole.getFwRoleId());
@@ -55,30 +56,29 @@ public class RoleService {
 		dataRes.setRoleName(fwRole.getRoleName());
 		dataRes.setRoleDescription(fwRole.getRoleDescription());
 		dataRes.setCreateBy(fwRole.getCreateBy());
-		dataRes.setMunuList(fwRole.getMunuList().split(","));
+		dataRes.setMenuList(fwRole.getMenuList().split(","));
 		dataRes.setCreateDate(ConvertDateUtils.formatDateToString(fwRole.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
 		dataRes.setUpdateBy(fwRole.getUpdateBy());
 		dataRes.setUpdateDate(ConvertDateUtils.formatDateToString(fwRole.getUpdateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
-
-	
+		dataRes.setPlatform(fwRole.getPlatform());
 		return dataRes;
 	}
 
-	public GetRoleRes getRoleByRoleCode(String roleCode) {
-		System.out.println(roleCode);
+	public GetRoleRes getRoleByRoleCode(String roleCode)  throws Exception  {
+
 		GetRoleRes dataRes = new GetRoleRes();
 	
 		FwRole fwRole = fwRoleRepo.findByRoleCode(roleCode);
 		dataRes.setFwRoleId(fwRole.getFwRoleId());
 		dataRes.setRoleCode(fwRole.getRoleCode());
 		dataRes.setRoleName(fwRole.getRoleName());
-		dataRes.setMunuList(fwRole.getMunuList().split(","));
+		dataRes.setMenuList(fwRole.getMenuList().split(","));
 		dataRes.setRoleDescription(fwRole.getRoleDescription());
 		dataRes.setCreateBy(fwRole.getCreateBy());
 		dataRes.setCreateDate(ConvertDateUtils.formatDateToString(fwRole.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
 		dataRes.setUpdateBy(fwRole.getUpdateBy());
 		dataRes.setUpdateDate(ConvertDateUtils.formatDateToString(fwRole.getUpdateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
-
+		dataRes.setPlatform(fwRole.getPlatform());
 	
 		return dataRes;
 	}
@@ -86,22 +86,19 @@ public class RoleService {
 	@Transactional
 	public String saveRole(SaveRoleReq req) {
 		FwRole findDup = fwRoleRepo.findByRoleCode(req.getRoleCode());
-
-
 		if (findDup != null) {
 			return "DUPICATE_ROLECODE";
 		}
-
 		// save Role
 		FwRole fwRole = new FwRole();
 		fwRole.setRoleCode(req.getRoleCode());
 		fwRole.setRoleName(req.getRoleName());
 		fwRole.setRoleDescription(req.getRoleDescription());
-		fwRole.setMunuList(req.getMunuList());	
+		fwRole.setMenuList(req.getMenuList());	
 		fwRole.setCreateBy(UserLoginUtil.getUsername());
-		
-	   String idHeader = fwRoleRepo.save(fwRole).getFwRoleId().toString();
-		
+		fwRole.setPlatform(req.getPlatform());
+		fwRole.setCreateDate(new Date());
+		fwRoleRepo.save(fwRole);
 		return req.getRoleCode();
 	}
 

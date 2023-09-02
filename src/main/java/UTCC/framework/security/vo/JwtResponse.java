@@ -18,4 +18,5 @@ public class JwtResponse {
 	private String createDate;
 	private String roleCode;
 	private String position;
+	private String platform;
 }

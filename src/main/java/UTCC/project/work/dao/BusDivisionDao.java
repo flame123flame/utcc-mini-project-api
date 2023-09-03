@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import UTCC.project.work.vo.BusDivisionVo;
-import UTCC.project.work.vo.BusVehicleVo;
 
 @Repository
 public class BusDivisionDao {
@@ -43,11 +42,12 @@ public class BusDivisionDao {
 		@Override
 		public BusDivisionVo.Response mapRow(ResultSet rs, int arg1) throws SQLException {
 			BusDivisionVo.Response vo = new BusDivisionVo.Response();
-			vo.setBusDivisionId(rs.getLong("bus_division_id"));;
+			vo.setBusDivisionId(rs.getLong("bus_division_id"));
 			vo.setBusDivisionNo(rs.getLong("bus_division_no"));
 			vo.setBusDivisionName(rs.getString("bus_division_name"));
 			vo.setBmtaZone(rs.getLong("bmta_zone"));
 			vo.setCreateDate(rs.getString("create_date"));
+			vo.setUpdateDate(rs.getNString("update_date"));
 			vo.setDepotName(rs.getString("depot_name"));
 			return vo;
 		}

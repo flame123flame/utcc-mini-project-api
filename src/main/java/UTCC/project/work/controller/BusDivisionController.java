@@ -37,8 +37,8 @@ public class BusDivisionController {
 		return responseData;
 	}
 	
-	@PostMapping("/save")
-	public ResponseData<?> save(@RequestBody  BusDivisionVo.Request req) {
+	@PostMapping("save")
+	public ResponseData<?> save(@RequestBody BusDivisionVo.Request req) {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
 			busDivisionService.save(req);

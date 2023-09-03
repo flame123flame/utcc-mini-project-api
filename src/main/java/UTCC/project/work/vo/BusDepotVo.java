@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class BusDivisionVo {
+public class BusDepotVo {
 
 	@Builder
     @Getter
@@ -16,21 +16,16 @@ public class BusDivisionVo {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Response {
-		   private long busDivisionId;
-    	   private long busDivisionNo;
-	       private String busDivisionName;
-	       private long bmtaZone;
-	       private String createDate;
-	       private String updateDate;
-	       private String depotName;
-    }
+		private long busDepotId;
+		private String depotName;
+		private String createDate;
+		private String updateDate;
+	}
 	
-
-    @Getter
+	@Getter
     @Setter
     public static class Request extends Response {
-    	   private long depotId;
+    	   
     }
-
 
 }

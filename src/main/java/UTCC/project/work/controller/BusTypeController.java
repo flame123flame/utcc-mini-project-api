@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +14,8 @@ import UTCC.framework.constant.ResponseConstant.RESPONSE_STATUS;
 import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusType;
 import UTCC.project.work.service.BusTypeService;
+import UTCC.project.work.vo.BusLinesVo;
+import UTCC.project.work.vo.BusTypeVo;
 
 @RestController
 @RequestMapping("api/bus-type/")
@@ -35,4 +39,18 @@ public class BusTypeController {
 		return responseData;
 	}
 
+	@PostMapping("save")
+	public ResponseData<?> save(@RequestBody BusTypeVo.Request req) {
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			busTypeService.save(req);
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
 }

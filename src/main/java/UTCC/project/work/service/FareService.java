@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import UTCC.project.work.model.Fare;
 import UTCC.project.work.repositories.FareRepository;
+import UTCC.project.work.vo.FareVo;
 
 
 
@@ -19,6 +20,13 @@ public class FareService {
 	
 	public List<Fare> getFare(){
 		return (List<Fare>) fareRepository.findAll();
+	}
+	
+	public void save(FareVo.Request req) {
+		Fare fare = new Fare();
+		fare.setFareValue(req.getFareValue());
+		fare.setFareDesc(req.getFareDesc());
+		fareRepository.save(fare);
 	}
 
 }

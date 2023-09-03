@@ -24,11 +24,26 @@ public class BusLinesController {
 	@Autowired
 	private BusLinesService busLinesService;
 	
-	@GetMapping("search")
+	@GetMapping("search-all")
 	public ResponseData<List<BusLines>> search( ) {
 		ResponseData<List<BusLines>> responseData = new ResponseData<>();
 		try {
 			responseData.setData(busLinesService.getBusLines());
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	@GetMapping("search")
+	public ResponseData<List<BusLinesVo.Response>> searchDao( ) {
+		ResponseData<List<BusLinesVo.Response>> responseData = new ResponseData<>();
+		try {
+			responseData.setData(busLinesService.getList());
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {

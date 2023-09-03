@@ -47,7 +47,7 @@ public class BusDivisionDao {
 			vo.setBusDivisionName(rs.getString("bus_division_name"));
 			vo.setBmtaZone(rs.getLong("bmta_zone"));
 			vo.setCreateDate(rs.getString("create_date"));
-			vo.setUpdateDate(rs.getNString("update_date"));
+			vo.setUpdateDate(rs.getString("update_date"));
 			vo.setDepotName(rs.getString("depot_name"));
 			return vo;
 		}

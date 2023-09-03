@@ -29,7 +29,7 @@ public class BusDivisionVo {
     @Getter
     @Setter
     public static class Request extends Response {
-    	   private long depotId;
+    	   private long busDepotId;
     }
 
 

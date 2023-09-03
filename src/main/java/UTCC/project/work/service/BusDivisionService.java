@@ -1,10 +1,12 @@
 package UTCC.project.work.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.BusDivisionDao;
 import UTCC.project.work.model.BusDivision;
 import UTCC.project.work.repositories.BusDivisionRepository;
@@ -18,7 +20,7 @@ public class BusDivisionService {
 	
 	
 	@Autowired
-	private BusDivisionRepository BusDivisionRepository;
+	private BusDivisionRepository busDivisionRepository;
 	
 
 	public List<BusDivisionVo.Response> getList(){
@@ -27,10 +29,23 @@ public class BusDivisionService {
 	
 	public void save(BusDivisionVo.Request req) {
 		BusDivision busDivision = new BusDivision();
-		busDivision.setBusDepotId(req.getDepotId());
+		busDivision.setBusDepotId(req.getBusDepotId());
 		busDivision.setBusDivisionName(req.getBusDivisionName());
 		busDivision.setBusDivisionNo(req.getBusDivisionNo());
 		busDivision.setBmtaZone(req.getBmtaZone());
-		BusDivisionRepository.save(busDivision);
+		busDivision.setCreateDate(LocalDateTime.now());
+		busDivision.setCreateBy(UserLoginUtil.getUsername());
+		busDivisionRepository.save(busDivision);
+	}
+	
+	public void edit(BusDivisionVo.Request req) {
+		BusDivision busDivision =  busDivisionRepository.findById(req.getBusDivisionId()).get();
+		busDivision.setBusDepotId(req.getBusDepotId());
+		busDivision.setBusDivisionName(req.getBusDivisionName());
+		busDivision.setBusDivisionNo(req.getBusDivisionNo());
+		busDivision.setBmtaZone(req.getBmtaZone());
+		busDivision.setUpdateDate(LocalDateTime.now());
+		busDivision.setUpdateBy(UserLoginUtil.getUsername());
+		busDivisionRepository.save(busDivision);
 	}
 }

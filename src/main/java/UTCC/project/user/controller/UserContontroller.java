@@ -63,16 +63,23 @@ public class UserContontroller {
 	
 	
 	@PostMapping("register")
-	public ResponseData<String> register(@Valid @RequestBody RegisterUserReq req) {
+	public ResponseData<String> register(@Valid @RequestBody RegisterUserReq req)  throws Exception {
 		ResponseData<String> responseData = new ResponseData<String>();
 		try {
+			if("DUPLICATE_USER".equals(userService.register(req))) {
+				throw new Exception("DUPLICATE_USER");
+			}
 			responseData.setData(userService.register(req));
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
+			if("DUPLICATE_USER".equals(userService.register(req))) {
+				throw new Exception("DUPLICATE_USER");
+			}
 			log.error("UserContontroller: register ", e);
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
+			
 		}
 		return responseData;
 	}

@@ -1,10 +1,12 @@
 package UTCC.project.work.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.BusLinesDao;
 import UTCC.project.work.model.BusLines;
 import UTCC.project.work.model.BuslinesHbusterminal;
@@ -42,8 +44,12 @@ public class BusLinesService {
 		busLines.setBusLinesDestination(req.getBusLinesDestination());
 		busLines.setBusLinesExpressway(req.getBusLinesExpressway());
 		busLines.setBusLinesNightshift(req.getBusLinesNightshift());
+		busLines.setCreateDate(LocalDateTime.now());
+		busLines.setCreateBy(UserLoginUtil.getUsername());
 		blHbt.setBusLinesId(req.getBusLinesId());
 		blHbt.setBusTerminalId(req.getBusTerminalId());
+		blHbt.setCreateDate(LocalDateTime.now());
+		blHbt.setCreateBy(UserLoginUtil.getUsername());
 		busLinesRepository.save(busLines);
 		blHbtRepository.save(blHbt);
 	}

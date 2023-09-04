@@ -30,7 +30,8 @@ public class WorksheetService {
 		worksheet.setWorksheetDispatcher(UserLoginUtil.getUsername());
 		worksheet.setWorksheetDriver(req.getWorksheetDriver());
 		worksheet.setWorksheetFarecollect(req.getWorksheetFarecollect());
-		worksheet.setWorksheetStatus("IN_PROGRESS");		
+		worksheet.setWorksheetStatus("IN_PROGRESS");
+		worksheet.setCreateDate(LocalDateTime.now());
 		worksheet.setCreateBy(UserLoginUtil.getUsername());
 		worksheetRepository.save(worksheet);
 	}

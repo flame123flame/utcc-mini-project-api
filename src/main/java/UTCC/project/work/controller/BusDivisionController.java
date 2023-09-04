@@ -51,4 +51,18 @@ public class BusDivisionController {
 		return responseData;
 	}
 	
+	@PostMapping("edit")
+	public ResponseData<?> edit(@RequestBody BusDivisionVo.Request req) {
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			busDivisionService.edit(req);
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
 }

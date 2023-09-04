@@ -1,10 +1,12 @@
 package UTCC.project.work.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.BusTypeDao;
 import UTCC.project.work.model.BusType;
 import UTCC.project.work.model.TypeHfare;
@@ -38,8 +40,12 @@ public class BusTypeService {
 		BusType busType = new BusType();
 		TypeHfare typeHfare = new TypeHfare();
 		busType.setBusTypeName(req.getBusTypeName());
+		busType.setCreateDate(LocalDateTime.now());
+		busType.setCreateBy(UserLoginUtil.getUsername());
 		typeHfare.setTypeId(req.getBusTypeId());
 		typeHfare.setFareId(req.getFareId());
+		typeHfare.setCreateDate(LocalDateTime.now());
+		typeHfare.setCreateBy(UserLoginUtil.getUsername());
 		busTypeRepository.save(busType);
 		typeHfareRepository.save(typeHfare);
 	}

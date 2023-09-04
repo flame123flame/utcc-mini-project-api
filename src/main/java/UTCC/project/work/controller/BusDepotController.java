@@ -52,5 +52,19 @@ public class BusDepotController {
 		}
 		return responseData;
 	}
+	
+	@PostMapping("edit")
+	public ResponseData<?> edit(@RequestBody BusDepotVo.Request req) {
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			busDepotService.edit(req);
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
 
 }

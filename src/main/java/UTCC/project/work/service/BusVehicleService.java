@@ -1,5 +1,6 @@
 package UTCC.project.work.service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class BusVehicleService {
 		data.setBusLinesId(1);
 		data.setBusTypeId(2);
 		data.setBusDivisionId(1);
+		data.setCreateDate(LocalDateTime.now());
 		data.setCreateBy(UserLoginUtil.getUsername());
 		busVehicleRepository.save(data);
 	}

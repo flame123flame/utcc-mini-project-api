@@ -34,7 +34,7 @@ public class BusType implements Serializable {
     private String createBy;
 
     @Column(name = "update_by", length = 50, nullable = false)
-    private String updatedBy;
+    private String updateBy;
 
     @Column(name = "create_date", length = 6, nullable = false)
     private LocalDateTime createDate = LocalDateTime.now();

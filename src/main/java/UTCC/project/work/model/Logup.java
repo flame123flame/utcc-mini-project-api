@@ -42,6 +42,9 @@ public class Logup implements Serializable{
 	@Column(name = "logup_time_departure")
     private String logupTimeDeparture;
 	
+	@Column(name = "bus_terminal_agent")
+    private long busTerminalAgent;
+	
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 

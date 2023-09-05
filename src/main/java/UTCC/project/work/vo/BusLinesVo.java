@@ -21,7 +21,7 @@ public class BusLinesVo {
 		private String busLinesNo;
 		private String busLinesOrigin;
 		private String busLinesDestination;
-		private long busLinesExpressway;
+		private String busLinesExpressway;
 		private long busLinesNightshift;
 	    private String createDate;
 	    private String updateDate;

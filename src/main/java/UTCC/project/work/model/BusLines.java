@@ -37,7 +37,7 @@ public class BusLines implements Serializable{
     private String busLinesDestination;
 	
 	@Column(name = "bus_lines_expressway")
-    private long busLinesExpressway;
+    private String busLinesExpressway;
 	
 	@Column(name = "bus_lines_nightshift")
     private long busLinesNightshift;

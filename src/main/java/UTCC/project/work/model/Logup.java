@@ -43,7 +43,7 @@ public class Logup implements Serializable{
     private String logupTimeDeparture;
 	
 	@Column(name = "bus_terminal_agent")
-    private long busTerminalAgent;
+    private String busTerminalAgent;
 	
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;

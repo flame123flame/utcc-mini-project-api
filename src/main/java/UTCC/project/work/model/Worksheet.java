@@ -61,6 +61,12 @@ public class Worksheet implements Serializable {
     @Column(name = "worksheet_buslines_manager", nullable = false)
     private String worksheetBuslinesManager;
     
+    @Column(name = "bus_lines_id")
+    private Long busLinesId;
+    
+    @Column(name = "bus_division_id")
+    private Long busDivisionId;
+    
     @Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 

@@ -17,15 +17,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "logup")
-public class Logup implements Serializable{
+@Table(name = "terminal_timestamp")
+public class TerminalTimestamp implements Serializable{
 	
 	private static final long serialVersionUID = 8364012181735537827L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "logup_id")
-    private long logupId;
+    @Column(name = "terminal_timestamp_id")
+    private long terminalTimestampId;
 	
 	@Column(name = "worksheet_id")
     private long worksheetId;
@@ -36,11 +36,11 @@ public class Logup implements Serializable{
 	@Column(name = "trip")
     private long trip;
 	
-	@Column(name = "logup_time_arrive")
-    private String logupTimeArrive;
+	@Column(name = "terminal_time_arrive")
+    private String terminalTimeArrive;
 	
-	@Column(name = "logup_time_departure")
-    private String logupTimeDeparture;
+	@Column(name = "terminal_time_departure")
+    private String terminalTimeDeparture;
 	
 	@Column(name = "bus_terminal_agent")
     private String busTerminalAgent;

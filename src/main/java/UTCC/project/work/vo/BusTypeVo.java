@@ -1,6 +1,7 @@
 package UTCC.project.work.vo;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,12 +26,13 @@ public class BusTypeVo {
 	    private long typeHfareId;
 	    private BigDecimal fareValue;
 	    private String fareDesc;
+		private List<FareVo.Request> listDetail;
 	}
 	
 	@Getter
 	@Setter
 	public static class Request extends Response {
-		private long fareId;
+	
 	}
 
 }

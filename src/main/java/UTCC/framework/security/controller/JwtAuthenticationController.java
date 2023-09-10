@@ -68,23 +68,19 @@ public class JwtAuthenticationController {
 		}
 	}
 	
+  
     public static String getClientBrowser(HttpServletRequest request) {
         final String browserDetails = request.getHeader("User-Agent");
         final String user = browserDetails.toLowerCase();
-
-        String browser;
-
-        //===============Browser===========================
-        if (user.contains("msie") || (user.contains("safari") && user.contains("version"))
-        || user.contains("opr") || user.contains("opera") || user.contains("chrome")
-        || (user.contains("mozilla/7.0")) || (user.contains("netscape6")) || (user.contains(
-                "mozilla/4.7")) || (user.contains("mozilla/4.78")) || (user.contains("mozilla/4.08")) || (user.contains(
-                "mozilla/3"))
-        || user.contains("postmanruntime") || user.contains("firefox") || user.contains("rv")) {
-            browser = "WEBSITE";
-        } else {
-            browser = "APPLICATION";
+        String[] webBrowsers = {"msie", "safari", "opr", "opera", "chrome", "mozilla/7.0", "netscape6",
+                "mozilla/4.7", "mozilla/4.78", "mozilla/4.08", "mozilla/3", "postmanruntime", "firefox", "rv"};
+        boolean isWebBrowser = false;
+        for (String browser : webBrowsers) {
+            if (user.contains(browser)) {
+                isWebBrowser = true;
+                break;
+            }
         }
-        return browser;
+        return isWebBrowser ? "WEBSITE" : "APPLICATION";
     }
 }

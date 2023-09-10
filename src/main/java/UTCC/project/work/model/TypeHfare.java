@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +26,7 @@ public class TypeHfare implements Serializable {
     @Column(name = "type_h_fare_id")
     private long typeHfareId;
 
-    @Column(name = "bus_type_id")
+    @Column(name = "type_id")
     private long typeId;
 
     @Column(name = "fare_id")

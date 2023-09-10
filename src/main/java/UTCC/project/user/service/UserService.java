@@ -19,6 +19,7 @@ import UTCC.project.employee.service.EmployeeService;
 import UTCC.project.employee.vo.response.EmployeeRes;
 import UTCC.project.user.constants.UserConstant;
 import UTCC.project.user.model.FwUser;
+import UTCC.project.user.repo.FwRoleRepo;
 import UTCC.project.user.repo.FwUserRepo;
 import UTCC.project.user.vo.RegisterUserReq;
 import UTCC.project.user.vo.RegisterUserRes;
@@ -28,6 +29,10 @@ public class UserService {
 
 	@Autowired
 	private FwUserRepo fwUserRepo;
+	
+	@Autowired
+	private FwRoleRepo fwRoleRepo;
+	
 	
 	@Autowired
 	private EmployeeRepo employeeRepo;
@@ -73,6 +78,7 @@ public class UserService {
 		for(FwUser userGet:dataUserFind) {
 			
 			employee  = employeeRepo.findByUsername(userGet.getUsername());
+//			fwRoleRepo.findByRoleCode(userGet.getRoleCode());
 			userSet = new RegisterUserRes();
 			userSet.setEmployeeId(employee.getEmployeeId());
 			userSet.setFirstName(employee.getFirstName());
@@ -86,6 +92,8 @@ public class UserService {
 			userSet.setEmail(employee.getEmail());
 			userSet.setPhoneNumber(employee.getPhoneNumber());
 			userSet.setCreateDate(ConvertDateUtils.formatDateToString(userGet.getCreateDate(), ConvertDateUtils.DD_MM_YYYY));
+			if(fwRoleRepo.findByRoleCode(userGet.getRoleCode()) != null)
+			userSet.setPlatform(fwRoleRepo.findByRoleCode(userGet.getRoleCode()).getPlatform());
 			dataRes.add(userSet);
 			
 		}

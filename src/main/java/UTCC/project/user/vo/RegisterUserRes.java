@@ -9,4 +9,5 @@ public class RegisterUserRes extends  EmployeeRes{
 	private String username;
 	private String roleCode;
 	private String createDate;
+	private String platform;
 }

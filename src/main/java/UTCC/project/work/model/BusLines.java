@@ -40,7 +40,7 @@ public class BusLines implements Serializable{
     private String busLinesExpressway;
 	
 	@Column(name = "bus_lines_nightshift")
-    private long busLinesNightshift;
+    private Boolean busLinesNightshift;
 	
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;

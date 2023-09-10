@@ -52,7 +52,7 @@ public class BusLinesDao {
 			vo.setBusLinesOrigin(rs.getString("bus_lines_origin"));
 			vo.setBusLinesDestination(rs.getString("bus_lines_destination"));
 			vo.setBusLinesExpressway(rs.getString("bus_lines_expressway"));
-			vo.setBusLinesNightshift(rs.getLong("bus_lines_nightshift"));
+			vo.setBusLinesNightshift(rs.getBoolean("bus_lines_nightshift"));
 			vo.setCreateDate(rs.getString("create_date"));
 			vo.setUpdateDate(rs.getString("update_date"));
 			vo.setBuslinesHbusterminalId(rs.getLong("buslines_h_busterminal_id"));

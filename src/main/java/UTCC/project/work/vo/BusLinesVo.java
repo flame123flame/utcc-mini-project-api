@@ -23,7 +23,7 @@ public class BusLinesVo {
 		private String busLinesOrigin;
 		private String busLinesDestination;
 		private String busLinesExpressway;
-		private long busLinesNightshift;
+		private Boolean busLinesNightshift;
 	    private String createDate;
 	    private String updateDate;
 	    private long buslinesHbusterminalId;

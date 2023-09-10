@@ -72,7 +72,7 @@ public class BusDivisionController {
 	public ResponseData<?> delete(@PathVariable("id") Long id) {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
-			busDivisionService.deleteBusVehicle(id);
+			busDivisionService.deleteBusDivision(id);
 			responseData.setMessage(RESPONSE_MESSAGE.DELETE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {

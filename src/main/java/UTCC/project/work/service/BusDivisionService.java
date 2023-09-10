@@ -49,7 +49,7 @@ public class BusDivisionService {
 		busDivisionRepository.save(busDivision);
 	}
 	
-	public void deleteBusVehicle(Long id) {
+	public void deleteBusDivision(Long id) {
 		busDivisionRepository.deleteById(id);
 	}
 }

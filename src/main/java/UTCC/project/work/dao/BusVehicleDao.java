@@ -34,7 +34,7 @@ public class BusVehicleDao {
 			vo.setBusVehicleNumber(rs.getString("bus_vehicle_number"));
 			vo.setBusVehiclePlateNo(rs.getString("bus_vehicle_plate_no"));
 			vo.setBusVehiclePlateProv(rs.getString("bus_vehicle_plate_prov"));
-			vo.setTypeName(rs.getString("type_name"));
+			vo.setBusTypeName(rs.getString("type_name"));
 			return vo;
 		}
 	};
@@ -63,7 +63,7 @@ public class BusVehicleDao {
 			vo.setBusVehicleNumber(rs.getString("bus_vehicle_number"));
 			vo.setBusVehiclePlateNo(rs.getString("bus_vehicle_plate_no"));
 			vo.setBusVehiclePlateProv(rs.getString("bus_vehicle_plate_prov"));
-			vo.setTypeName(rs.getString("bus_type_name"));
+			vo.setBusTypeName(rs.getString("bus_type_name"));
 			vo.setBusLinesNo(rs.getString("bus_lines_no"));
 			vo.setBusDivisionName(rs.getString("bus_division_name"));
 			return vo;

@@ -28,6 +28,8 @@ public class BusVehicleVo {
 	    @Getter
 	    @Setter
 	    public static class Response extends Request{
-	    	  
+	    	private String busLinesNo;
+	        private String busTypeName;
+	        private String busDivisionName;
 	    }
 }

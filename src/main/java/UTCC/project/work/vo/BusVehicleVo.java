@@ -19,21 +19,15 @@ public class BusVehicleVo {
 	        private String busVehiclePlateNo;
 	        private String busVehiclePlateProv;
 	        private String busVehicleNumber;
-	        private String typeName;
+	        private long busLinesId;
+	        private long busTypeId;
+	        private long busDivisionId;
+	        private String busVehicleStatus;
 	    }
 	    
-	    @Builder
 	    @Getter
 	    @Setter
-	    @AllArgsConstructor
-	    @NoArgsConstructor
-	    public static class Response {
-	    	   private String busVehiclePlateNo;
-		       private String busVehiclePlateProv;
-		       private String busVehicleNumber;
-		       private String typeName;
-		       private String busDivisionName;
-		       private String busDivisionNo;
-		       private String busLinesNo;
+	    public static class Response extends Request{
+	    	  
 	    }
 }

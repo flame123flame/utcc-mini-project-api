@@ -1,7 +1,6 @@
 package UTCC.project.work.service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,21 +17,22 @@ public class BusVehicleService {
 	
 	@Autowired
 	private BusVehicleRepository busVehicleRepository;
-	
+			
 	@Autowired
 	private BusVehicleDao busVehicleDao;
 	
 	
 	public void saveForm(BusVehicleVo.Request req) {
-		BusVehicle data = new BusVehicle();
-		data.setBusVehicleNumber(req.getBusVehicleNumber());
-		data.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
-		data.setBusVehiclePlateProv(req.getBusVehiclePlateProv());
-		data.setBusLinesId(1);
-		data.setBusTypeId(2);
-		data.setBusDivisionId(1);
-		data.setCreateBy(UserLoginUtil.getUsername());
-		busVehicleRepository.save(data);
+		BusVehicle busVehicle = new BusVehicle();
+		busVehicle.setBusVehicleNumber(req.getBusVehicleNumber());
+		busVehicle.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
+		busVehicle.setBusVehiclePlateProv(req.getBusVehiclePlateProv());
+		busVehicle.setBusLinesId(req.getBusLinesId());
+		busVehicle.setBusTypeId(req.getBusTypeId());
+		busVehicle.setBusDivisionId(req.getBusDivisionId());
+		busVehicle.setCreateDate(LocalDateTime.now());
+		busVehicle.setCreateBy(UserLoginUtil.getUsername());
+		busVehicleRepository.save(busVehicle);
 	}
 	
 	public void deleteBusVehicle(Long id) {

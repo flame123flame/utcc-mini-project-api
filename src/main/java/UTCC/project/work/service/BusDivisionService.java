@@ -48,4 +48,8 @@ public class BusDivisionService {
 		busDivision.setUpdateBy(UserLoginUtil.getUsername());
 		busDivisionRepository.save(busDivision);
 	}
+	
+	public void deleteBusVehicle(Long id) {
+		busDivisionRepository.deleteById(id);
+	}
 }

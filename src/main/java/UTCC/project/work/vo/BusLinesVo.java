@@ -1,6 +1,7 @@
 package UTCC.project.work.vo;
 
-import java.math.BigDecimal;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,12 +28,14 @@ public class BusLinesVo {
 	    private String updateDate;
 	    private long buslinesHbusterminalId;
 		private String busTerminalName;
+		private long busTerminalId;
+		private List<BusTerminalVo.Request> listDetail;
 	}
 	
 	@Getter
 	@Setter
 	public static class Request extends Response {
-		private long busTerminalId;
+		
 	}
 
 }

@@ -41,8 +41,8 @@ public class Fare implements Serializable{
     private String updateBy;
 
     @Column(name = "create_date", length = 6, nullable = false)
-    private LocalDateTime createDate = LocalDateTime.now();
+    private LocalDateTime createDate;
 
     @Column(name = "update_date", length = 6, nullable = false)
-    private LocalDateTime updateDate = LocalDateTime.now();
+    private LocalDateTime updateDate;
 }

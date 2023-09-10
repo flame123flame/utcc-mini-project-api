@@ -13,6 +13,7 @@ import UTCC.project.work.model.BuslinesHbusterminal;
 import UTCC.project.work.repositories.BusLinesRepository;
 import UTCC.project.work.repositories.BuslinesHbusterminalRepository;
 import UTCC.project.work.vo.BusLinesVo;
+import UTCC.project.work.vo.BusTerminalVo;
 
 
 
@@ -38,7 +39,6 @@ public class BusLinesService {
 	
 	public void save(BusLinesVo.Request req) {
 		BusLines busLines = new BusLines();
-		BuslinesHbusterminal blHbt = new BuslinesHbusterminal();
 		busLines.setBusLinesNo(req.getBusLinesNo());
 		busLines.setBusLinesOrigin(req.getBusLinesOrigin());
 		busLines.setBusLinesDestination(req.getBusLinesDestination());
@@ -46,12 +46,16 @@ public class BusLinesService {
 		busLines.setBusLinesNightshift(req.getBusLinesNightshift());
 		busLines.setCreateDate(LocalDateTime.now());
 		busLines.setCreateBy(UserLoginUtil.getUsername());
-		blHbt.setBusLinesId(req.getBusLinesId());
-		blHbt.setBusTerminalId(req.getBusTerminalId());
-		blHbt.setCreateDate(LocalDateTime.now());
-		blHbt.setCreateBy(UserLoginUtil.getUsername());
-		busLinesRepository.save(busLines);
-		blHbtRepository.save(blHbt);
+		long id = busLinesRepository.save(busLines).getBusLinesId();
+		BuslinesHbusterminal blHbt = null;
+		for(BusTerminalVo.Request item : req.getListDetail()) {
+			blHbt = new BuslinesHbusterminal();
+			blHbt.setBusLinesId(id);
+			blHbt.setBusTerminalId(item.getBusTerminalId());
+			blHbt.setCreateDate(LocalDateTime.now());
+			blHbt.setCreateBy(UserLoginUtil.getUsername());
+			blHbtRepository.save(blHbt);
+		}
 	}
 	
 }

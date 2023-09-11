@@ -77,16 +77,16 @@ public class BusVehicleController {
 	
 
 	@GetMapping("delete/{id}")
-	public ResponseData<?> delete(@PathVariable("id") Long id) {
+	public ResponseData<?> delete(@PathVariable("id") Long id) throws Exception{
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
 			busVehicleService.deleteBusVehicle(id);
 			responseData.setMessage(RESPONSE_MESSAGE.DELETE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
-			log.error("UserContontroller: deleteUser ", e);
 			responseData.setMessage(RESPONSE_MESSAGE.DELETE.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
+			throw new Exception("DELETE_FAILED", e);
 		}
 		return responseData;
 	}

@@ -69,7 +69,7 @@ public class BusDivisionController {
 	}
 	
 	@GetMapping("delete/{id}")
-	public ResponseData<?> delete(@PathVariable("id") Long id)  throws Exception {
+	public ResponseData<?> delete(@PathVariable("id") Long id) throws Exception {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
 			busDivisionService.deleteBusDivision(id);

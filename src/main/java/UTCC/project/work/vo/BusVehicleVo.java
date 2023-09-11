@@ -16,6 +16,7 @@ public class BusVehicleVo {
 	    @AllArgsConstructor
 	    @NoArgsConstructor
 	    public static class Request {
+	    	private long busVehicleId;
 	        private String busVehiclePlateNo;
 	        private String busVehiclePlateProv;
 	        private String busVehicleNumber;

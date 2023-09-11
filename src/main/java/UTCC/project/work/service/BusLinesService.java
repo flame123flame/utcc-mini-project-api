@@ -58,6 +58,27 @@ public class BusLinesService {
 		}
 	}
 	
+	public void edit(BusLinesVo.Request req) {
+		BusLines busLines = busLinesRepository.findById(req.getBusLinesId()).get();
+		busLines.setBusLinesNo(req.getBusLinesNo());
+		busLines.setBusLinesOrigin(req.getBusLinesOrigin());
+		busLines.setBusLinesDestination(req.getBusLinesDestination());
+		busLines.setBusLinesExpressway(req.getBusLinesExpressway());
+		busLines.setBusLinesNightshift(req.getBusLinesNightshift());
+		busLines.setCreateDate(LocalDateTime.now());
+		busLines.setCreateBy(UserLoginUtil.getUsername());
+		long id = busLinesRepository.save(busLines).getBusLinesId();
+		BuslinesHbusterminal blHbt = null;
+		for(BusTerminalVo.Request item : req.getListDetail()) {
+			blHbt = new BuslinesHbusterminal();
+			blHbt.setBusLinesId(id);
+			blHbt.setBusTerminalId(item.getBusTerminalId());
+			blHbt.setCreateDate(LocalDateTime.now());
+			blHbt.setCreateBy(UserLoginUtil.getUsername());
+			blHbtRepository.save(blHbt);
+		}
+	}
+	
 	public void deleteBusLines(Long id) {
 		busLinesRepository.deleteById(id);
 	}

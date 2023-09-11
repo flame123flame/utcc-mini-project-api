@@ -35,6 +35,19 @@ public class BusVehicleService {
 		busVehicleRepository.save(busVehicle);
 	}
 	
+	public void editForm(BusVehicleVo.Request req) {
+		BusVehicle busVehicle = busVehicleRepository.findById(req.getBusVehicleId()).get();
+		busVehicle.setBusVehicleNumber(req.getBusVehicleNumber());
+		busVehicle.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
+		busVehicle.setBusVehiclePlateProv(req.getBusVehiclePlateProv());
+		busVehicle.setBusLinesId(req.getBusLinesId());
+		busVehicle.setBusTypeId(req.getBusTypeId());
+		busVehicle.setBusDivisionId(req.getBusDivisionId());
+		busVehicle.setCreateDate(LocalDateTime.now());
+		busVehicle.setCreateBy(UserLoginUtil.getUsername());
+		busVehicleRepository.save(busVehicle);
+	}
+	
 	public void deleteBusVehicle(Long id) {
 		busVehicleRepository.deleteById(id);
 	}

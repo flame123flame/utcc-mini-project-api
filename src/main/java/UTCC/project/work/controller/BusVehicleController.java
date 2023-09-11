@@ -16,6 +16,7 @@ import UTCC.framework.constant.ResponseConstant.RESPONSE_STATUS;
 import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusVehicle;
 import UTCC.project.work.service.BusVehicleService;
+import UTCC.project.work.vo.BusTypeVo;
 import UTCC.project.work.vo.BusVehicleVo;
 import lombok.extern.slf4j.Slf4j;
 
@@ -75,7 +76,20 @@ public class BusVehicleController {
 		return responseData;
 	}
 	
-
+	@PostMapping("edit")
+	public ResponseData<?> edit(@RequestBody BusVehicleVo.Request request) {
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			busVehicleService.editForm(request);
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
 	@GetMapping("delete/{id}")
 	public ResponseData<?> delete(@PathVariable("id") Long id) throws Exception{
 		ResponseData<?> responseData = new ResponseData<>();

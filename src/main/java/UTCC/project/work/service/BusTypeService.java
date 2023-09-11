@@ -55,6 +55,23 @@ public class BusTypeService {
 		}
 	}
 	
+	public void edit(BusTypeVo.Request req) {
+		BusType busType = busTypeRepository.findById(req.getBusTypeId()).get();
+		busType.setBusTypeName(req.getBusTypeName());
+		busType.setCreateDate(LocalDateTime.now());
+		busType.setCreateBy(UserLoginUtil.getUsername());
+		long id = busTypeRepository.save(busType).getBusTypeId();
+		TypeHfare typeHfare = null;
+		for(FareVo.Request item : req.getListDetail()) {
+			typeHfare = new TypeHfare();
+			typeHfare.setTypeId(id);
+			typeHfare.setFareId(item.getFareId());
+			typeHfare.setCreateDate(LocalDateTime.now());
+			typeHfare.setCreateBy(UserLoginUtil.getUsername());
+			typeHfareRepository.save(typeHfare);
+		}
+	}
+	
 	public void deleteBusType(Long id) {
 		busTypeRepository.deleteById(id);
 	}

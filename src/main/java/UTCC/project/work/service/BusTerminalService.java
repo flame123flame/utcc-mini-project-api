@@ -40,5 +40,9 @@ public class BusTerminalService {
 		busTerminalRepository.save(busTerminal);
 	}
 	
+	public void deleteBusTerminal(Long id) {
+		busTerminalRepository.deleteById(id);
+	}
+	
 }
   

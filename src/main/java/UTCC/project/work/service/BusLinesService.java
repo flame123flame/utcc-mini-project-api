@@ -58,4 +58,8 @@ public class BusLinesService {
 		}
 	}
 	
+	public void deleteBusLines(Long id) {
+		busLinesRepository.deleteById(id);
+	}
+	
 }

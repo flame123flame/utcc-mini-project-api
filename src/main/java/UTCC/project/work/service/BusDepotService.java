@@ -39,4 +39,8 @@ public class BusDepotService {
 		busDepotRepository.save(busDepot);
 	}
 	
+	public void deleteBusDepot(Long id) {
+		busDepotRepository.deleteById(id);
+	}
+	
 }

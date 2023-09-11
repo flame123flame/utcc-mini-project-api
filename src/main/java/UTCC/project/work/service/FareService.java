@@ -41,5 +41,9 @@ public class FareService {
 		fare.setUpdateBy(UserLoginUtil.getUsername());
 		fareRepository.save(fare);
 	}
+	
+	public void deleteFare(Long id) {
+		fareRepository.deleteById(id);
+	}
 
 }

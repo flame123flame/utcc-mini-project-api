@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +16,12 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusTerminal;
 import UTCC.project.work.service.BusTerminalService;
 import UTCC.project.work.vo.BusTerminalVo;
+import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
 @RequestMapping("api/bus-terminal/")
+@Slf4j
 public class BusTerminalController {
 		
 	
@@ -63,6 +66,21 @@ public class BusTerminalController {
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	@GetMapping("delete/{id}")
+	public ResponseData<?> delete(@PathVariable("id") Long id) {
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			busTerminalService.deleteBusTerminal(id);
+			responseData.setMessage(RESPONSE_MESSAGE.DELETE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			log.error("UserContontroller: deleteUser ", e);
+			responseData.setMessage(RESPONSE_MESSAGE.DELETE.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}
 		return responseData;

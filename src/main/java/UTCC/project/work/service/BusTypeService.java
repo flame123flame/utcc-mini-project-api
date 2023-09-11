@@ -54,5 +54,9 @@ public class BusTypeService {
 			typeHfareRepository.save(typeHfare);
 		}
 	}
+	
+	public void deleteBusType(Long id) {
+		busTypeRepository.deleteById(id);
+	}
 
 }

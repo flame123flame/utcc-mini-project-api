@@ -52,6 +52,7 @@ public class BusVehicleDao {
 				+ "    bus_type bus_t ON bv.bus_type_id = bus_t.bus_type_id "
 				+ "INNER JOIN "
 				+ "    bus_division bd ON bv.bus_division_id = bd.bus_division_id   ");
+
 		List<BusVehicleVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(), dataRowmapper);
 		return datas;
 	}
@@ -66,6 +67,11 @@ public class BusVehicleDao {
 			vo.setBusTypeName(rs.getString("bus_type_name"));
 			vo.setBusLinesNo(rs.getString("bus_lines_no"));
 			vo.setBusDivisionName(rs.getString("bus_division_name"));
+			vo.setBusDivisionId(rs.getLong("bus_division_id"));
+			vo.setBusLinesId(rs.getLong("bus_lines_id"));
+			vo.setBusTypeId(rs.getLong("bus_Type_id"));
+			vo.setBusVehicleStatus(rs.getString("bus_vehicle_status"));
+			vo.setBusVehicleId(rs.getLong("bus_vehicle_id"));
 			return vo;
 		}
 	};

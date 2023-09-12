@@ -49,6 +49,7 @@ public class BusDivisionDao {
 			vo.setCreateDate(rs.getString("create_date"));
 			vo.setUpdateDate(rs.getString("update_date"));
 			vo.setDepotName(rs.getString("depot_name"));
+			vo.setBusDepotId(rs.getLong("bus_depot_id"));
 			return vo;
 		}
 	};

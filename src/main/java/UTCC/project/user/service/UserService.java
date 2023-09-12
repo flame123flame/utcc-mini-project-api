@@ -89,9 +89,10 @@ public class UserService {
 			userSet.setUsername(userGet.getUsername());
 			userSet.setRoleCode(userGet.getRoleCode());
 			userSet.setPosition(employee.getPosition());
+			userSet.setPrefix(employee.getPrefix());
 			userSet.setEmail(employee.getEmail());
 			userSet.setPhoneNumber(employee.getPhoneNumber());
-			userSet.setCreateDate(ConvertDateUtils.formatDateToString(userGet.getCreateDate(), ConvertDateUtils.DD_MM_YYYY));
+			userSet.setCreateDate(userGet.getCreateDate().toString());
 			if(fwRoleRepo.findByRoleCode(userGet.getRoleCode()) != null)
 			userSet.setPlatform(fwRoleRepo.findByRoleCode(userGet.getRoleCode()).getPlatform());
 			dataRes.add(userSet);

@@ -23,13 +23,14 @@ public class BusDivisionVo {
 	       private String createDate;
 	       private String updateDate;
 	       private String depotName;
+		   private long busDepotId;
     }
 	
 
     @Getter
     @Setter
     public static class Request extends Response {
-    	   private long busDepotId;
+
     }
 
 

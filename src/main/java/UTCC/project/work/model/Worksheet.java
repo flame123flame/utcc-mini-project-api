@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,6 +47,9 @@ public class Worksheet implements Serializable {
     
     @Column(name = "bus_vehicle_plate_no", nullable = false)
     private String busVehiclePlateNo;
+    
+    @Column(name = "bus_vehicle_id")
+    private long busVehicleId;
     
     @Column(name = "worksheet_dispatcher", nullable = false)
     private String worksheetDispatcher;

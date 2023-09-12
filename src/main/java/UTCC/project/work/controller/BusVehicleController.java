@@ -69,6 +69,7 @@ public class BusVehicleController {
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("BusVehicleController: getDropdownListBusVehicle ", e);
 			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
@@ -81,10 +82,11 @@ public class BusVehicleController {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
 			busVehicleService.editForm(request);
-			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
+			responseData.setMessage(RESPONSE_MESSAGE.EDIT.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
-			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
+			e.printStackTrace();
+			responseData.setMessage(RESPONSE_MESSAGE.EDIT.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}
 		return responseData;

@@ -38,6 +38,7 @@ public class BusVehicleService {
 	public void editForm(BusVehicleVo.Request req) {
 		BusVehicle busVehicle = busVehicleRepository.findById(req.getBusVehicleId()).get();
 		busVehicle.setBusVehicleNumber(req.getBusVehicleNumber());
+		busVehicle.setBusVehicleStatus(req.getBusVehicleStatus());
 		busVehicle.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
 		busVehicle.setBusVehiclePlateProv(req.getBusVehiclePlateProv());
 		busVehicle.setBusLinesId(req.getBusLinesId());

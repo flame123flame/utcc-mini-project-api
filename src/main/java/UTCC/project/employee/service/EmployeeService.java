@@ -79,15 +79,19 @@ public class EmployeeService {
 	public Employee save(RegisterUserReq req) {
 		Employee data = new Employee();
 		data.setEmployeeCode(GenerateRandomString.generate());
-		data.setCreateBy(UserLoginUtil.getCurrentUserBean().getUsername());
-		data.setCreateDate(new Date());
-		data.setEmail(req.getEmail());
 		data.setUsername(req.getUsername());
-		data.setPosition(req.getPosition());
+		data.setPrefix(req.getPrefix());
 		data.setFirstName(req.getFirstName());
 		data.setLastName(req.getLastName());
+		data.setPosition(req.getPosition());
 		data.setPhoneNumber(req.getPhoneNumber());
-		data.setPrefix(req.getPrefix());
+		data.setEmail(req.getEmail());
+		data.setEmployeeShift(req.getEmployeeShift());
+		data.setEmployeeStatus(req.getEmployeeStatus());
+		data.setBuslinesId(req.getBuslinesId());
+		data.setBusTerminalId(req.getBusTerminalId());
+		data.setCreateBy(UserLoginUtil.getCurrentUserBean().getUsername());
+		data.setCreateDate(new Date());
 		return employeeRepo.save(data);
 	}
 
@@ -101,6 +105,10 @@ public class EmployeeService {
 		data.setPhoneNumber(req.getPhoneNumber());
 		data.setUsername(req.getUsername());
 		data.setPosition(req.getPosition());
+		data.setEmployeeShift(req.getEmployeeShift());
+		data.setEmployeeStatus(req.getEmployeeStatus());
+		data.setBuslinesId(req.getBuslinesId());
+		data.setBusTerminalId(req.getBusTerminalId());
 		FwUser user = fwUserRepo.findByUsername(olduser);
 		user.setRoleCode(req.getRoleCode());
 		user.setUsername(req.getUsername().trim().toLowerCase());

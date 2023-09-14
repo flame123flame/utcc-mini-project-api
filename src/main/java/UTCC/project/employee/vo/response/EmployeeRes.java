@@ -17,5 +17,8 @@ public class EmployeeRes {
 	private String createDate;
 	private String roleCode;
 	private String position;
-
+	private String employeeShift;
+	private String employeeStatus;
+	private Long buslinesId;
+	private Long busTerminalId;
 }

@@ -24,4 +24,8 @@ public class RegisterUserReq {
 	private String email;
 	private String phoneNumber;
 	private String position;
+	private String employeeShift;
+	private String employeeStatus;
+	private Long buslinesId;
+	private Long busTerminalId;
 }

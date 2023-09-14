@@ -17,4 +17,8 @@ public class EmployeeReq {
 	private String phoneNumber;
 	private String position;
 	private String roleCode;
+	private String employeeShift;
+	private String employeeStatus;
+	private Long buslinesId;
+	private Long busTerminalId;
 }

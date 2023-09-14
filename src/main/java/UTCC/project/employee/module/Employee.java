@@ -27,30 +27,9 @@ public class Employee implements Serializable {
 	@Column(name = "employee_code")
 	private String employeeCode;
 	
-	@Column(name = "prefix")
-	private String prefix;
-	
-	@Column(name = "first_name")
-	private String firstName;
-	
-	@Column(name = "last_name")
-	private String lastName;
-
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "employee_shift")
-	private String employeeShift;
-	
-	@Column(name = "employee_status")
-	private Boolean employeeStatus;
-	
-	@Column(name = "bus_lines_id")
-	private Boolean buslinesId;
-	
-	@Column(name = "bus_terminal_id")
-	private Boolean busTerminalId;
-
 	@Column(name = "username")
 	private String username;
 	
@@ -72,6 +51,27 @@ public class Employee implements Serializable {
 	@Column(name = "is_delete")
 	private String isDelete = "N";
 	
+	@Column(name = "prefix")
+	private String prefix;
+	
+	@Column(name = "first_name")
+	private String firstName;
+	
+	@Column(name = "last_name")
+	private String lastName;
+	
 	@Column(name = "position")
 	private String position;
+	
+	@Column(name = "employee_shift")
+	private String employeeShift;
+	
+	@Column(name = "employee_status")
+	private String employeeStatus;
+	
+	@Column(name = "bus_lines_id")
+	private Long buslinesId;
+	
+	@Column(name = "bus_terminal_id")
+	private Long busTerminalId;
 }

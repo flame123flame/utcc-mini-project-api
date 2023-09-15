@@ -40,6 +40,24 @@ public class BusTypeController {
 		}
 		return responseData;
 	}
+	
+	@PostMapping("find-by-id")
+	public ResponseData<BusTypeVo.Response> findById( @RequestBody BusTypeVo.Request req ) {
+		ResponseData<BusTypeVo.Response> responseData = new ResponseData<>();
+		try {
+			responseData.setData(busTypeService.findById(req));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	
+	
 
 	@PostMapping("save")
 	public ResponseData<?> save(@RequestBody BusTypeVo.Request req) {
@@ -59,7 +77,7 @@ public class BusTypeController {
 	public ResponseData<?> edit(@RequestBody BusTypeVo.Request req) {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
-			busTypeService.edit(req);
+			busTypeService.editNew(req);
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {

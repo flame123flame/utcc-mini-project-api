@@ -1,8 +1,9 @@
 package UTCC.project.work.service;
 
 import java.time.LocalDateTime;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,6 +56,27 @@ public class BusTypeService {
 		}
 	}
 	
+	
+	public BusTypeVo.Response findById(BusTypeVo.Request req) {
+	    BusType busType = busTypeRepository.findById(req.getBusTypeId()).get();
+	    if (busType == null) {
+	        return null;
+	    }
+	    BusTypeVo.Response res = new BusTypeVo.Response();
+	    res.setBusTypeId(busType.getBusTypeId());
+	    res.setBusTypeName(busType.getBusTypeName());
+	    List<FareVo.Request> typeHfareArrayList = new ArrayList<>();
+	    for (TypeHfare typeHfare : typeHfareRepository.findByTypeId(busType.getBusTypeId())) {
+	        FareVo.Request fareRequest = new FareVo.Request();
+	        fareRequest.setFareId(typeHfare.getFareId());
+	        typeHfareArrayList.add(fareRequest);
+	    }
+	    res.setListDetail(typeHfareArrayList);
+	    return res;
+	}
+
+	
+	
 	public void edit(BusTypeVo.Request req) {
 		BusType busType = busTypeRepository.findById(req.getBusTypeId()).get();
 		busType.setBusTypeName(req.getBusTypeName());
@@ -71,6 +93,33 @@ public class BusTypeService {
 			typeHfareRepository.save(typeHfare);
 		}
 	}
+	
+	public void editNew(BusTypeVo.Request req) {
+	    BusType busTypeOptional = busTypeRepository.findById(req.getBusTypeId()).get();
+	    if (busTypeOptional == null) {
+	        return;
+	    }
+	    BusType existingBusType = busTypeOptional;
+	    existingBusType.setBusTypeName(req.getBusTypeName());
+	    existingBusType.setCreateDate(LocalDateTime.now());
+	    existingBusType.setCreateBy(UserLoginUtil.getUsername());
+	    existingBusType = busTypeRepository.save(existingBusType);
+	    List<TypeHfare> existingTypeHfareList = typeHfareRepository.findByTypeId(existingBusType.getBusTypeId());
+	    typeHfareRepository.deleteAll(existingTypeHfareList);
+	    final long typeId = existingBusType.getBusTypeId();
+	    List<TypeHfare> typeHfareList = req.getListDetail().stream()
+	            .map(item -> {
+	                TypeHfare typeHfare = new TypeHfare();
+	                typeHfare.setTypeId(typeId); 
+	                typeHfare.setFareId(item.getFareId());
+	                typeHfare.setCreateDate(LocalDateTime.now());
+	                typeHfare.setCreateBy(UserLoginUtil.getUsername());
+	                return typeHfare;
+	            })
+	            .collect(Collectors.toList());
+	    typeHfareRepository.saveAll(typeHfareList);
+	}
+
 	
 	public void deleteBusType(Long id) {
 		busTypeRepository.deleteById(id);

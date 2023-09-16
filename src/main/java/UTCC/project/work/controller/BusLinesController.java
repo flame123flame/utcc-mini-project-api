@@ -16,6 +16,7 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusLines;
 import UTCC.project.work.service.BusLinesService;
 import UTCC.project.work.vo.BusLinesVo;
+import UTCC.project.work.vo.BusTypeVo;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -26,6 +27,25 @@ public class BusLinesController {
 
 	@Autowired
 	private BusLinesService busLinesService;
+	
+	
+	@PostMapping("find-by-id")
+	public ResponseData<BusLinesVo.Request > findById( @RequestBody BusLinesVo.Request  req ) {
+		ResponseData<BusLinesVo.Request > responseData = new ResponseData<>();
+		try {
+			responseData.setData(busLinesService.findById(req));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	
+	
 	
 	@GetMapping("search-all")
 	public ResponseData<List<BusLines>> search( ) {
@@ -75,7 +95,7 @@ public class BusLinesController {
 	public ResponseData<?> edit(@RequestBody BusLinesVo.Request req) {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
-			busLinesService.edit(req);
+			busLinesService.editNew(req);
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {

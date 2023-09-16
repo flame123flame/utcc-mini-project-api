@@ -30,8 +30,11 @@ public class BusDepot implements Serializable {
     @Column(name = "depot_name")
     private String depotName;
 
-    @Column(name = "depot_location")
-    private String depotLocation;
+    @Column(name = "depot_lat")
+    private String depotLat;
+    
+    @Column(name = "depot_long")
+    private String depotLong;
 
     @Column(name = "create_by", length = 50, nullable = false)
     private String createBy;

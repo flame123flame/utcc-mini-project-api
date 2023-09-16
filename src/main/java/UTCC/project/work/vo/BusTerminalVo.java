@@ -18,6 +18,8 @@ public class BusTerminalVo {
     public static class Response {
 		private long busTerminalId;
 		private String busTerminalName;
+		private String busTerminalLat;
+		private String busTerminalLong;
 	    private String createDate;
 	    private String updateDate;
 	}

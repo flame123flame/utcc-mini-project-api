@@ -18,6 +18,8 @@ public class BusDepotVo {
     public static class Response {
 		private long busDepotId;
 		private String depotName;
+		private String depotLat;
+		private String depotLong;
 		private String createDate;
 		private String updateDate;
 	}

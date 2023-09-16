@@ -30,8 +30,11 @@ public class BusTerminal implements Serializable{
 	@Column(name = "bus_terminal_name")
     private String busTerminalName;
 	
-	@Column(name = "bus_terminal_locate")
-    private String busTerminalLocate;
+	@Column(name = "bus_terminal_lat")
+    private String busTerminalLat;
+	
+	@Column(name = "bus_terminal_long")
+    private String busTerminalLong;
 	
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;

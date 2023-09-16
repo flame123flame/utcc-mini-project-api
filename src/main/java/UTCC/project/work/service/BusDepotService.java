@@ -26,6 +26,8 @@ public class BusDepotService {
 	public void save(BusDepotVo.Request req) {
 		BusDepot busDepot = new BusDepot();
 		busDepot.setDepotName(req.getDepotName());
+		busDepot.setDepotLat(req.getDepotLat());
+		busDepot.setDepotLong(req.getDepotLong());
 		busDepot.setCreateDate(LocalDateTime.now());
 		busDepot.setCreateBy(UserLoginUtil.getUsername());
 		busDepotRepository.save(busDepot);
@@ -36,6 +38,8 @@ public class BusDepotService {
 		busDepot.setDepotName(req.getDepotName());
 		busDepot.setUpdateDate(LocalDateTime.now());
 		busDepot.setUpdateBy(UserLoginUtil.getUsername());
+		busDepot.setDepotLat(req.getDepotLat());
+		busDepot.setDepotLong(req.getDepotLong());
 		busDepotRepository.save(busDepot);
 	}
 	

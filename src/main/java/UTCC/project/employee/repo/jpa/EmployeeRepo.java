@@ -14,6 +14,8 @@ public interface EmployeeRepo extends CrudRepository<Employee, Long> {
 	
 	public Employee findByUsername(String userName);
 	
+	public void deleteByUsername(String username);
+	
 	public List <Employee> findAll();
 	
 }

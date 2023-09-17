@@ -94,7 +94,7 @@ public class RoleController {
 		return responseData;
 	}
 	
-	@PutMapping("edit")
+	@PostMapping("edit")
 	public ResponseData<String> editRole(@RequestBody SaveRoleReq req) {
 		ResponseData<String> responseData = new ResponseData<>();
 		try {

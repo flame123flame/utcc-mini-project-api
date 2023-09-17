@@ -129,6 +129,7 @@ public class UserService {
 
 	@Transactional
 	public void deleteUsername(String username) {
+		employeeRepo.deleteByUsername(username);
 		fwUserRepo.deleteByUsername(username);
 	}
 	@Transactional

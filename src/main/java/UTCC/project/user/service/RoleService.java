@@ -114,6 +114,8 @@ public class RoleService {
 		fwRole.setRoleCode(req.getRoleCode());
 		fwRole.setRoleName(req.getRoleName());
 		fwRole.setRoleDescription(req.getRoleDescription());
+		fwRole.setMenuList(req.getMenuList());	
+		fwRole.setRoleDescription(req.getRoleDescription());
 		fwRole.setUpdateBy(UserLoginUtil.getUsername());
 		fwRole.setUpdateDate(new Date());
 		fwRoleRepo.save(fwRole);

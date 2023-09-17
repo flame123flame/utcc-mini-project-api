@@ -100,14 +100,18 @@ public class EmployeeService {
 
 	public Employee edit(EmployeeReq req) {
 		Employee data = new Employee();
-		data = employeeRepo.findByEmployeeCode(req.getEmployeeCode());
+		data = employeeRepo.findByUsername(req.getUsername());
 		String olduser = data.getUsername();
 		data.setCreateBy(UserLoginUtil.getCurrentUserBean().getUsername());
 		data.setCreateDate(new Date());
 		data.setEmail(req.getEmail());
+		data.setPrefix(req.getPrefix());
 		data.setUserType(req.getUserType());
 		data.setPhoneNumber(req.getPhoneNumber());
+		data.setFirstName(req.getFirstName());
+		data.setLastName(req.getLastName());
 		data.setUsername(req.getUsername());
+		data.setEmployeeStatus(req.getEmployeeStatus());
 		data.setPosition(req.getPosition());
 		data.setEmployeeShift(req.getEmployeeShift());
 		data.setEmployeeStatus(req.getEmployeeStatus());
@@ -115,11 +119,6 @@ public class EmployeeService {
 		data.setBusTerminalId(req.getBusTerminalId());
 		FwUser user = fwUserRepo.findByUsername(olduser);
 		user.setRoleCode(req.getRoleCode());
-		user.setUsername(req.getUsername().trim().toLowerCase());
-		if("".equals(req.getPassword())) {
-		}else {
-			user.setPassword(bcryptEncoder.encode(req.getPassword().trim()));
-		}
 	
 		fwUserRepo.save(user);
 		return employeeRepo.save(data);

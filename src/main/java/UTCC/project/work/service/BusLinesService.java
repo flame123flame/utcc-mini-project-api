@@ -168,6 +168,8 @@ public class BusLinesService {
 
 	
 	public void deleteBusLines(Long id) {
+		List<BuslinesHbusterminal> existingHbusterminals = blHbtRepository.findByBusLinesId(id);
+		blHbtRepository.deleteAll(existingHbusterminals);
 		busLinesRepository.deleteById(id);
 	}
 	

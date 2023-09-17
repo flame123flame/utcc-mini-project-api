@@ -122,6 +122,8 @@ public class BusTypeService {
 
 	
 	public void deleteBusType(Long id) {
+	    List<TypeHfare> existingTypeHfareList = typeHfareRepository.findByTypeId(id);
+	    typeHfareRepository.deleteAll(existingTypeHfareList);
 		busTypeRepository.deleteById(id);
 	}
 

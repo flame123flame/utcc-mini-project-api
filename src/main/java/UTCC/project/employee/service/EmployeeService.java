@@ -87,10 +87,13 @@ public class EmployeeService {
 		data.setPhoneNumber(req.getPhoneNumber());
 		data.setEmail(req.getEmail());
 		data.setEmployeeShift(req.getEmployeeShift());
-		data.setEmployeeStatus(req.getEmployeeStatus());
+		data.setEmployeeStatus("AVAILABLE");
 		data.setBuslinesId(req.getBuslinesId());
 		data.setBusTerminalId(req.getBusTerminalId());
 		data.setCreateBy(UserLoginUtil.getCurrentUserBean().getUsername());
+		data.setUserType(req.getUserType());
+		
+		
 		data.setCreateDate(new Date());
 		return employeeRepo.save(data);
 	}
@@ -102,6 +105,7 @@ public class EmployeeService {
 		data.setCreateBy(UserLoginUtil.getCurrentUserBean().getUsername());
 		data.setCreateDate(new Date());
 		data.setEmail(req.getEmail());
+		data.setUserType(req.getUserType());
 		data.setPhoneNumber(req.getPhoneNumber());
 		data.setUsername(req.getUsername());
 		data.setPosition(req.getPosition());

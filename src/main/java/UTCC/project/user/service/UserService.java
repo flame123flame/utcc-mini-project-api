@@ -65,6 +65,7 @@ public class UserService {
 		fwUser.setPassword(bcryptEncoder.encode(req.getPassword().trim()));
 		fwUser.setRoleCode(req.getRoleCode());
 		fwUser.setCreateBy(UserLoginUtil.getUsername());
+
 		fwUserRepo.save(fwUser);
 		employeeService.save(req);
 		return UserConstant.STATUS.SUCCESS;
@@ -97,6 +98,7 @@ public class UserService {
 			userSet.setEmployeeStatus(employee.getEmployeeStatus());
 			userSet.setBuslinesId(employee.getBuslinesId());
 			userSet.setBusTerminalId(employee.getBusTerminalId());
+			userSet.setUserType(employee.getUserType());
 			if(fwRoleRepo.findByRoleCode(userGet.getRoleCode()) != null)
 			userSet.setPlatform(fwRoleRepo.findByRoleCode(userGet.getRoleCode()).getPlatform());
 			dataRes.add(userSet);

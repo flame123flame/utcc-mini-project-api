@@ -30,6 +30,9 @@ public class Employee implements Serializable {
 	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "user_type")
+	private String userType;
+	
 	@Column(name = "username")
 	private String username;
 	

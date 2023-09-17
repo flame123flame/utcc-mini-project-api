@@ -26,6 +26,8 @@ public class BusTerminalService {
 	
 	public void save(BusTerminalVo.Request req) {
 		BusTerminal busTerminal = new BusTerminal();
+		busTerminal.setBusTerminalLat(req.getBusTerminalLat());
+		busTerminal.setBusTerminalLong(req.getBusTerminalLong());
 		busTerminal.setBusTerminalName(req.getBusTerminalName());
 		busTerminal.setCreateDate(LocalDateTime.now());
 		busTerminal.setCreateBy(UserLoginUtil.getUsername());
@@ -34,6 +36,8 @@ public class BusTerminalService {
 	
 	public void edit(BusTerminalVo.Request req) {
 		BusTerminal busTerminal = busTerminalRepository.findById(req.getBusTerminalId()).get();
+		busTerminal.setBusTerminalLat(req.getBusTerminalLat());
+		busTerminal.setBusTerminalLong(req.getBusTerminalLong());
 		busTerminal.setBusTerminalName(req.getBusTerminalName());
 		busTerminal.setUpdateDate(LocalDateTime.now());
 		busTerminal.setUpdateBy(UserLoginUtil.getUsername());

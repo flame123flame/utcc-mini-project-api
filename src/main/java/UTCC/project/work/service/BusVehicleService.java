@@ -25,6 +25,7 @@ public class BusVehicleService {
 	public void saveForm(BusVehicleVo.Request req) {
 		BusVehicle busVehicle = new BusVehicle();
 		busVehicle.setBusVehicleNumber(req.getBusVehicleNumber());
+		busVehicle.setBusVehicleStatus(req.getBusVehicleStatus());
 		busVehicle.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
 		busVehicle.setBusVehiclePlateProv(req.getBusVehiclePlateProv());
 		busVehicle.setBusLinesId(req.getBusLinesId());
@@ -44,8 +45,8 @@ public class BusVehicleService {
 		busVehicle.setBusLinesId(req.getBusLinesId());
 		busVehicle.setBusTypeId(req.getBusTypeId());
 		busVehicle.setBusDivisionId(req.getBusDivisionId());
-		busVehicle.setCreateDate(LocalDateTime.now());
-		busVehicle.setCreateBy(UserLoginUtil.getUsername());
+		busVehicle.setUpdateDate(LocalDateTime.now());
+		busVehicle.setUpdateBy(UserLoginUtil.getUsername());
 		busVehicleRepository.save(busVehicle);
 	}
 	

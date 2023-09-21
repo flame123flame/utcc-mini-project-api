@@ -42,6 +42,7 @@ public class RoleService {
 			dataSet.setUpdateBy(fwRoleSet.getUpdateBy());
 			dataSet.setUpdateDate(ConvertDateUtils.formatDateToString(fwRoleSet.getUpdateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
 			dataSet.setPlatform(fwRoleSet.getPlatform());
+			dataSet.setUserCategoryCode(fwRoleSet.getUserCategoryCode());
 			dataRes.add(dataSet);
 	
 		}
@@ -61,6 +62,7 @@ public class RoleService {
 		dataRes.setUpdateBy(fwRole.getUpdateBy());
 		dataRes.setUpdateDate(ConvertDateUtils.formatDateToString(fwRole.getUpdateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
 		dataRes.setPlatform(fwRole.getPlatform());
+		dataRes.setUserCategoryCode(fwRole.getUserCategoryCode());
 		return dataRes;
 	}
 
@@ -79,6 +81,7 @@ public class RoleService {
 		dataRes.setUpdateBy(fwRole.getUpdateBy());
 		dataRes.setUpdateDate(ConvertDateUtils.formatDateToString(fwRole.getUpdateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
 		dataRes.setPlatform(fwRole.getPlatform());
+		dataRes.setUserCategoryCode(fwRole.getUserCategoryCode());
 	
 		return dataRes;
 	}
@@ -97,6 +100,7 @@ public class RoleService {
 		fwRole.setMenuList(req.getMenuList());	
 		fwRole.setCreateBy(UserLoginUtil.getUsername());
 		fwRole.setPlatform(req.getPlatform());
+		fwRole.setUserCategoryCode(req.getUserCategoryCode());
 		fwRole.setCreateDate(new Date());
 		fwRoleRepo.save(fwRole);
 		return req.getRoleCode();
@@ -118,6 +122,7 @@ public class RoleService {
 		fwRole.setRoleDescription(req.getRoleDescription());
 		fwRole.setUpdateBy(UserLoginUtil.getUsername());
 		fwRole.setUpdateDate(new Date());
+		fwRole.setUserCategoryCode(req.getUserCategoryCode());
 		fwRoleRepo.save(fwRole);
 
 		return req.getRoleCode();

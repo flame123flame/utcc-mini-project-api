@@ -10,4 +10,5 @@ public class SaveRoleReq {
 	private String roleDescription;
 	private String menuList;
 	private String platform;
+	private String userCategoryCode;
 }

@@ -42,6 +42,9 @@ public class FwRole implements Serializable {
 	@Column(name = "role_description", length = 255)
 	private String roleDescription;
 	
+	@Column(name = "user_category_code", length = 255)
+	private String userCategoryCode;
+	
 	@Column(name = "create_by", length = 25)
 	private String createBy;
 

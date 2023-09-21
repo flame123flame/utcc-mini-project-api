@@ -14,4 +14,5 @@ public class GetRoleRes {
 	private String updateBy;
 	private String updateDate;
 	private String platform;
+	private String userCategoryCode;
 }

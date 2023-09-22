@@ -75,9 +75,9 @@ public class UserCategoryController {
 	public ResponseData<String> save(@RequestBody UserCategoryVo.Request req)  throws Exception {
 		ResponseData<String> responseData = new ResponseData<>();
 		try {
-			if("DUPICATE_USER_CATEGORY_CODE".equals(userCategoryService.save(req))) {
-				throw new Exception("DUPICATE_USER_CATEGORY_CODE");
-			}
+//			if("DUPICATE_USER_CATEGORY_CODE".equals(userCategoryService.save(req))) {
+//				throw new Exception("DUPICATE_USER_CATEGORY_CODE");
+//			}
 			responseData.setData(userCategoryService.save(req));
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
@@ -85,9 +85,9 @@ public class UserCategoryController {
 			e.printStackTrace();
 			responseData.setMessage(RESPONSE_MESSAGE.SAVE.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
-			if("DUPICATE_USER_CATEGORY_CODE".equals(userCategoryService.save(req))) {
-				throw new Exception("DUPICATE_USER_CATEGORY_CODE");
-			}
+//			if("DUPICATE_USER_CATEGORY_CODE".equals(userCategoryService.save(req))) {
+//				throw new Exception("DUPICATE_USER_CATEGORY_CODE");
+//			}
 		}
 		return responseData;
 	}

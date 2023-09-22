@@ -56,10 +56,10 @@ public class UserCategoryService {
 	
 	@Transactional
 	public String save(UserCategoryVo.Request req) {
-		UserCategory findDup = userCategoryRepository.findByUserCategoryCode(req.getUserCategoryCode());
-		if (findDup != null) {
-			return "DUPICATE_USER_CATEGORY_CODE";
-		}
+//		UserCategory findDup = userCategoryRepository.findByUserCategoryCode(req.getUserCategoryCode());
+//		if (findDup != null) {
+//			return "DUPICATE_USER_CATEGORY_CODE";
+//		}
 		UserCategory userCategory = new UserCategory();
 		userCategory.setUserCategoryCode(req.getUserCategoryCode());
 		userCategory.setUserCategoryName(req.getUserCategoryName());

@@ -40,6 +40,9 @@ public class UserCategory implements Serializable{
 	@Column(name = "user_category_desc")
 	private String userCategoryDesc;
 	
+	@Column(name = "platform", length = 100)
+	private String platform;
+	
 	@Column(name = "create_by", length = 25)
 	private String createBy;
 

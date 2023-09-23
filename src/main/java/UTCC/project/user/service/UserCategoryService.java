@@ -33,6 +33,7 @@ public class UserCategoryService {
 		dataRes.setUserCategoryCode(userCategory.getUserCategoryCode());
 		dataRes.setUserCategoryName(userCategory.getUserCategoryName());
 		dataRes.setUserCategoryDesc(userCategory.getUserCategoryDesc());
+		dataRes.setPlatform(userCategory.getPlatform());
 		dataRes.setCreateBy(userCategory.getCreateBy());
 		dataRes.setUpdateBy(userCategory.getUpdateBy());
 		dataRes.setCreateDate(ConvertDateUtils.formatLocalDateTimeToString(userCategory.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
@@ -47,6 +48,7 @@ public class UserCategoryService {
 		dataRes.setUserCategoryCode(userCategory.getUserCategoryCode());
 		dataRes.setUserCategoryName(userCategory.getUserCategoryName());
 		dataRes.setUserCategoryDesc(userCategory.getUserCategoryDesc());
+		dataRes.setPlatform(userCategory.getPlatform());
 		dataRes.setCreateBy(userCategory.getCreateBy());
 		dataRes.setUpdateBy(userCategory.getUpdateBy());
 		dataRes.setCreateDate(ConvertDateUtils.formatLocalDateTimeToString(userCategory.getCreateDate(), ConvertDateUtils.DD_MM_YYYY_HHMM));
@@ -64,6 +66,7 @@ public class UserCategoryService {
 		userCategory.setUserCategoryCode(req.getUserCategoryCode());
 		userCategory.setUserCategoryName(req.getUserCategoryName());
 		userCategory.setUserCategoryDesc(req.getUserCategoryDesc());
+		userCategory.setPlatform(req.getPlatform());
 		userCategory.setCreateDate(LocalDateTime.now());
 		userCategory.setCreateBy(UserLoginUtil.getUsername());
 		userCategoryRepository.save(userCategory);
@@ -76,6 +79,7 @@ public class UserCategoryService {
 		userCategory.setUserCategoryCode(req.getUserCategoryCode());
 		userCategory.setUserCategoryName(req.getUserCategoryName());
 		userCategory.setUserCategoryDesc(req.getUserCategoryDesc());
+		userCategory.setPlatform(req.getPlatform());
 		userCategory.setUpdateDate(LocalDateTime.now());
 		userCategory.setUpdateBy(UserLoginUtil.getUsername());
 		userCategoryRepository.save(userCategory);
@@ -85,6 +89,10 @@ public class UserCategoryService {
 	@Transactional
 	public void deleteUserCategory(String userCategoryCode) {
 		userCategoryRepository.deleteByUserCategoryCode(userCategoryCode);;
+	}
+	
+	public void deleteUserCategory(Long id) {
+		userCategoryRepository.deleteById(id);;
 	}
 	
 

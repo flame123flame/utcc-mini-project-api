@@ -20,6 +20,7 @@ public class UserCategoryVo {
 		private String userCategoryCode;
 		private String userCategoryName;
 		private String userCategoryDesc;
+		private String platform;
 		private String createDate;
 		private String createBy;
 		private String updateDate;

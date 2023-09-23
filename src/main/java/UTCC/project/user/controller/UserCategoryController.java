@@ -122,4 +122,19 @@ public class UserCategoryController {
 		return responseData;
 	}
 	
+	@GetMapping("delete/{id}")
+	public ResponseData<?> delete(@PathVariable("id") Long id) throws Exception{
+		ResponseData<?> responseData = new ResponseData<>();
+		try {
+			userCategoryService.deleteUserCategory(id);
+			responseData.setMessage(RESPONSE_MESSAGE.DELETE.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.DELETE.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+			throw new Exception("DELETE_FAILED", e);
+		}
+		return responseData;
+	}
+	
 }

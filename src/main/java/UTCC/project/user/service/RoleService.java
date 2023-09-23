@@ -122,6 +122,7 @@ public class RoleService {
 		fwRole.setRoleDescription(req.getRoleDescription());
 		fwRole.setUpdateBy(UserLoginUtil.getUsername());
 		fwRole.setUpdateDate(new Date());
+		fwRole.setPlatform(req.getPlatform());
 		fwRole.setUserCategoryCode(req.getUserCategoryCode());
 		fwRoleRepo.save(fwRole);
 

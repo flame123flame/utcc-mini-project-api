@@ -10,6 +10,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import UTCC.framework.utils.UserLoginUtil;
+import UTCC.project.employee.module.Employee;
+import UTCC.project.employee.repo.jpa.EmployeeRepo;
 import UTCC.project.work.vo.BusVehicleVo;
 
 @Repository
@@ -17,11 +20,18 @@ public class BusVehicleDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private EmployeeRepo employeeRepo;
 
 	public List<BusVehicleVo.Response> getDropdownListBusVehicle() {
+		Employee employee = employeeRepo.findByUsername("100100");
 		StringBuilder sql = new StringBuilder();
 		List<Object> params = new ArrayList<Object>();
-		sql.append(" SELECT * FROM  bus_vehicle as bv  join bus_type as ty  on bv.bus_type_id  = ty.bus_type_id   ");
+		sql.append(" SELECT * FROM  bus_vehicle  bv  join bus_type  ty  on bv.bus_type_id  = ty.bus_type_id where   bv.bus_lines_id = ? and bv.bus_vehicle_status = 'AVAILABLE' ");
+		params.add(employee.getBuslinesId());
+//		UserLoginUtil.getCurrentUserBean().getEmployee().getBuslinesId();
+		System.out.println(" = = == = = " + employee.getBuslinesId());
 		List<BusVehicleVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(),
 				dataApproveRowmapper);
 		return datas;
@@ -34,7 +44,7 @@ public class BusVehicleDao {
 			vo.setBusVehicleNumber(rs.getString("bus_vehicle_number"));
 			vo.setBusVehiclePlateNo(rs.getString("bus_vehicle_plate_no"));
 			vo.setBusVehiclePlateProv(rs.getString("bus_vehicle_plate_prov"));
-			vo.setBusTypeName(rs.getString("type_name"));
+			vo.setBusTypeName(rs.getString("bus_type_name"));
 			return vo;
 		}
 	};

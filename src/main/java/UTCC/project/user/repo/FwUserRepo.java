@@ -19,6 +19,9 @@ public interface FwUserRepo extends CrudRepository<FwUser, Long> {
 	
 	@Query(value = "SELECT  * FROM fw_user ",nativeQuery = true)
 	public List<FwUser> findUser();
+	 
+	@Query(value = "SELECT  * FROM fw_user where role_code = ?1  ",nativeQuery = true)
+	public List<FwUser> findUserByDriver(String roleCode);
 	
 	@Query(value = "SELECT  * FROM fw_user where username = ?1 ",nativeQuery = true)
 	public List<FwUser> findUser(String date);

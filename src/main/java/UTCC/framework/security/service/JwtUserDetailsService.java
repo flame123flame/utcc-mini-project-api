@@ -30,6 +30,8 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private RoleService roleService;
+	
+	
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -53,7 +55,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 			res.setPosition(employee.getPosition());
 			res.setEmployeeCode(employee.getEmployeeCode());
 			res.setEmail(employee.getEmail());
-		
+			res.setBuslinesId(employee.getBuslinesId());	
+			res.setBusTerminalId(employee.getBusTerminalId());
+			res.setEmployeeShift(employee.getEmployeeShift());
+			res.setEmployeeStatus(employee.getEmployeeStatus());
 		}
 
 		try {

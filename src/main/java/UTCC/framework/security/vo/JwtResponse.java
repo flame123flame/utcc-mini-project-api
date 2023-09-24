@@ -1,5 +1,7 @@
 package UTCC.framework.security.vo;
 
+import javax.persistence.Column;
+
 import UTCC.project.user.vo.GetRoleRes;
 import lombok.Data;
 
@@ -19,4 +21,8 @@ public class JwtResponse {
 	private String roleCode;
 	private String position;
 	private String platform;
+	private String employeeShift;
+	private String employeeStatus;
+	private Long buslinesId;
+	private Long busTerminalId;
 }

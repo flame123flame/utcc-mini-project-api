@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import UTCC.framework.utils.UserLoginUtil;
+import UTCC.project.work.model.BusVehicle;
 import UTCC.project.work.model.Worksheet;
+import UTCC.project.work.repositories.BusVehicleRepository;
 import UTCC.project.work.repositories.WorksheetRepository;
 import UTCC.project.work.vo.WorksheetVo;
 
@@ -22,18 +24,34 @@ public class WorksheetService {
 	private WorksheetRepository worksheetRepository;
 	
 	
+	@Autowired
+	private BusVehicleRepository busVehicleRepository;
+	
+	
 	public void saveFrom(WorksheetVo.Request req) {
-		Worksheet worksheet = new Worksheet();
-		worksheet.setWorksheetDate(req.getWorksheetDate()); 
-		worksheet.setWorksheetTimeBegin(req.getWorksheetTimeBegin());
-		worksheet.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
-		worksheet.setWorksheetDispatcher(UserLoginUtil.getUsername());
-		worksheet.setWorksheetDriver(req.getWorksheetDriver());
-		worksheet.setWorksheetFarecollect(req.getWorksheetFarecollect());
-		worksheet.setWorksheetStatus("IN_PROGRESS");
-		worksheet.setCreateBy(UserLoginUtil.getUsername());
-		worksheetRepository.save(worksheet);
+	    BusVehicle busVehicle = busVehicleRepository.findByBusVehiclePlateNo(req.getBusVehiclePlateNo());
+	    
+	    if (busVehicle == null) {
+	        // Handle the case where no matching BusVehicle is found
+	        return;
+	    }
+
+	    Worksheet worksheet = new Worksheet();
+	    worksheet.setWorksheetDate(req.getWorksheetDate()); 
+	    worksheet.setWorksheetTimeBegin(req.getWorksheetTimeBegin());
+	    worksheet.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
+	    worksheet.setWorksheetDispatcher(UserLoginUtil.getUsername());
+	    worksheet.setWorksheetDriver(req.getWorksheetDriver());
+	    worksheet.setWorksheetFarecollect(req.getWorksheetFarecollect());
+	    worksheet.setWorksheetStatus("IN_PROGRESS");
+	    worksheet.setCreateBy(UserLoginUtil.getUsername());
+	    worksheet.setBusVehicleId(busVehicle.getBusVehicleId());
+	    worksheet.setBusLinesId(busVehicle.getBusLinesId());
+	    worksheet.setBusDivisionId(busVehicle.getBusDivisionId());
+	    worksheet.setCreateDate(LocalDateTime.now());
+	    worksheetRepository.save(worksheet);
 	}
+	
 	
 	public List<Worksheet> getList(String status,WorksheetVo.Request data){
 		if(data.getWorksheetId() != null) {

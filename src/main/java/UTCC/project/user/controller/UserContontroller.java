@@ -98,6 +98,39 @@ public class UserContontroller {
 		return responseData;
 	}
 
+	
+	@PostMapping("get-user-driver-by-busline-id")
+	public ResponseData<List<RegisterUserRes>> getListUserDriverByBusLineId(@Valid @RequestBody RegisterUserReq req) {
+		ResponseData<List<RegisterUserRes>> responseData = new ResponseData<List<RegisterUserRes>>();
+		try {
+			responseData.setData(userService.getListUserByBusLineId(req,"DRIVER"));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			log.error("UserContontroller: getListUser ", e);
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+
+	@PostMapping("get-user-farecollect-by-busline-id")
+	public ResponseData<List<RegisterUserRes>> getListUserByFarecollectBusLineId(@Valid @RequestBody RegisterUserReq req) {
+		ResponseData<List<RegisterUserRes>> responseData = new ResponseData<List<RegisterUserRes>>();
+		try {
+			responseData.setData(userService.getListUserByBusLineId(req,"FARECOLLECT"));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			log.error("UserContontroller: getListUser ", e);
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+
+	
+	
 	@GetMapping("get-by-id/{id}")
     @ResponseBody
 	public ResponseData<RegisterUserRes> getByid(@PathVariable("id") String id) {

@@ -71,6 +71,43 @@ public class UserService {
 		return UserConstant.STATUS.SUCCESS;
 	}
 	
+	
+	public List<RegisterUserRes> getListUserByBusLineId(RegisterUserReq req , String roleCode) {
+		List<RegisterUserRes> dataRes = new ArrayList<RegisterUserRes>();
+		RegisterUserRes userSet;
+		Employee employee;
+		List<FwUser> dataUserFind = fwUserRepo.findUserByDriver(roleCode);
+		for(FwUser userGet:dataUserFind) {
+			
+			employee  = employeeRepo.findByUsernameBusLinesId(userGet.getUsername(),req.getBuslinesId(),req.getEmployeeShift());
+			if(employee == null) continue;
+			userSet = new RegisterUserRes();
+			userSet.setEmployeeId(employee.getEmployeeId());
+			userSet.setFirstName(employee.getFirstName());
+			userSet.setLastName(employee.getLastName());
+			userSet.setEmployeeCode(employee.getEmployeeCode());
+			userSet.setId(userGet.getId());
+			userSet.setFullName(employee.getFirstName() + ' ' + employee.getLastName() );	
+			userSet.setUsername(userGet.getUsername());
+			userSet.setRoleCode(userGet.getRoleCode());
+			userSet.setPosition(employee.getPosition());
+			userSet.setPrefix(employee.getPrefix());
+			userSet.setEmail(employee.getEmail());
+			userSet.setPhoneNumber(employee.getPhoneNumber());
+			userSet.setCreateDate(userGet.getCreateDate().toString());
+			userSet.setEmployeeShift(employee.getEmployeeShift());
+			userSet.setEmployeeStatus(employee.getEmployeeStatus());
+			userSet.setBuslinesId(employee.getBuslinesId());
+			userSet.setBusTerminalId(employee.getBusTerminalId());
+			userSet.setUserType(employee.getUserType());
+			if(fwRoleRepo.findByRoleCode(userGet.getRoleCode()) != null)
+			userSet.setPlatform(fwRoleRepo.findByRoleCode(userGet.getRoleCode()).getPlatform());
+			dataRes.add(userSet);
+			
+		}
+		return dataRes;
+	}
+	
 	public List<RegisterUserRes> getListUser(RegisterUserReq req) {
 		List<RegisterUserRes> dataRes = new ArrayList<RegisterUserRes>();
 		RegisterUserRes userSet;

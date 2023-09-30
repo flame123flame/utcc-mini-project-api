@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.DriverDao;
 import UTCC.project.work.vo.DriverVo;
 
@@ -17,19 +18,19 @@ public class DriverService {
 	
 
 	public List<DriverVo.Response> getDataFarecollectProgress(){
-		return driverDao.getData("farecollect","IN_PROGRESS");
+		return driverDao.getDataFarecollect(UserLoginUtil.getUsername(),"IN_PROGRESS");
 	}
 	
 	public List<DriverVo.Response> getDataFarecollectSuccess(){
-		return driverDao.getData("farecollect","SUCCESS");
+		return driverDao.getDataFarecollect(UserLoginUtil.getUsername(),"SUCCESS");
 	}
 	
 	public List<DriverVo.Response> getDataDriverProgress(){
-		return driverDao.getData("driver","IN_PROGRESS");
+		return driverDao.getDataDriver(UserLoginUtil.getUsername(),"IN_PROGRESS");
 	}
 		
 	public List<DriverVo.Response> getDataDriverSuccess(){
-		return driverDao.getData("driver","SUCCESS");
+		return driverDao.getDataDriver(UserLoginUtil.getUsername(),"SUCCESS");
 	}
 		
 }

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import UTCC.framework.utils.UserLoginUtil;
+import UTCC.project.employee.module.Employee;
+import UTCC.project.employee.repo.jpa.EmployeeRepo;
 import UTCC.project.work.model.BusVehicle;
 import UTCC.project.work.model.Worksheet;
 import UTCC.project.work.repositories.BusVehicleRepository;
@@ -28,29 +30,48 @@ public class WorksheetService {
 	private BusVehicleRepository busVehicleRepository;
 	
 	
+	@Autowired
+	private EmployeeRepo employeeRepo;
+	
 	public void saveFrom(WorksheetVo.Request req) {
 	    BusVehicle busVehicle = busVehicleRepository.findByBusVehiclePlateNo(req.getBusVehiclePlateNo());
-	    
 	    if (busVehicle == null) {
-	        // Handle the case where no matching BusVehicle is found
 	        return;
 	    }
+	    Employee driver = getAndUpdateEmployeeStatus(req.getWorksheetDriver(), "UNAVAILABLE");
+	    Employee fareCollector = getAndUpdateEmployeeStatus(req.getWorksheetFarecollect(), "UNAVAILABLE");
 
-	    Worksheet worksheet = new Worksheet();
-	    worksheet.setWorksheetDate(req.getWorksheetDate()); 
-	    worksheet.setWorksheetTimeBegin(req.getWorksheetTimeBegin());
-	    worksheet.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
-	    worksheet.setWorksheetDispatcher(UserLoginUtil.getUsername());
-	    worksheet.setWorksheetDriver(req.getWorksheetDriver());
-	    worksheet.setWorksheetFarecollect(req.getWorksheetFarecollect());
-	    worksheet.setWorksheetStatus("IN_PROGRESS");
-	    worksheet.setCreateBy(UserLoginUtil.getUsername());
-	    worksheet.setBusVehicleId(busVehicle.getBusVehicleId());
-	    worksheet.setBusLinesId(busVehicle.getBusLinesId());
-	    worksheet.setBusDivisionId(busVehicle.getBusDivisionId());
-	    worksheet.setCreateDate(LocalDateTime.now());
-	    worksheetRepository.save(worksheet);
+	    if (driver != null && fareCollector != null) {
+	        Worksheet worksheet = new Worksheet();
+	        worksheet.setWorksheetDate(req.getWorksheetDate()); 
+	        worksheet.setWorksheetTimeBegin(req.getWorksheetTimeBegin());
+	        worksheet.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
+	        worksheet.setWorksheetDispatcher(UserLoginUtil.getUsername());
+	        worksheet.setWorksheetDriver(req.getWorksheetDriver());
+	        worksheet.setWorksheetFarecollect(req.getWorksheetFarecollect());
+	        worksheet.setWorksheetStatus("IN_PROGRESS");
+	        worksheet.setCreateBy(UserLoginUtil.getUsername());
+	        worksheet.setBusVehicleId(busVehicle.getBusVehicleId());
+	        worksheet.setBusLinesId(busVehicle.getBusLinesId());
+	        worksheet.setBusDivisionId(busVehicle.getBusDivisionId());
+	        worksheet.setCreateDate(LocalDateTime.now());
+	        worksheetRepository.save(worksheet);
+	        busVehicle.setBusVehicleStatus("UNAVAILABLE");
+	        busVehicleRepository.save(busVehicle);
+	    }
 	}
+
+	private Employee getAndUpdateEmployeeStatus(String username, String status) {
+	    Employee employee = employeeRepo.findByUsername(username);
+	    
+	    if (employee != null) {
+	        employee.setEmployeeStatus(status);
+	        employeeRepo.save(employee);
+	    }
+	    
+	    return employee;
+	}
+
 	
 	
 	public List<Worksheet> getList(String status,WorksheetVo.Request data){

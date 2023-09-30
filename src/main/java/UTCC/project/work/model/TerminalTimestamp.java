@@ -45,6 +45,9 @@ public class TerminalTimestamp implements Serializable{
 	@Column(name = "bus_terminal_agent")
     private String busTerminalAgent;
 	
+	@Column(name = "terminal_timestamp_status")
+    private String terminalTimestampStatus;
+	
 	@Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 

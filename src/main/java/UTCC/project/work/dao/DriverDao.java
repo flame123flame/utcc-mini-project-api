@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import AM_API.project.asset.vo.res.AssetAssetsDatatableRes;
+
 import UTCC.framework.utils.CommonJdbcTemplate;
 import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.vo.DriverVo;
@@ -56,7 +56,15 @@ public class DriverDao {
 	public List<DriverVo.Response> getDataFarecollect(String type,String status) {
 		StringBuilder sql = new StringBuilder();
 		List<Object> params = new ArrayList<Object>();
-		sql.append(" SELECT * FROM  worksheet join  bus_vehicle  on  worksheet.bus_vehicle_plate_no = bus_vehicle.bus_vehicle_plate_no   ");
+		sql.append(" SELECT\n"
+				+ "	*\n"
+				+ "FROM\n"
+				+ "	worksheet\n"
+				+ "join bus_vehicle on\n"
+				+ "	worksheet.bus_vehicle_plate_no = bus_vehicle.bus_vehicle_plate_no\n"
+				+ "	join bus_division on bus_division.bus_division_id  = worksheet.bus_division_id \n"
+				+ "	JOIN bus_lines  on bus_lines.bus_lines_id  = worksheet.bus_lines_id \n"
+				+ "   ");
 
 			sql.append(" WHERE worksheet_farecollect = ? AND worksheet.worksheet_status = ? ");
 			params.add(UserLoginUtil.getUsername());

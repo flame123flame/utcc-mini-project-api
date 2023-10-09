@@ -1,5 +1,7 @@
 package UTCC.project.work.vo;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -23,12 +25,21 @@ public class DriverVo {
 	        private String worksheetDate;
 	        private String worksheetTimeBegin;
 	        private String worksheetTimeEnd;
+	        private BigDecimal worksheetHours;
+	        private BigDecimal worksheetHoursOt;
+	        private Long busLinesId;
+	        private String busLinesNo;
+	        private Long busDivisionId;
+	        private String busDivisionName;
+	        private long busVehicleId;
 	        private String busVehiclePlateNo;
+	        private String busVehicleNumber;
 	        private String worksheetDispatcher;
 	        private String worksheetDriver;
 	        private String worksheetFarecollect;
-	        private String busVehicleNumber;
-	        
+	        private String worksheetTerminalAgent;
+	        private String worksheetBuslinesManager;
+	        private String worksheetStatus;
 	    }
 	  
 }

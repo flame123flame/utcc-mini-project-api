@@ -48,6 +48,9 @@ public class Worksheet implements Serializable {
     @Column(name = "bus_vehicle_plate_no", nullable = false)
     private String busVehiclePlateNo;
     
+    @Column(name = "bus_vehicle_number", nullable = false)
+    private String busVehicleNumber;
+    
     @Column(name = "bus_vehicle_id")
     private long busVehicleId;
     
@@ -62,6 +65,9 @@ public class Worksheet implements Serializable {
     
     @Column(name = "worksheet_buslines_manager", nullable = false)
     private String worksheetBuslinesManager;
+    
+    @Column(name = "worksheet_terminal_agent", nullable = false)
+    private String worksheetTerminalAgent;
     
     @Column(name = "bus_lines_id")
     private Long busLinesId;

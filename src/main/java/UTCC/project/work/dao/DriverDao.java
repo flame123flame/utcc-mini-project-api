@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import AM_API.project.asset.vo.res.AssetAssetsDatatableRes;
+import UTCC.framework.utils.CommonJdbcTemplate;
 import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.vo.DriverVo;
 
@@ -19,6 +22,8 @@ public class DriverDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	@Autowired
+	private CommonJdbcTemplate commonJdbcTemplate;
 	
 	public List<DriverVo.Response> getDataDriver(String type,String status) {
 		StringBuilder sql = new StringBuilder();
@@ -56,8 +61,11 @@ public class DriverDao {
 			sql.append(" WHERE worksheet_farecollect = ? AND worksheet.worksheet_status = ? ");
 			params.add(UserLoginUtil.getUsername());
 			params.add(status);
-		List<DriverVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(), dataFarecollecteRowmapper);
-		return datas;
+			
+			List<DriverVo.Response> data = commonJdbcTemplate.executeQuery(sql.toString(), params.toArray(),
+					BeanPropertyRowMapper.newInstance(DriverVo.Response.class));
+			
+		return data;
 	}
 	
 	private RowMapper<DriverVo.Response> dataFarecollecteRowmapper = new RowMapper<DriverVo.Response>() {

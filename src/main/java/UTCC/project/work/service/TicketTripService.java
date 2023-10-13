@@ -14,7 +14,7 @@ public class TicketTripService {
 	@Autowired
 	private TicketTripRepository ticketTripRepository;
 	
-	public List<TicketTrip> getBusDepot(){
+	public List<TicketTrip> getTicketTrip(){
 		return (List<TicketTrip>) ticketTripRepository.findAll();
 	}
 }

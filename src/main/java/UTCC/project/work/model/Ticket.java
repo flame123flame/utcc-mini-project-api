@@ -26,6 +26,9 @@ public class Ticket  implements Serializable  {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "ticket_id")
 	    private long ticketId;
+		
+		@Column(name = "ticket_trip_id")
+	    private long ticketTripId;
 	    
 	    @Column(name = "ticket_no", length = 7)
 	    private String ticketNo;
@@ -41,7 +44,6 @@ public class Ticket  implements Serializable  {
 	    
 	    @Column(name = "trip")
 	    private long trip;
-	    
 	    
 	    @Column(name = "worksheet_id")
 	    private long worksheetId;

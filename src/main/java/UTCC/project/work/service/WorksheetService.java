@@ -46,6 +46,7 @@ public class WorksheetService {
 	        worksheet.setWorksheetDate(req.getWorksheetDate()); 
 	        worksheet.setWorksheetTimeBegin(req.getWorksheetTimeBegin());
 	        worksheet.setBusVehiclePlateNo(req.getBusVehiclePlateNo());
+	        worksheet.setBusVehicleNumber(req.getBusVehicleNumber());
 	        worksheet.setWorksheetDispatcher(UserLoginUtil.getUsername());
 	        worksheet.setWorksheetDriver(req.getWorksheetDriver());
 	        worksheet.setWorksheetFarecollect(req.getWorksheetFarecollect());

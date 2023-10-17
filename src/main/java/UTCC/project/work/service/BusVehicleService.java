@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
 import UTCC.framework.utils.UserLoginUtil;
@@ -57,6 +58,13 @@ public class BusVehicleService {
 	public List<BusVehicle> getDropdownListBusVehicle(){
 		return (List<BusVehicle>) busVehicleRepository.findAll();
 	}
+	
+	
+	
+	public List<BusVehicleVo.ResponseTicket> getDataByWorksheetId(long worksheetId) {
+		return busVehicleDao.getDataByWorksheetId(worksheetId);
+	}
+
 	
 	public List<BusVehicleVo.Response> getDropdownList(){
 		return busVehicleDao.getDropdownListBusVehicle();

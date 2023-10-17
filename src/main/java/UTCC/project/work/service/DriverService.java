@@ -18,11 +18,11 @@ public class DriverService {
 	
 
 	public List<DriverVo.Response> getDataFarecollectProgress(){
-		return driverDao.getDataFarecollect(UserLoginUtil.getUsername(),"IN_PROGRESS");
+		return driverDao.getDataFarecollect("IN_PROGRESS");
 	}
 	
 	public List<DriverVo.Response> getDataFarecollectSuccess(){
-		return driverDao.getDataFarecollect(UserLoginUtil.getUsername(),"SUCCESS");
+		return driverDao.getDataFarecollect("SUCCESS");
 	}
 	
 	public List<DriverVo.Response> getDataDriverProgress(){

@@ -16,7 +16,6 @@ import UTCC.framework.constant.ResponseConstant.RESPONSE_STATUS;
 import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusVehicle;
 import UTCC.project.work.service.BusVehicleService;
-import UTCC.project.work.vo.BusTypeVo;
 import UTCC.project.work.vo.BusVehicleVo;
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,12 +52,29 @@ public class BusVehicleController {
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
-			log.error("BusVehicleController: getDropdownListBusVehicle ", e);
 			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}
 		return responseData;
 	}
+	
+	@PostMapping("find-by-worksheet-id")
+    @ResponseBody
+	public ResponseData<List<BusVehicleVo.ResponseTicket>> getDropdownListBusVehicle(@RequestBody BusVehicleVo.Request request ) {
+		ResponseData<List<BusVehicleVo.ResponseTicket> > responseData = new ResponseData<>();
+		try {
+			responseData.setData(busVehicleService.getDataByWorksheetId(request.getWorksheetId()));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
+	
+	 
 	
 
 	@GetMapping("search")

@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import UTCC.framework.utils.CommonJdbcTemplate;
 import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.employee.module.Employee;
 import UTCC.project.employee.repo.jpa.EmployeeRepo;
+import UTCC.project.work.vo.BusLinesVo;
 import UTCC.project.work.vo.BusVehicleVo;
 
 @Repository
@@ -23,6 +26,28 @@ public class BusVehicleDao {
 	
 	@Autowired
 	private EmployeeRepo employeeRepo;
+	
+	
+	@Autowired
+	private CommonJdbcTemplate commonJdbcTemplate;
+	
+	
+	public List<BusVehicleVo.ResponseTicket> getDataByWorksheetId(long worksheetId) {
+	    String sql = "SELECT * " +
+	                 "FROM worksheet ws " +
+	                 "JOIN bus_vehicle bv ON ws.bus_vehicle_id = bv.bus_vehicle_id " +
+	                 "JOIN type_h_fare thf ON bv.bus_type_id = thf.type_id " +
+	                 "JOIN fare f ON thf.fare_id = f.fare_id " +
+	                 "WHERE ws.worksheet_id = ? ";
+
+	    return commonJdbcTemplate.executeQuery(
+	        sql,
+	        new Object[]{worksheetId},
+	        BeanPropertyRowMapper.newInstance(BusVehicleVo.ResponseTicket.class)
+	    );
+	}
+
+	
 
 	public List<BusVehicleVo.Response> getDropdownListBusVehicle() {
 		Employee employee = employeeRepo.findByUsername("100100");
@@ -85,5 +110,7 @@ public class BusVehicleDao {
 			return vo;
 		}
 	};
+	
+	
 
 }

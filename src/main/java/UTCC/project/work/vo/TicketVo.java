@@ -1,5 +1,7 @@
 package UTCC.project.work.vo;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +20,6 @@ public class TicketVo {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Request {
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private String ticketNo;
         private String ticketNoSum;
         private String sumPrice;
@@ -27,8 +28,9 @@ public class TicketVo {
         private long fareId;
         private long worksheetId;
         private long trip;
-        
-    }
+        private long busTerminalId;
+        private List<RequesTicket> typeHfare;
+    } 
     
     @Getter
     @Setter
@@ -47,5 +49,14 @@ public class TicketVo {
         private Long busTerminalId;
     }
     
-
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class RequesTicket {
+        private long fareId;
+        private String ticketNo;
+    }
+    
 }

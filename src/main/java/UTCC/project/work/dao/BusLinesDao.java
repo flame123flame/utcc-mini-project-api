@@ -6,17 +6,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import UTCC.framework.utils.CommonJdbcTemplate;
+import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.vo.BusLinesVo;
+import UTCC.project.work.vo.DriverVo;
 
 @Repository
 public class BusLinesDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private CommonJdbcTemplate commonJdbcTemplate;
+	
+	
+	public List<BusLinesVo.Response> getDataByBusLinesId(long busLinesId) {
+	    String sql = "SELECT * FROM bus_lines bl " +
+	                 "JOIN buslines_h_busterminal bhb ON bl.bus_lines_id = bhb.bus_lines_id " +
+	                 "JOIN bus_terminal bt ON bt.bus_terminal_id = bhb.bus_terminal_id " +
+	                 "WHERE bl.bus_lines_id = ? ";
+
+	    return commonJdbcTemplate.executeQuery(
+	        sql,
+	        new Object[]{busLinesId},
+	        BeanPropertyRowMapper.newInstance(BusLinesVo.Response.class)
+	    );
+	}
+	
 	
 	public List<BusLinesVo.Response> getList() {
 		StringBuilder sql = new StringBuilder();

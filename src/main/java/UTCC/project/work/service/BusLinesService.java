@@ -43,6 +43,10 @@ public class BusLinesService {
 	}
 
 	
+	public List<BusLinesVo.Response> getBusLinesById(long busLinesId){
+		return busLinesDao.getDataByBusLinesId(busLinesId);
+	}
+
 	public BusLinesVo.Request findById(BusLinesVo.Request req) {
 	   BusLines optionalBusLines = busLinesRepository.findById(req.getBusLinesId()).get();
 	        BusLines busLines = optionalBusLines;

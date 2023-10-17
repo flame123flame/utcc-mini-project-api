@@ -44,6 +44,20 @@ public class BusLinesController {
 		return responseData;
 	}
 	
+	@PostMapping("find-by-bus-lines-id")
+	public ResponseData<List<BusLinesVo.Response> > findByBusLinesId( @RequestBody BusLinesVo.Request  req ) {
+		ResponseData<List<BusLinesVo.Response> > responseData = new ResponseData<>();
+		try {
+			responseData.setData(busLinesService.getBusLinesById(req.getBusLinesId()));
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
 	
 	
 	

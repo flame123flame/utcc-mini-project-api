@@ -16,6 +16,7 @@ public class BusVehicleVo {
 	    @AllArgsConstructor
 	    @NoArgsConstructor
 	    public static class Request {
+	       	private long worksheetId;
 	    	private long busVehicleId;
 	        private String busVehiclePlateNo;
 	        private String busVehiclePlateProv;
@@ -32,5 +33,13 @@ public class BusVehicleVo {
 	    	private String busLinesNo;
 	        private String busTypeName;
 	        private String busDivisionName;
+	    }
+	    
+	    @Getter
+	    @Setter
+	    public static class ResponseTicket{
+	    	private long fareId;
+	    	private String fareDesc;
+	        private String fareValue;
 	    }
 }

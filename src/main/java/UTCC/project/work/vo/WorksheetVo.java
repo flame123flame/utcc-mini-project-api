@@ -1,5 +1,6 @@
 package UTCC.project.work.vo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -24,15 +25,24 @@ public class WorksheetVo {
     public static class Request {
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime worksheetDate;
-        private Long worksheetId;
+        private long worksheetId;
         private String worksheetTimeBegin;
         private String worksheetTimeEnd;
+        private BigDecimal worksheetHours;
+        private BigDecimal worksheetHoursOt;
+        private Long busLinesId;
+        private String busLinesNo;
+        private Long busDivisionId;
+        private String busDivisionName;
+        private long busVehicleId;
         private String busVehiclePlateNo;
+        private String busVehicleNumber;
         private String worksheetDispatcher;
         private String worksheetDriver;
         private String worksheetFarecollect;
-        private String busVehicleNumber;
-        
+        private String worksheetTerminalAgent;
+        private String worksheetBuslinesManager;
+        private String worksheetStatus;
         
     }
     
@@ -41,5 +51,8 @@ public class WorksheetVo {
     public static class Response extends Request  {
      
     }
+    
+  
+    
 
 }

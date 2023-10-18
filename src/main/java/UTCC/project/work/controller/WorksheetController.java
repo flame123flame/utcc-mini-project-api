@@ -44,10 +44,10 @@ public class WorksheetController {
     
 	@PostMapping("/get-list-progress")
     @ResponseBody
-	public ResponseData<List<Worksheet>> getDropdownListBusVehicleProgress(@RequestBody WorksheetVo.Request request ) {
-		ResponseData<List<Worksheet>> responseData = new ResponseData<>();
+	public ResponseData<List<WorksheetVo.Response>> getDropdownListBusVehicleProgress(@RequestBody WorksheetVo.Request request ) {
+		ResponseData<List<WorksheetVo.Response>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(worksheetService.getList("IN_PROGRESS",request));
+			responseData.setData(worksheetService.getList("IN_PROGRESS"));
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
@@ -59,10 +59,10 @@ public class WorksheetController {
 
 	@PostMapping("/get-list-success")
     @ResponseBody
-	public ResponseData<List<Worksheet>> getDropdownListBusVehicle(@RequestBody WorksheetVo.Request request  ) {
-		ResponseData<List<Worksheet>> responseData = new ResponseData<>();
+	public ResponseData<List<WorksheetVo.Response>> getDropdownListBusVehicle(@RequestBody WorksheetVo.Request request  ) {
+		ResponseData<List<WorksheetVo.Response>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(worksheetService.getList("SUCCESS",request));
+			responseData.setData(worksheetService.getList("SUCCESS"));
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
@@ -71,6 +71,8 @@ public class WorksheetController {
 		}
 		return responseData;
 	}
+	
+	
 	
 	@GetMapping("/update-status/{id}")
 	public ResponseData<?> updateStatus(@PathVariable("id") Long id) {

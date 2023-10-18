@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.employee.module.Employee;
 import UTCC.project.employee.repo.jpa.EmployeeRepo;
+import UTCC.project.work.dao.WorksheetDao;
 import UTCC.project.work.model.BusVehicle;
 import UTCC.project.work.model.Worksheet;
 import UTCC.project.work.repositories.BusVehicleRepository;
@@ -32,6 +33,11 @@ public class WorksheetService {
 	
 	@Autowired
 	private EmployeeRepo employeeRepo;
+	
+	
+	@Autowired
+	private WorksheetDao worksheetDao;
+	
 	
 	public void saveFrom(WorksheetVo.Request req) {
 	    BusVehicle busVehicle = busVehicleRepository.findByBusVehiclePlateNo(req.getBusVehiclePlateNo());
@@ -73,19 +79,11 @@ public class WorksheetService {
 	    return employee;
 	}
 
-	
-	
-	public List<Worksheet> getList(String status,WorksheetVo.Request data){
-		if(data.getWorksheetId() != null) {
-			return (List<Worksheet>) worksheetRepository.findByStatus(status,data.getWorksheetId());
-		}
-		if(data.getWorksheetDate() != null) {
-			
-			return (List<Worksheet>) worksheetRepository.findByStatus(status,data.getWorksheetDate(),data.getWorksheetDate().toLocalDate().atTime(LocalTime.MAX).truncatedTo(ChronoUnit.SECONDS));
-		}
-		return (List<Worksheet>) worksheetRepository.findByStatus(status);
+	public List<WorksheetVo.Response> getList(String status){
+		return worksheetDao.getDataFarecollect(status);
 	}
 	
+
 	public void upDateStatus(Long id) {
 		Worksheet data = worksheetRepository.findById(id).get();
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");

@@ -1,6 +1,7 @@
 package UTCC.project.work.service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import UTCC.framework.constant.ConstantsTimestamp;
+import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.TicketDao;
 import UTCC.project.work.model.TerminalTimestamp;
 import UTCC.project.work.model.Ticket;
+import UTCC.project.work.model.TicketTrip;
 import UTCC.project.work.repositories.TerminalTimestampRepository;
 import UTCC.project.work.repositories.TicketRepository;
+import UTCC.project.work.repositories.TicketTripRepository;
 import UTCC.project.work.vo.TicketVo;
 import UTCC.project.work.vo.TicketVo.RequesTicket;
 
@@ -26,6 +30,11 @@ public class TicketService {
 	@Autowired
 	private TicketRepository ticketRepository;
 
+
+	@Autowired
+	private TicketTripRepository ticketTripRepository;
+
+	
 	@Autowired
 	private TerminalTimestampRepository terminalTimestampRepository;
 
@@ -86,22 +95,24 @@ public class TicketService {
 	}
 
 	public void saveForm(TicketVo.Request req) {
+		TicketTrip ticketTrip = new TicketTrip();
+		ticketTrip.setTicketBegin(req.getTicketBegin());
+		ticketTrip.setTicketEnd(req.getTicketEnd());
+		ticketTrip.setWorksheetId(req.getWorksheetId());
+		ticketTrip.setTrip(req.getTrip());
+		ticketTrip.setCreateBy(UserLoginUtil.getUsername());
+		ticketTrip.setCreateDate(LocalDateTime.now());
+		long idHeader = ticketTripRepository.save(ticketTrip).getTicketTripId();
 		Ticket data = null;
 		for(RequesTicket dataTicket:req.getTypeHfare()) {
 			data = new Ticket();
-			data.setTicketBegin(req.getTicketBegin());
-			data.setTicketEnd(req.getTicketEnd());
-			data.setWorksheetId(req.getWorksheetId());
-			data.setTrip(req.getTrip());
-			
+			data.setTicketTripId(idHeader);
 			data.setTicketNo(dataTicket.getTicketNo());
 			data.setFareId(dataTicket.getFareId());
-			
+			data.setCreateBy(UserLoginUtil.getUsername());
+			data.setCreateDate(LocalDateTime.now());
 			ticketRepository.save(data);
 		}
-	
-		
-
 		TerminalTimestamp terminalTimestamp = new TerminalTimestamp();
 		terminalTimestamp.setWorksheetId(req.getWorksheetId());
 		terminalTimestamp.setBusTerminalId(req.getBusTerminalId());
@@ -111,6 +122,8 @@ public class TicketService {
 		String formattedTime = dateFormat.format(currentDate);
 		terminalTimestamp.setTerminalTimeArrive(formattedTime);
 		terminalTimestamp.setTerminalTimestampStatus(ConstantsTimestamp.WAITING_TIMESTAMP);
+		terminalTimestamp.setCreateBy(UserLoginUtil.getUsername());
+		terminalTimestamp.setCreateDate(LocalDateTime.now());
 		terminalTimestampRepository.save(terminalTimestamp);
 
 	}

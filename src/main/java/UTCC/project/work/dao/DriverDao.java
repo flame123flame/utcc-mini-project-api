@@ -74,6 +74,7 @@ public class DriverDao {
 		List<Object> params = new ArrayList<>();
 		params.add(UserLoginUtil.getUsername());
 		params.add(status);
+		System.out.println(sql);
 		return commonJdbcTemplate.executeQuery(sql, params.toArray(),
 				BeanPropertyRowMapper.newInstance(DriverVo.Response.class));
 	}

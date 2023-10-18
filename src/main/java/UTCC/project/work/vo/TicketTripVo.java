@@ -1,8 +1,10 @@
 package UTCC.project.work.vo;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import UTCC.project.work.vo.TicketVo.Request;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,13 +27,27 @@ public class TicketTripVo {
         private long trip;
         private Boolean ticketBegin;
         private Boolean ticketEnd;
+        private List<TicketTripVo.TicketAndFare> ticketList;
         
     }
     
     @Getter
     @Setter
     public static class Response extends Request  {
-     
+    	  private BigDecimal sumPrice;
+     	  private long sumTicket;
+    }
+    
+    
+    @Getter
+    @Setter
+    public static class TicketAndFare   {
+        private String ticketNo;
+        private Long fareId;
+        private Long ticketTripId; 
+        private String fareDesc;
+        private BigDecimal fareValue;
+        
     }
 
 }

@@ -12,6 +12,7 @@ import UTCC.project.work.dao.TicketTripDao;
 import UTCC.project.work.model.TicketTrip;
 import UTCC.project.work.repositories.TicketTripRepository;
 import UTCC.project.work.vo.TicketTripVo;
+import UTCC.project.work.vo.TicketTripVo.TicketTime;
 
 @Service
 public class TicketTripService {
@@ -26,17 +27,39 @@ public class TicketTripService {
 		return (List<TicketTrip>) ticketTripRepository.findAll();
 	}
 
+//	getTicketTripTime
+	
+	
 	public List<TicketTripVo.Response> getTicketTripByWorksheetId(long id){
 		List<TicketTripVo.Response> dataRespons = new ArrayList<>();  
 		List<TicketTripVo.Response> dataTicketTrip = ticketTripDao.getTicketTripByWorksheetId(id);
+		 BigDecimal sum = BigDecimal.ZERO;
 		TicketTripVo.Response ticket = null;
-		for(TicketTripVo.Response item : dataTicketTrip) {
+		for( int index = 0; index < dataTicketTrip.size(); index++) {
 			ticket = new TicketTripVo.Response();
+			TicketTripVo.Response item = dataTicketTrip.get(index);
+			List<TicketTripVo.TicketTime> ticketTime = ticketTripDao.getTicketTripTime(item.getWorksheetId(), item.getTrip());
+			if (!ticketTime.isEmpty()) {
+			    TicketTime firstTicketTime = ticketTime.get(0);
+			    ticket.setTerminalTimeArrive(firstTicketTime.getTerminalTimeArrive());
+			    ticket.setTerminalTimeDeparture(
+			        firstTicketTime.getTerminalTimeDeparture() == null ? null : firstTicketTime.getTerminalTimeDeparture()
+			    );
+			    ticket.setBusTerminalDepartureDes(firstTicketTime.getBusTerminalName());
+			}
+			if (index == 0) {
+				ticket.setTerminalTimeArrive(null);
+			}
+			if (index > 0 ) {
+			    TicketTripVo.Response previousData = dataRespons.get(index - 1);
+			    ticket.setBusTerminalArrive(previousData.getBusTerminalDepartureDes());
+			}
 			ticket.setTicketBegin(item.getTicketBegin());
 			ticket.setTicketEnd(item.getTicketEnd());
 			ticket.setTicketTripId(item.getTicketTripId());
 			ticket.setWorksheetId(item.getWorksheetId());
         	ticket.setTrip(item.getTrip());
+        	ticket.setSumPrice(sum.setScale(2, RoundingMode.HALF_UP));
 			List<TicketTripVo.TicketAndFare> dataDeatil = ticketTripDao.getTicketTripDetail(item.getTicketTripId());
 			TicketTripVo.TicketAndFare ticketAndFare = null;
 			List<TicketTripVo.TicketAndFare> ticketAndFareList = new ArrayList<>();  
@@ -51,6 +74,18 @@ public class TicketTripService {
 			}
 			ticket.setTicketList(ticketAndFareList);
 			dataRespons.add(ticket);
+			if (index == 1) {
+			    dataRespons.get(0).setBusTerminalArrive(dataRespons.get(1).getBusTerminalDepartureDes());
+			}
+			if (index > 0) {
+			    int previousIndex = index - 1;
+			    dataRespons.get(previousIndex).setTerminalTimeArrive(dataRespons.get(index).getTerminalTimeArrive());
+			    dataRespons.get(previousIndex).setBusTerminalArrive(dataRespons.get(index).getBusTerminalDepartureDes());
+			}
+			if (index == dataRespons.size() - 1) {
+			    dataRespons.get(index).setTerminalTimeArrive(null);
+			    dataRespons.get(index).setBusTerminalArrive(null);
+			}
 		}
 		return calSumPrice(dataRespons);
 	}

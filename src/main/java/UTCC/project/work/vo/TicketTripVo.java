@@ -27,6 +27,10 @@ public class TicketTripVo {
         private long trip;
         private Boolean ticketBegin;
         private Boolean ticketEnd;
+        private String terminalTimeDeparture;
+        private String terminalTimeArrive;
+        private String busTerminalDepartureDes;
+        private String busTerminalArrive;
         private List<TicketTripVo.TicketAndFare> ticketList;
         
     }
@@ -48,6 +52,15 @@ public class TicketTripVo {
         private String fareDesc;
         private BigDecimal fareValue;
         
+    }
+    
+    @Getter
+    @Setter
+    public static class TicketTime   {
+        private String terminalTimeArrive;
+        private String terminalTimeDeparture;
+        private String busTerminalName;
+        private long trip;
     }
 
 }

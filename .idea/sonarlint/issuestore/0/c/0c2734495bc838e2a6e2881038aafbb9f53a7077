@@ -1,0 +1,8 @@
+
+g	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(Ó˜ııÿÿÿÿ8‡¥Ã²®1
+g	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(İù›Òøÿÿÿÿ8‹½Ã²®1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Âå£„şÿÿÿÿ8¦Á²®1
+Y
+java:S3655("7Call "Optional#isPresent()" before accessing the value.(¨¦İ—üÿÿÿÿ8¡¦Á²®1
+R
+java:S11725"0Remove this unused method parameter "timestamp".(İù›Òøÿÿÿÿ8¥¦Á²®1

@@ -1,0 +1,10 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Βε£„ώÿÿÿÿ
+R
+java:S3655*"7Call "Optional#isPresent()" before accessing the value.(ΜΏβρωÿÿÿÿ
+M
+java:S3655Y"7Call "Optional#isPresent()" before accessing the value.(τ‚„ε
+N
+java:S3655…"7Call "Optional#isPresent()" before accessing the value.(τ‚„ε
+T
+java:S1854e"?Remove this useless assignment to local variable "busLinesSet".(ζ‚σ7

@@ -31,6 +31,9 @@ public class TicketTripVo {
         private String terminalTimeArrive;
         private String busTerminalDepartureDes;
         private String busTerminalArrive;
+        private Boolean isTimestamp;
+        private long terminalTimestampId;
+        private String busTerminalAgentName;
         private List<TicketTripVo.TicketAndFare> ticketList;
         
     }
@@ -57,10 +60,15 @@ public class TicketTripVo {
     @Getter
     @Setter
     public static class TicketTime   {
+        private String busTerminalAgent;
         private String terminalTimeArrive;
         private String terminalTimeDeparture;
+        private String terminalTimestampStatus;
         private String busTerminalName;
+        private long terminalTimestampId;
+        private long busTerminalId;
         private long trip;
+     
     }
 
 }

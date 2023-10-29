@@ -55,6 +55,22 @@ public class TerminalTimestampController {
 		return responseData;
 	}
 	
+
+	@GetMapping("end")
+	public ResponseData<List<TerminalTimestampVo.Response>> end() {
+		ResponseData<List<TerminalTimestampVo.Response>> responseData = new ResponseData<>();
+		try {
+			responseData.setData(terminalTimestampService.getTerminalTimestampEnd());
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
 	
 	@PostMapping("set-timestamp")
 	public ResponseData<?> setTimestamp(@RequestBody TicketTripVo.Request req ) {
@@ -70,7 +86,7 @@ public class TerminalTimestampController {
 		}
 		return responseData;
 	}
-	
+
 
 	@PostMapping("set-timestamp-end")
 	public ResponseData<?> setTimestampEnd(@RequestBody TicketTripVo.Request req ) {

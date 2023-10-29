@@ -36,11 +36,11 @@ public class Worksheet implements Serializable {
     @Column(name = "worksheet_time_end", nullable = false)
     private String worksheetTimeEnd;
     
-    @Column(name = "worksheet_hours", nullable = false)
-    private BigDecimal worksheetHours;
+    @Column(name = "worksheet_hours")
+    private Long worksheetHours;
     
-    @Column(name = "worksheet_hours_ot", nullable = false)
-    private BigDecimal worksheetHoursOt;
+    @Column(name = "worksheet_hours_ot")
+    private Long worksheetHoursOt;
     
     @Column(name = "worksheet_status", nullable = false)
     private String worksheetStatus;

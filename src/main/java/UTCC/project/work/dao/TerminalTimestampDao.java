@@ -23,6 +23,16 @@ public class TerminalTimestampDao {
 	private EmployeeRepo employeeRepo;
 	
 	
+	public void updateStatusTerminalTimestamp(String status,long id) {
+	    String sql = " UPDATE terminal_timestamp SET terminal_timestamp_status = ? WHERE worksheet_id = ? ";
+	    List<Object> params = new ArrayList<>();
+	    params.add(status);
+	    params.add(id);
+	    commonJdbcTemplate.executeInsert(sql, params.toArray());
+	}
+
+	
+	
 	
 	public List<TerminalTimestampVo.Response> getDataSuccess(String status) {
 	    Employee employee = employeeRepo.findByUsername(UserLoginUtil.getUsername());
@@ -33,6 +43,9 @@ public class TerminalTimestampDao {
 	    return commonJdbcTemplate.executeQuery(sql, params.toArray(), BeanPropertyRowMapper.newInstance(TerminalTimestampVo.Response.class));
 	}
 
+	
+	
+	
 	private String buildQuerySuccess() {
 	    StringBuilder sql = new StringBuilder();
 	    sql.append("SELECT\n"
@@ -104,7 +117,6 @@ public class TerminalTimestampDao {
 	public List<TerminalTimestampVo.Response> getData(String status) {
 	    Employee employee = employeeRepo.findByUsername(UserLoginUtil.getUsername());
 	    String sql = buildQuery();
-	    System.out.println(buildQuery());
 	    List<Object> params = new ArrayList<>();
 	    params.add(status);
 	    params.add(employee.getBusTerminalId());
@@ -175,5 +187,9 @@ public class TerminalTimestampDao {
 	 
 	    return sql.toString();
 	}
+	
+	
+	
+	
 
 }

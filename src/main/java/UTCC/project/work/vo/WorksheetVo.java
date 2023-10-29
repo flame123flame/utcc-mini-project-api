@@ -28,8 +28,8 @@ public class WorksheetVo {
         private long worksheetId;
         private String worksheetTimeBegin;
         private String worksheetTimeEnd;
-        private BigDecimal worksheetHours;
-        private BigDecimal worksheetHoursOt;
+        private Long worksheetHours;
+        private Long worksheetHoursOt;
         private Long busLinesId;
         private String busLinesNo;
         private Long busDivisionId;

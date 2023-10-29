@@ -2,14 +2,14 @@ package UTCC.project.work.service;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.constant.BusVehicleStatus;
+import UTCC.framework.constant.ConstantsWorksheetStatus;
 import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.employee.module.Employee;
 import UTCC.project.employee.repo.jpa.EmployeeRepo;
@@ -26,27 +26,22 @@ public class WorksheetService {
 	@Autowired
 	private WorksheetRepository worksheetRepository;
 	
-	
 	@Autowired
 	private BusVehicleRepository busVehicleRepository;
-	
 	
 	@Autowired
 	private EmployeeRepo employeeRepo;
 	
-	
 	@Autowired
 	private WorksheetDao worksheetDao;
-	
 	
 	public void saveFrom(WorksheetVo.Request req) {
 	    BusVehicle busVehicle = busVehicleRepository.findByBusVehiclePlateNo(req.getBusVehiclePlateNo());
 	    if (busVehicle == null) {
 	        return;
 	    }
-	    Employee driver = getAndUpdateEmployeeStatus(req.getWorksheetDriver(), "UNAVAILABLE");
-	    Employee fareCollector = getAndUpdateEmployeeStatus(req.getWorksheetFarecollect(), "UNAVAILABLE");
-
+	    Employee driver = getAndUpdateEmployeeStatus(req.getWorksheetDriver(), BusVehicleStatus.UNAVAILABLE);
+	    Employee fareCollector = getAndUpdateEmployeeStatus(req.getWorksheetFarecollect(), BusVehicleStatus.UNAVAILABLE);
 	    if (driver != null && fareCollector != null) {
 	        Worksheet worksheet = new Worksheet();
 	        worksheet.setWorksheetDate(req.getWorksheetDate()); 
@@ -70,25 +65,22 @@ public class WorksheetService {
 
 	private Employee getAndUpdateEmployeeStatus(String username, String status) {
 	    Employee employee = employeeRepo.findByUsername(username);
-	    
 	    if (employee != null) {
 	        employee.setEmployeeStatus(status);
 	        employeeRepo.save(employee);
 	    }
-	    
 	    return employee;
 	}
 
 	public List<WorksheetVo.Response> getList(String status){
 		return worksheetDao.getDataFarecollect(status);
 	}
-	
 
 	public void upDateStatus(Long id) {
 		Worksheet data = worksheetRepository.findById(id).get();
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 		Date date = new Date();
-		data.setWorksheetStatus("SUCCESS");
+		data.setWorksheetStatus(ConstantsWorksheetStatus.SUCCESS);
 		data.setWorksheetTimeEnd(formatter.format(date));
 		data.setWorksheetBuslinesManager(UserLoginUtil.getUsername());
 		worksheetRepository.save(data);

@@ -19,7 +19,6 @@ public class FareService {
 	@Autowired
 	private FareRepository fareRepository;
 	
-	
 	public List<Fare> getFare(){
 		return (List<Fare>) fareRepository.findAll();
 	}

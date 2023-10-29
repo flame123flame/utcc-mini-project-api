@@ -16,14 +16,11 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusTerminal;
 import UTCC.project.work.service.BusTerminalService;
 import UTCC.project.work.vo.BusTerminalVo;
-import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
 @RequestMapping("api/bus-terminal/")
-@Slf4j
 public class BusTerminalController {
-		
 	
 	@Autowired
 	private BusTerminalService busTerminalService;

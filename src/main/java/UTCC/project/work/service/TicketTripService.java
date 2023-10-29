@@ -35,15 +35,10 @@ public class TicketTripService {
 			dataRespons.add(ticket);
 			updatePreviousAndFirstTickets(dataRespons, index);
 		}
-
 		return calSumPrice(dataRespons);
 	}
 
-	private TicketTripVo.Response createTicketResponse(
-			List<TicketTripVo.Response> dataTicketTrip,
-			int index,
-			List<TicketTripVo.Response> dataRespons,
-			BigDecimal sum
+	private TicketTripVo.Response createTicketResponse(List<TicketTripVo.Response> dataTicketTrip,int index,List<TicketTripVo.Response> dataRespons,BigDecimal sum
 	) {
 		TicketTripVo.Response item = dataTicketTrip.get(index);
 		TicketTripVo.Response ticket = new TicketTripVo.Response();
@@ -74,11 +69,7 @@ public class TicketTripService {
 		}
 	}
 
-	private void setBusTerminalArrivalInfo(
-			TicketTripVo.Response ticket,
-			int index,
-			List<TicketTripVo.Response> dataRespons
-	) {
+	private void setBusTerminalArrivalInfo(TicketTripVo.Response ticket,int index,List<TicketTripVo.Response> dataRespons) {
 		if (index > 0) {
 			TicketTripVo.Response previousData = dataRespons.get(index - 1);
 			ticket.setBusTerminalArrive(previousData.getBusTerminalDepartureDes());
@@ -131,7 +122,6 @@ public class TicketTripService {
 			data.setSumPrice(sum);
 			data.setSumTicket(calculateSumTicketForTicketList(data.getTicketList(), previousData.getTicketList()));
 		}
-
 		return dataRespons;
 	}
 
@@ -146,7 +136,6 @@ public class TicketTripService {
 			BigDecimal valueToAdd = BigDecimal.valueOf(result).multiply(fareValue);
 			sum = sum.add(valueToAdd).setScale(2, RoundingMode.HALF_UP);
 		}
-
 		return sum;
 	}
 
@@ -158,12 +147,7 @@ public class TicketTripService {
 			long result = Long.valueOf(currentTicket.getTicketNo()) - Long.valueOf(previousTicket.getTicketNo());
 			resultReturn += result;
 		}
-
 		return resultReturn;
 	}
-
-	
-	
-
 
 }

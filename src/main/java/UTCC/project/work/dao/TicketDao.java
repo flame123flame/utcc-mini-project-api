@@ -28,9 +28,7 @@ public class TicketDao {
 				+ "	buslines_h_busterminal.bus_terminal_id = bus_terminal.bus_terminal_id "
 				+ "WHERE "
 				+ "	worksheet.worksheet_id = ? ");
-
 		params.add(id);
-		System.out.println(sql.toString());
 		List<TicketVo.RequestDropdown> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(), dataApproveRowmapper);
 		return datas;
 	}
@@ -52,7 +50,6 @@ public class TicketDao {
 		sql.append(" SELECT * FROM ticket  "
 				+ "WHERE "
 				+ "	ticket.worksheet_id = ? ");
-
 		params.add(id);
 		System.out.println(sql.toString());
 		List<TicketVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(), rowmapper);

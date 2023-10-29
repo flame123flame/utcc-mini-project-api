@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.constant.ConstantsWorksheetStatus;
 import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.DriverDao;
 import UTCC.project.work.vo.DriverVo;
@@ -18,7 +19,7 @@ public class DriverService {
 	
 
 	public List<DriverVo.Response> getDataFarecollectProgress(){
-		return driverDao.getDataFarecollect("IN_PROGRESS");
+		return driverDao.getDataFarecollect(ConstantsWorksheetStatus.IN_PROGRESS);
 	}
 	
 	public List<DriverVo.Response> getDataFarecollectSuccess(){
@@ -26,11 +27,11 @@ public class DriverService {
 	}
 	
 	public List<DriverVo.Response> getDataDriverProgress(){
-		return driverDao.getDataDriver(UserLoginUtil.getUsername(),"IN_PROGRESS");
+		return driverDao.getDataDriver(UserLoginUtil.getUsername(),ConstantsWorksheetStatus.IN_PROGRESS);
 	}
 		
 	public List<DriverVo.Response> getDataDriverSuccess(){
-		return driverDao.getDataDriver(UserLoginUtil.getUsername(),"SUCCESS");
+		return driverDao.getDataDriver(UserLoginUtil.getUsername(),ConstantsWorksheetStatus.SUCCESS);
 	}
 		
 }

@@ -15,11 +15,9 @@ import UTCC.framework.constant.ResponseConstant.RESPONSE_STATUS;
 import UTCC.framework.model.ResponseData;
 import UTCC.project.work.service.BusDivisionService;
 import UTCC.project.work.vo.BusDivisionVo;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/bus-division/")
-@Slf4j
 public class BusDivisionController {
 
 	@Autowired

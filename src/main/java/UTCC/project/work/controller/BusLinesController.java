@@ -16,13 +16,10 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusLines;
 import UTCC.project.work.service.BusLinesService;
 import UTCC.project.work.vo.BusLinesVo;
-import UTCC.project.work.vo.BusTypeVo;
-import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
 @RequestMapping("api/bus-lines/")
-@Slf4j
 public class BusLinesController {
 
 	@Autowired
@@ -58,8 +55,6 @@ public class BusLinesController {
 		}
 		return responseData;
 	}
-	
-	
 	
 	@GetMapping("search-all")
 	public ResponseData<List<BusLines>> search( ) {

@@ -14,11 +14,9 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.TicketTrip;
 import UTCC.project.work.service.TicketTripService;
 import UTCC.project.work.vo.TicketTripVo;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/ticket-trip/")
-@Slf4j
 public class TicketTripController {
 
 	@Autowired

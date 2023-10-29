@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import UTCC.framework.utils.UserLoginUtil;
-import UTCC.project.work.model.BusLines;
 import UTCC.project.work.model.BusTerminal;
 import UTCC.project.work.repositories.BusTerminalRepository;
-import UTCC.project.work.vo.BusLinesVo;
 import UTCC.project.work.vo.BusTerminalVo;
 
 @Service

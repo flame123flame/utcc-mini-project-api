@@ -37,9 +37,6 @@ public class BusDivisionDao {
 		List<BusDivisionVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(), dataRowmapper);
 		return datas;
 	}
-	
-	
-	
 
 	private RowMapper<BusDivisionVo.Response> dataRowmapper = new RowMapper<BusDivisionVo.Response>() {
 		@Override

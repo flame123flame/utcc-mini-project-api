@@ -37,7 +37,6 @@ public class TerminalTimestampService {
 	@Autowired
 	private TerminalTimestampDao terminalTimestampDao;
 	
-	
 	@Autowired
 	private TerminalTimestampRepository terminalTimestampRepository;
 	
@@ -52,7 +51,6 @@ public class TerminalTimestampService {
 	
 	@Autowired
 	private BusVehicleRepository busVehicleRepository;
-	
 
 	@Autowired
 	private TicketTripDao ticketTripDao;
@@ -60,7 +58,6 @@ public class TerminalTimestampService {
 	public List<TerminalTimestampVo.Response> getTerminalTimestamp(){
 		return terminalTimestampDao.getData(ConstantsTimestamp.WAITING_TIMESTAMP);
 	}
-	
 	
 	public List<TerminalTimestampVo.Response> getTerminalTimestampSucess(){
 		return terminalTimestampDao.getDataSuccess(ConstantsTimestamp.SUCCESS_TIMESTAMP);
@@ -161,6 +158,7 @@ public class TerminalTimestampService {
             return 0;
         }
     }
+    
 	public List<TicketTripVo.Response> getTicketTripByWorksheetId(long id) {
 		List<TicketTripVo.Response> dataRespons = new ArrayList<>();
 		List<TicketTripVo.Response> dataTicketTrip = ticketTripDao.getTicketTripByWorksheetId(id);
@@ -170,17 +168,10 @@ public class TerminalTimestampService {
 			dataRespons.add(ticket);
 			updatePreviousAndFirstTickets(dataRespons, index);
 		}
-
 		return calSumPrice(dataRespons);
 	}
 
-	private TicketTripVo.Response createTicketResponse(
-			List<TicketTripVo.Response> dataTicketTrip,
-			int index,
-			List<TicketTripVo.Response> dataRespons,
-			BigDecimal sum
-	) {
-		
+	private TicketTripVo.Response createTicketResponse(List<TicketTripVo.Response> dataTicketTrip,int index,List<TicketTripVo.Response> dataRespons,BigDecimal sum) {
 		TicketTripVo.Response item = dataTicketTrip.get(index);
 		TicketTripVo.Response ticket = new TicketTripVo.Response();
 		List<TicketTripVo.TicketTime> ticketTime = ticketTripDao.getTicketTripTime(item.getWorksheetId(), item.getTrip());
@@ -223,11 +214,7 @@ public class TerminalTimestampService {
 		}
 	}
 
-	private void setBusTerminalArrivalInfo(
-			TicketTripVo.Response ticket,
-			int index,
-			List<TicketTripVo.Response> dataRespons
-	) {
+	private void setBusTerminalArrivalInfo(TicketTripVo.Response ticket,int index,List<TicketTripVo.Response> dataRespons) {
 		if (index > 0) {
 			TicketTripVo.Response previousData = dataRespons.get(index - 1);
 			ticket.setBusTerminalArrive(previousData.getBusTerminalDepartureDes());
@@ -246,7 +233,6 @@ public class TerminalTimestampService {
 			ticketAndFare.setTicketTripId(item.getTicketTripId());
 			ticketAndFareList.add(ticketAndFare);
 		}
-
 		return ticketAndFareList;
 	}
 
@@ -280,7 +266,6 @@ public class TerminalTimestampService {
 			data.setSumPrice(sum);
 			data.setSumTicket(calculateSumTicketForTicketList(data.getTicketList(), previousData.getTicketList()));
 		}
-
 		return dataRespons;
 	}
 
@@ -294,7 +279,6 @@ public class TerminalTimestampService {
 			BigDecimal valueToAdd = BigDecimal.valueOf(result).multiply(fareValue);
 			sum = sum.add(valueToAdd).setScale(2, RoundingMode.HALF_UP);
 		}
-
 		return sum;
 	}
 
@@ -306,12 +290,7 @@ public class TerminalTimestampService {
 			long result = Long.valueOf(currentTicket.getTicketNo()) - Long.valueOf(previousTicket.getTicketNo());
 			resultReturn += result;
 		}
-
 		return resultReturn;
 	}
-
-	
-	
-	
 	
 }

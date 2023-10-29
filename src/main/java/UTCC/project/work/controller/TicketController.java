@@ -18,8 +18,6 @@ import UTCC.project.work.vo.TicketVo;
 @RestController
 @RequestMapping("api/ticket")
 public class TicketController {
-
-
 		
 	@Autowired
 	private TicketService ticketService;
@@ -56,9 +54,6 @@ public class TicketController {
 		return responseData;
 	}
     
-    
-    
-    
     @PostMapping("save")
     @ResponseBody
     public ResponseData<?> save(@RequestBody TicketVo.Request request) {
@@ -74,6 +69,5 @@ public class TicketController {
         }
         return response;
     }
-
     
 }

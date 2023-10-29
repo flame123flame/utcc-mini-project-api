@@ -50,14 +50,11 @@ public class BusVehicleDao {
 	
 
 	public List<BusVehicleVo.Response> getDropdownListBusVehicle() {
-		
 		Employee employee = employeeRepo.findByUsername(UserLoginUtil.getUsername());
 		StringBuilder sql = new StringBuilder();
 		List<Object> params = new ArrayList<Object>();
 		sql.append(" SELECT * FROM  bus_vehicle  bv  join bus_type  ty  on bv.bus_type_id  = ty.bus_type_id where   bv.bus_lines_id = ? and bv.bus_vehicle_status = 'AVAILABLE' ");
 		params.add(employee.getBuslinesId());
-//		UserLoginUtil.getCurrentUserBean().getEmployee().getBuslinesId();
-		System.out.println(" = = == = = " + employee.getBuslinesId());
 		List<BusVehicleVo.Response> datas = this.jdbcTemplate.query(sql.toString(), params.toArray(),
 				dataApproveRowmapper);
 		return datas;

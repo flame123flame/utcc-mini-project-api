@@ -20,7 +20,6 @@ import UTCC.project.work.vo.TicketTripVo;
 @RestController
 @RequestMapping("api/timestamp/")
 public class TerminalTimestampController {
-
 	
 	@Autowired
 	private TerminalTimestampService terminalTimestampService;
@@ -54,7 +53,6 @@ public class TerminalTimestampController {
 		}
 		return responseData;
 	}
-	
 
 	@GetMapping("end")
 	public ResponseData<List<TerminalTimestampVo.Response>> end() {
@@ -71,7 +69,6 @@ public class TerminalTimestampController {
 		return responseData;
 	}
 	
-	
 	@PostMapping("set-timestamp")
 	public ResponseData<?> setTimestamp(@RequestBody TicketTripVo.Request req ) {
 		ResponseData<?> responseData = new ResponseData<>();
@@ -86,7 +83,6 @@ public class TerminalTimestampController {
 		}
 		return responseData;
 	}
-
 
 	@PostMapping("set-timestamp-end")
 	public ResponseData<?> setTimestampEnd(@RequestBody TicketTripVo.Request req ) {
@@ -103,9 +99,6 @@ public class TerminalTimestampController {
 		return responseData;
 	}
 	
-	
-	
-	
 	@GetMapping("find-by-worksheet-id/{id}")
 	public ResponseData<List<TicketTripVo.Response>> findByWorksheetId(@PathVariable("id") long id ) {
 		ResponseData<List<TicketTripVo.Response>> responseData = new ResponseData<>();
@@ -120,8 +113,5 @@ public class TerminalTimestampController {
 		}
 		return responseData;
 	}
-	
-	
-	
 	
 }

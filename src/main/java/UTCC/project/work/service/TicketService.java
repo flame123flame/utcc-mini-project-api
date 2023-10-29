@@ -45,16 +45,13 @@ public class TicketService {
 	public List<TicketVo.Response> getDataById(Long id) {
 		List<TicketVo.Response> data = ticketDao.getDataById(id);
 		List<TicketVo.Response> dataSend = new ArrayList<>(data.size());
-
 		for (int i = 0; i < data.size(); i++) {
 			TicketVo.Response currentData = data.get(i);
 			TicketVo.Response previousData = i == 0 ? null : data.get(i - 1);
-
 			long ticketCal = 0;
 			if (currentData.getTrip() > 0 && previousData != null) {
 				ticketCal = Long.parseLong(currentData.getTicketNo()) - Long.parseLong(previousData.getTicketNo());
 			}
-
 			TicketVo.Response dataSet = new TicketVo.Response();
 			dataSet.setTicketNo(currentData.getTicketNo());
 			dataSet.setTicketNoSum(String.valueOf(ticketCal));
@@ -63,25 +60,19 @@ public class TicketService {
 			dataSet.setFareId(8);
 			dataSend.add(dataSet);
 		}
-
 		return dataSend;
 	}
-
-	
 	
 	public List<TicketVo.Response> getDataByIdNew(Long id) {
 		List<TicketVo.Response> data = ticketDao.getDataById(id);
 		List<TicketVo.Response> dataSend = new ArrayList<>(data.size());
-
 		for (int i = 0; i < data.size(); i++) {
 			TicketVo.Response currentData = data.get(i);
 			TicketVo.Response previousData = i == 0 ? null : data.get(i - 1);
-
 			long ticketCal = 0;
 			if (currentData.getTrip() > 0 && previousData != null) {
 				ticketCal = Long.parseLong(currentData.getTicketNo()) - Long.parseLong(previousData.getTicketNo());
 			}
-
 			TicketVo.Response dataSet = new TicketVo.Response();
 			dataSet.setTicketNo(currentData.getTicketNo());
 			dataSet.setTicketNoSum(String.valueOf(ticketCal));
@@ -90,7 +81,6 @@ public class TicketService {
 			dataSet.setFareId(8);
 			dataSend.add(dataSet);
 		}
-
 		return dataSend;
 	}
 

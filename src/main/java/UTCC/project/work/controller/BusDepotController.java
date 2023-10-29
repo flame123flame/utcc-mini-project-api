@@ -16,12 +16,10 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusDepot;
 import UTCC.project.work.service.BusDepotService;
 import UTCC.project.work.vo.BusDepotVo;
-import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
 @RequestMapping("api/bus-depot/")
-@Slf4j
 public class BusDepotController {
 
 	@Autowired

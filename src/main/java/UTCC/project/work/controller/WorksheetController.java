@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import UTCC.framework.constant.ResponseConstant.RESPONSE_MESSAGE;
 import UTCC.framework.constant.ResponseConstant.RESPONSE_STATUS;
 import UTCC.framework.model.ResponseData;
-import UTCC.project.work.model.Worksheet;
 import UTCC.project.work.service.WorksheetService;
 import UTCC.project.work.vo.WorksheetVo;
 
@@ -24,7 +23,6 @@ public class WorksheetController {
 
 	@Autowired
 	private WorksheetService worksheetService;
-	
 	
     @PostMapping("/save")
     @ResponseBody
@@ -71,8 +69,6 @@ public class WorksheetController {
 		}
 		return responseData;
 	}
-	
-	
 	
 	@GetMapping("/update-status/{id}")
 	public ResponseData<?> updateStatus(@PathVariable("id") Long id) {

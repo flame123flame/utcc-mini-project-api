@@ -1,7 +1,6 @@
 package UTCC.project.work.service;
 
 import java.time.LocalDateTime;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,14 +10,11 @@ import org.springframework.stereotype.Service;
 import UTCC.framework.utils.UserLoginUtil;
 import UTCC.project.work.dao.BusLinesDao;
 import UTCC.project.work.model.BusLines;
-import UTCC.project.work.model.BusType;
 import UTCC.project.work.model.BuslinesHbusterminal;
-import UTCC.project.work.model.TypeHfare;
 import UTCC.project.work.repositories.BusLinesRepository;
 import UTCC.project.work.repositories.BuslinesHbusterminalRepository;
 import UTCC.project.work.vo.BusLinesVo;
 import UTCC.project.work.vo.BusTerminalVo;
-import UTCC.project.work.vo.BusTypeVo;
 
 
 
@@ -58,7 +54,6 @@ public class BusLinesService {
 	                    return blHbt;
 	                })
 	                .collect(Collectors.toList());
-
 	        BusLinesVo.Request busLinesRes = new BusLinesVo.Request();
 	        busLinesRes.setBusLinesDestination(busLines.getBusLinesDestination());
 	        busLinesRes.setBusLinesExpressway(busLines.getBusLinesExpressway());
@@ -123,24 +118,18 @@ public class BusLinesService {
 	}
 
 	
-	
-	
-	
 	public void edit(BusLinesVo.Request req) {
 	    try {
 	        BusLines busLines = updateBusLines(req);
 	        busLinesRepository.save(busLines);
 	        updateBuslineHbusterminals(req.getBusLinesId(), req.getListDetail());
 	    } catch (Exception e) {
-	        // Handle exceptions
 	        e.printStackTrace();
-	        // Consider logging or throwing a custom exception here
 	    }
 	}
 
 	private BusLines updateBusLines(BusLinesVo.Request req) {
 	    BusLines busLines = busLinesRepository.findById(req.getBusLinesId()).get();
-
 	    busLines.setBusLinesNo(req.getBusLinesNo());
 	    busLines.setBusLinesOrigin(req.getBusLinesOrigin());
 	    busLines.setBusLinesDestination(req.getBusLinesDestination());
@@ -148,14 +137,12 @@ public class BusLinesService {
 	    busLines.setBusLinesNightshift(req.getBusLinesNightshift());
 	    busLines.setCreateDate(LocalDateTime.now());
 	    busLines.setCreateBy(UserLoginUtil.getUsername());
-
 	    return busLines;
 	}
 
 	private void updateBuslineHbusterminals(long busLinesId, List<BusTerminalVo.Request> listDetail) {
 	    List<BuslinesHbusterminal> existingHbusterminals = blHbtRepository.findByBusLinesId(busLinesId);
 	    blHbtRepository.deleteAll(existingHbusterminals);
-
 	    List<BuslinesHbusterminal> newHbusterminals = listDetail.stream()
 	        .map(item -> {
 	            BuslinesHbusterminal blHbt = new BuslinesHbusterminal();
@@ -166,7 +153,6 @@ public class BusLinesService {
 	            return blHbt;
 	        })
 	        .collect(Collectors.toList());
-
 	    blHbtRepository.saveAll(newHbusterminals);
 	}
 

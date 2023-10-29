@@ -16,12 +16,10 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.Fare;
 import UTCC.project.work.service.FareService;
 import UTCC.project.work.vo.FareVo;
-import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
 @RequestMapping("api/fare/")
-@Slf4j
 public class FareController {
 
 	@Autowired

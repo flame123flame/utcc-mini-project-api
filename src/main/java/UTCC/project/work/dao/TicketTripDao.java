@@ -33,20 +33,14 @@ public class TicketTripDao {
 				BeanPropertyRowMapper.newInstance(TicketTripVo.TicketTime.class));
 	}
 	
-	
-	
-	
-	
 	public List<TicketTripVo.Response> getTicketTripByWorksheetId(long id) {
 		String sql = " SELECT * FROM ticket_trip WHERE ticket_trip.worksheet_id = ? ";
-
 		List<Object> params = new ArrayList<>();
 		params.add(id);
 		System.out.println(sql);
 		return commonJdbcTemplate.executeQuery(sql, params.toArray(),
 				BeanPropertyRowMapper.newInstance(TicketTripVo.Response.class));
 	}
-	
 	
 	public List<TicketTripVo.TicketAndFare> getTicketTripDetail(long id) {
 		String sql = " SELECT * FROM ticket join fare on  ticket.fare_id = fare.fare_id WHERE ticket.ticket_trip_id = ? ";

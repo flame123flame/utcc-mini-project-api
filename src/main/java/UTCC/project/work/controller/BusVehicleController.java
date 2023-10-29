@@ -17,11 +17,9 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusVehicle;
 import UTCC.project.work.service.BusVehicleService;
 import UTCC.project.work.vo.BusVehicleVo;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/bus-vehicle/")
-@Slf4j
 public class BusVehicleController {
 
 	@Autowired
@@ -72,10 +70,6 @@ public class BusVehicleController {
 		}
 		return responseData;
 	}
-	
-	
-	 
-	
 
 	@GetMapping("search")
 	public ResponseData<List<BusVehicleVo.Response>> getListBusVehicle( ) {
@@ -86,7 +80,6 @@ public class BusVehicleController {
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("BusVehicleController: getDropdownListBusVehicle ", e);
 			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}
@@ -131,7 +124,6 @@ public class BusVehicleController {
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
-			log.error("BusVehicleController: getDropdownListBusVehicle ", e);
 			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
 			responseData.setStatus(RESPONSE_STATUS.FAILED);
 		}

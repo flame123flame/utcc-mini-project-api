@@ -16,11 +16,9 @@ import UTCC.framework.model.ResponseData;
 import UTCC.project.work.model.BusType;
 import UTCC.project.work.service.BusTypeService;
 import UTCC.project.work.vo.BusTypeVo;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/bus-type/")
-@Slf4j
 public class BusTypeController {
 
 	@Autowired
@@ -55,9 +53,6 @@ public class BusTypeController {
 		}
 		return responseData;
 	}
-	
-	
-	
 
 	@PostMapping("save")
 	public ResponseData<?> save(@RequestBody BusTypeVo.Request req) {

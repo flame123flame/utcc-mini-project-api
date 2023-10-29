@@ -25,7 +25,6 @@ public class BusDivisionVo {
 	       private String depotName;
 		   private long busDepotId;
     }
-	
 
     @Getter
     @Setter

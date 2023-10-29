@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class UtccApplication {
 
 	public static void main(String[] args) throws Exception {
-	  
 		SpringApplication.run(UtccApplication.class, args);
 	}
 	

@@ -23,7 +23,7 @@ public class DriverService {
 	}
 	
 	public List<DriverVo.Response> getDataFarecollectSuccess(){
-		return driverDao.getDataFarecollect("SUCCESS");
+		return driverDao.getDataFarecollectOrEnd(ConstantsWorksheetStatus.SUCCESS,ConstantsWorksheetStatus.END_PROGRESS);
 	}
 	
 	public List<DriverVo.Response> getDataDriverProgress(){

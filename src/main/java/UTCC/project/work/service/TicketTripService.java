@@ -44,9 +44,7 @@ public class TicketTripService {
 		TicketTripVo.Response ticket = new TicketTripVo.Response();
 		List<TicketTripVo.TicketTime> ticketTime = ticketTripDao.getTicketTripTime(item.getWorksheetId(), item.getTrip());
 		setTicketTimeInfo(ticket, ticketTime);
-		if (index == 0) {
-			ticket.setTerminalTimeArrive(null);
-		}
+		
 		setBusTerminalArrivalInfo(ticket, index, dataRespons);
 		ticket.setTicketBegin(item.getTicketBegin());
 		ticket.setTicketEnd(item.getTicketEnd());
@@ -93,20 +91,9 @@ public class TicketTripService {
 	}
 
 	private void updatePreviousAndFirstTickets(List<TicketTripVo.Response> dataRespons, int index) {
-		if (index == 1) {
-			dataRespons.get(0).setBusTerminalArrive(dataRespons.get(1).getBusTerminalDepartureDes());
-		}
-		if (index > 0) {
-			int previousIndex = index - 1;
-			dataRespons.get(previousIndex).setTerminalTimeArrive(dataRespons.get(index).getTerminalTimeArrive());
-			dataRespons.get(previousIndex).setBusTerminalArrive(dataRespons.get(index).getBusTerminalDepartureDes());
-		}
-		if (index == dataRespons.size() - 1) {
-			dataRespons.get(index).setTerminalTimeArrive(null);
-			dataRespons.get(index).setBusTerminalArrive(null);
-		}
+		dataRespons.get(index).setTerminalTimeArrive(dataRespons.get(index).getTerminalTimeArrive());
+    	dataRespons.get(index).setBusTerminalArrive(dataRespons.get(index).getBusTerminalDepartureDes());
 	}
-
 
 	public List<TicketTripVo.Response> calSumPrice(List<TicketTripVo.Response> dataRespons) {
 		if (dataRespons.isEmpty()) {

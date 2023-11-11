@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import UTCC.framework.constant.ConstantsWorksheetStatus;
 import UTCC.framework.constant.ResponseConstant.RESPONSE_MESSAGE;
 import UTCC.framework.constant.ResponseConstant.RESPONSE_STATUS;
 import UTCC.framework.model.ResponseData;
@@ -45,7 +46,7 @@ public class WorksheetController {
 	public ResponseData<List<WorksheetVo.Response>> getDropdownListBusVehicleProgress(@RequestBody WorksheetVo.Request request ) {
 		ResponseData<List<WorksheetVo.Response>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(worksheetService.getList("IN_PROGRESS"));
+			responseData.setData(worksheetService.getList(ConstantsWorksheetStatus.IN_PROGRESS));
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
@@ -60,7 +61,7 @@ public class WorksheetController {
 	public ResponseData<List<WorksheetVo.Response>> getDropdownListBusVehicle(@RequestBody WorksheetVo.Request request  ) {
 		ResponseData<List<WorksheetVo.Response>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(worksheetService.getList("SUCCESS"));
+			responseData.setData(worksheetService.getList(ConstantsWorksheetStatus.SUCCESS));
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {

@@ -61,7 +61,7 @@ public class WorksheetController {
 	public ResponseData<List<WorksheetVo.Response>> getDropdownListBusVehicle(@RequestBody WorksheetVo.Request request  ) {
 		ResponseData<List<WorksheetVo.Response>> responseData = new ResponseData<>();
 		try {
-			responseData.setData(worksheetService.getList(ConstantsWorksheetStatus.SUCCESS));
+			responseData.setData(worksheetService.getList());
 			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {
@@ -71,11 +71,13 @@ public class WorksheetController {
 		return responseData;
 	}
 	
-	@GetMapping("/update-status/{id}")
-	public ResponseData<?> updateStatus(@PathVariable("id") Long id) {
+
+	
+	@GetMapping("/update-status-by-super-visor/{id}")
+	public ResponseData<?> updateStatusBySuperVisor(@PathVariable("id") Long id) {
 		ResponseData<?> responseData = new ResponseData<>();
 		try {
-			worksheetService.upDateStatus(id);
+			worksheetService.updateStatusBySuperVisor(id);
 			responseData.setMessage(RESPONSE_MESSAGE.DELETE.SUCCESS);
 			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
 		} catch (Exception e) {

@@ -21,6 +21,10 @@ public class DriverService {
 		return driverDao.getDataFarecollect(ConstantsWorksheetStatus.IN_PROGRESS);
 	}
 	
+	public List<DriverVo.Response> getDataSuperVisor(String status){
+		return driverDao.getDataSuperVisor(status);
+	}
+	
 	public List<DriverVo.Response> getDataFarecollectSuccess(){
 		return driverDao.getDataFarecollectOrEnd(ConstantsWorksheetStatus.SUCCESS,ConstantsWorksheetStatus.END_PROGRESS);
 	}

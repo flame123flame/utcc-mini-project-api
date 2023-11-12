@@ -75,17 +75,20 @@ public class WorksheetService {
 	public List<WorksheetVo.Response> getList(String status){
 		return worksheetDao.getDataFarecollect(status);
 	}
+	public List<WorksheetVo.Response> getList(){
+		return worksheetDao.getDataFarecollect(ConstantsWorksheetStatus.SUCCESS,ConstantsWorksheetStatus.END_PROGRESS);
+	}
 
-	public void upDateStatus(Long id) {
+
+	
+	public void updateStatusBySuperVisor(Long id) {
 		Worksheet data = worksheetRepository.findById(id).get();
-		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-		Date date = new Date();
 		data.setWorksheetStatus(ConstantsWorksheetStatus.SUCCESS);
-		data.setWorksheetTimeEnd(formatter.format(date));
 		data.setWorksheetBuslinesManager(UserLoginUtil.getUsername());
+		data.setUpdateBy(UserLoginUtil.getUsername());
+		data.setUpdateDate(LocalDateTime.now());		
 		worksheetRepository.save(data);
 	}
-	
 	
 	
 }

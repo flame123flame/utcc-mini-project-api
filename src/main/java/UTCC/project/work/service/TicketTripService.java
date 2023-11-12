@@ -8,6 +8,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import UTCC.framework.constant.ConstantsTimestamp;
+import UTCC.framework.utils.UserLoginUtil;
+import UTCC.project.employee.module.Employee;
+import UTCC.project.employee.repo.jpa.EmployeeRepo;
 import UTCC.project.work.dao.TicketTripDao;
 import UTCC.project.work.model.TicketTrip;
 import UTCC.project.work.repositories.TicketTripRepository;
@@ -21,6 +25,9 @@ public class TicketTripService {
 
 	@Autowired
 	private TicketTripDao ticketTripDao;
+	
+	@Autowired
+	private EmployeeRepo employeeRepo;
 	
 	public List<TicketTrip> getTicketTrip(){
 		return (List<TicketTrip>) ticketTripRepository.findAll();
@@ -64,6 +71,13 @@ public class TicketTripService {
 			ticket.setTerminalTimeArrive(firstTicketTime.getTerminalTimeArrive());
 			ticket.setTerminalTimeDeparture(firstTicketTime.getTerminalTimeDeparture());
 			ticket.setBusTerminalDepartureDes(firstTicketTime.getBusTerminalName());
+	
+			Employee employeeAgent = employeeRepo.findByUsername(firstTicketTime.getBusTerminalAgent());
+			if(employeeAgent != null) {
+				ticket.setBusTerminalAgentName(employeeAgent.getFirstName().concat(" ").concat(employeeAgent.getLastName()));
+			}	
+			
+			
 		}
 	}
 
@@ -114,7 +128,6 @@ public class TicketTripService {
 
 	private BigDecimal calculateSumForTicketList(List<TicketTripVo.TicketAndFare> currentList, List<TicketTripVo.TicketAndFare> previousList) {
 		BigDecimal sum = BigDecimal.ZERO;
-
 		for (int subIndex = 0; subIndex < currentList.size(); subIndex++) {
 			TicketTripVo.TicketAndFare currentTicket = currentList.get(subIndex);
 			TicketTripVo.TicketAndFare previousTicket = previousList.get(subIndex);

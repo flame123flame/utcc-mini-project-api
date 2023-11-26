@@ -3,6 +3,8 @@ package UTCC.project.work.vo;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Column;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -35,7 +37,8 @@ public class TicketTripVo {
         private long terminalTimestampId;
         private String busTerminalAgentName;
         private List<TicketTripVo.TicketAndFare> ticketList;
-        
+        private Long worksheetSumTicket;
+        private BigDecimal worksheetSumIncome;
     }
     
     @Getter

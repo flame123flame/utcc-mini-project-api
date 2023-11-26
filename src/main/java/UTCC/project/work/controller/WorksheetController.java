@@ -71,7 +71,20 @@ public class WorksheetController {
 		return responseData;
 	}
 	
-
+	@GetMapping("/get-list-dashboard")
+	public ResponseData<List<WorksheetVo.Response>> getDataDashboard() {
+		ResponseData<List<WorksheetVo.Response>> responseData = new ResponseData<>();
+		try {
+			responseData.setData(worksheetService.getDataDashboard());
+			responseData.setMessage(RESPONSE_MESSAGE.GET.SUCCESS);
+			responseData.setStatus(RESPONSE_STATUS.SUCCESS);
+		} catch (Exception e) {
+			responseData.setMessage(RESPONSE_MESSAGE.GET.FAILED);
+			responseData.setStatus(RESPONSE_STATUS.FAILED);
+		}
+		return responseData;
+	}
+	
 	
 	@GetMapping("/update-status-by-super-visor/{id}")
 	public ResponseData<?> updateStatusBySuperVisor(@PathVariable("id") Long id) {

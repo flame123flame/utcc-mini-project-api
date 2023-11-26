@@ -79,7 +79,9 @@ public class WorksheetService {
 		return worksheetDao.getDataFarecollect(ConstantsWorksheetStatus.SUCCESS,ConstantsWorksheetStatus.END_PROGRESS);
 	}
 
-
+	public List<WorksheetVo.Response> getDataDashboard(){
+		return worksheetDao.getDataDashboard();
+	}
 	
 	public void updateStatusBySuperVisor(Long id) {
 		Worksheet data = worksheetRepository.findById(id).get();

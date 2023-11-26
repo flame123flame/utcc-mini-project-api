@@ -95,6 +95,8 @@ public class TerminalTimestampService {
 	        worksheet.setWorksheetTerminalAgent(UserLoginUtil.getUsername());
 	        worksheet.setUpdateBy(UserLoginUtil.getUsername());
 	        worksheet.setUpdateDate(LocalDateTime.now());
+	        worksheet.setWorksheetSumTicket(req.getWorksheetSumTicket());
+	        worksheet.setWorksheetSumIncome(req.getWorksheetSumIncome());
 	        String timeBegin = worksheet.getWorksheetTimeBegin();
 	        worksheet.setWorksheetHours(calculateRoundedHours(timeBegin, terminalTimeDeparture));
 	        worksheet.setWorksheetHoursOt(calculateRoundedHours(timeBegin, terminalTimeDeparture) - 8);

@@ -45,6 +45,8 @@ public class WorksheetVo {
         private String worksheetStatus;
         private Long worksheetSumTicket;
         private BigDecimal worksheetSumIncome;
+        private String updateDate;
+        
         
     }
     

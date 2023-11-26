@@ -12,7 +12,7 @@ logging:
 server:
   port: 9000
   servlet:
-    context-path: /utcc-mini-project-mobile
+    context-path: /utcc-project-api
 
 # DB
 spring:

@@ -82,4 +82,28 @@ public class WorksheetDao {
 	    Object[] params = {employee.getBuslinesId(), employee.getEmployeeShift(), status , statusEnd};
 	    return commonJdbcTemplate.executeQuery(sql, params, BeanPropertyRowMapper.newInstance(WorksheetVo.Response.class));
 	}
+	
+	
+	public List<WorksheetVo.Response> getDataDashboard() {
+
+		String sql = "SELECT\n"
+				+ "	ws.worksheet_id,\n"
+				+ "	ws.update_date,\n"
+				+ "	ws.worksheet_sum_ticket ,\n"
+				+ "	ws.worksheet_sum_income ,\n"
+				+ "	ws .worksheet_hours,\n"
+				+ "	ws .worksheet_hours_ot ,\n"
+				+ "	ws.bus_vehicle_number ,\n"
+				+ "	bl.bus_lines_no \n"
+				+ "FROM\n"
+				+ "	worksheet ws\n"
+				+ "join bus_lines bl on\n"
+				+ "	ws.bus_lines_id = bl.bus_lines_id\n"
+				+ "where\n"
+				+ "	ws.worksheet_status = 'SUCCESS'\n"
+				+ "";
+
+	    Object[] params = {};
+	    return commonJdbcTemplate.executeQuery(sql, params, BeanPropertyRowMapper.newInstance(WorksheetVo.Response.class));
+	}
 }

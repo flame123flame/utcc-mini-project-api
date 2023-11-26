@@ -75,6 +75,12 @@ public class Worksheet implements Serializable {
     @Column(name = "bus_division_id")
     private Long busDivisionId;
     
+    @Column(name = "worksheet_sum_ticket")
+    private Long worksheetSumTicket;
+    
+    @Column(name = "worksheet_sum_income")
+    private BigDecimal worksheetSumIncome;
+    
     @Column(name = "create_by", length = 50,nullable = false)
     private String createBy;
 

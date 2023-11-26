@@ -43,6 +43,8 @@ public class WorksheetVo {
         private String worksheetTerminalAgent;
         private String worksheetBuslinesManager;
         private String worksheetStatus;
+        private Long worksheetSumTicket;
+        private BigDecimal worksheetSumIncome;
         
     }
     
